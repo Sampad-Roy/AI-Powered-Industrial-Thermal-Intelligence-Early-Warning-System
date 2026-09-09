@@ -1,0 +1,108 @@
+# ==============================================================================
+# SUDARSHAN — SIH 2026 Git Ignore Specification
+# ==============================================================================
+
+# --- Python & Virtual Environments ---
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Byte-compiled / Optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.dylib
+*.dll
+
+# --- Jupyter Notebook Checkpoints ---
+.ipynb_checkpoints/
+
+# --- Testing & Coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Node & Frontend Build Artifacts ---
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+.vite/
+frontend/.vite/
+.eslintcache
+*.local
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ==============================================================================
+# Whitelist: Ensure ML Models & Required Datasets are Tracked
+# ==============================================================================
+!data/models/
+!data/models/**
+!data/processed/
+!data/processed/**
+!data/raw/
+!data/reports/
+!data/reports/**

@@ -1,0 +1,44 @@
+{
+  "feature_names": [
+    "bright_ti4",
+    "bright_ti5",
+    "frp",
+    "delta_t",
+    "daynight",
+    "distance_to_industry",
+    "industries_within_500m",
+    "industries_within_1km",
+    "industries_within_2km",
+    "NDVI",
+    "NDBI",
+    "NDWI",
+    "cluster_event_count",
+    "cluster_unique_dates",
+    "cluster_span_days"
+  ],
+  "num_features": 15,
+  "target_column": "final_label",
+  "classes": [
+    "Gas Flare",
+    "Industrial Fire",
+    "Other Thermal Source",
+    "Persistent Industrial Heat"
+  ],
+  "feature_types": {
+    "bright_ti4": "float64",
+    "bright_ti5": "float64",
+    "frp": "float64",
+    "delta_t": "float64",
+    "daynight": "int64",
+    "distance_to_industry": "float64",
+    "industries_within_500m": "int64",
+    "industries_within_1km": "int64",
+    "industries_within_2km": "int64",
+    "NDVI": "float64",
+    "NDBI": "float64",
+    "NDWI": "float64",
+    "cluster_event_count": "int64",
+    "cluster_unique_dates": "int64",
+    "cluster_span_days": "int64"
+  }
+}

@@ -1,0 +1,203 @@
+event_id,predicted_class,confidence,thermal_score,persistence_score,industrial_proximity_score,recurrence_score,ml_confidence_score,final_risk_score,risk_level,top_risk_factors
+FIRMS_0001,Other Thermal Source,0.965,50.43,0.0,9.62,17.92,24.13,22.84,LOW,Elevated Radiative Power (5.2 MW); Intense Sub-pixel Combustion Contrast (ΔT = 41.3K)
+FIRMS_0002,Other Thermal Source,0.965,51.01,0.0,1.61,17.92,24.13,20.98,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 42.7K)
+FIRMS_0003,Other Thermal Source,0.6431,39.28,0.0,30.26,15.0,16.08,22.9,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.5K)
+FIRMS_0004,Industrial Fire,0.4525,52.7,0.0,41.5,15.0,45.25,36.36,MODERATE,Acute Industrial Fire Hazard (45.2% ML conf); Elevated Radiative Power (10.6 MW)
+FIRMS_0005,Persistent Industrial Heat,0.9709,14.29,44.71,57.08,38.75,63.11,44.2,MODERATE,Chronic Operational Heat Source (54d persistence); Close Industrial Proximity (1091m)
+FIRMS_0006,Persistent Industrial Heat,0.9664,11.76,100.0,68.97,100.0,62.82,60.89,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (176m)
+FIRMS_0007,Gas Flare,0.3886,21.32,0.0,71.96,30.0,33.03,34.58,MODERATE,High-Temp Flare Combustion Stack (38.9% ML conf); Close Industrial Proximity (547m)
+FIRMS_0008,Other Thermal Source,0.9412,42.63,0.0,13.54,15.0,23.53,21.43,LOW,Elevated Radiative Power (5.1 MW)
+FIRMS_0009,Other Thermal Source,0.971,34.19,0.0,4.25,17.92,24.28,17.47,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0010,Other Thermal Source,0.9697,38.48,0.0,4.75,17.92,24.24,18.66,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0011,Other Thermal Source,0.9688,25.67,0.0,10.24,30.0,24.22,18.03,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0012,Persistent Industrial Heat,0.9703,26.45,100.0,68.33,100.0,63.07,64.46,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (497m)
+FIRMS_0013,Persistent Industrial Heat,0.9659,23.38,100.0,67.5,100.0,62.79,63.42,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (239m)
+FIRMS_0014,Persistent Industrial Heat,0.967,15.04,100.0,51.15,100.0,62.85,57.26,HIGH,Chronic Operational Heat Source (81d persistence); Close Industrial Proximity (645m)
+FIRMS_0015,Persistent Industrial Heat,0.9703,16.52,100.0,68.55,100.0,63.07,62.03,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (325m)
+FIRMS_0016,Other Thermal Source,0.5305,36.01,0.0,26.53,15.0,13.26,20.45,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0017,Industrial Fire,0.439,14.85,0.0,59.01,30.0,43.9,32.44,MODERATE,Acute Industrial Fire Hazard (43.9% ML conf); Immediate Industrial Co-location (272m)
+FIRMS_0018,Other Thermal Source,0.9673,37.41,0.0,13.81,17.92,24.18,20.64,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0019,Other Thermal Source,0.955,45.11,0.0,12.03,17.92,23.87,22.04,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 33.7K)
+FIRMS_0020,Other Thermal Source,0.9694,36.14,0.0,9.09,15.0,24.24,18.87,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0021,Persistent Industrial Heat,0.9703,13.5,100.0,68.52,100.0,63.07,61.27,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (488m)
+FIRMS_0022,Persistent Industrial Heat,0.969,15.33,100.0,68.74,100.0,62.99,61.76,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (496m)
+FIRMS_0023,Other Thermal Source,0.9113,65.4,0.0,21.02,15.0,22.78,28.8,MODERATE,Elevated Radiative Power (5.1 MW); Intense Sub-pixel Combustion Contrast (ΔT = 54.4K)
+FIRMS_0024,Other Thermal Source,0.5908,36.64,2.86,23.57,20.83,14.77,21.26,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 30.0K)
+FIRMS_0025,Other Thermal Source,0.9653,40.22,0.0,9.75,15.0,24.13,20.02,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.2K)
+FIRMS_0026,Industrial Fire,0.4974,35.88,0.0,50.13,15.0,49.74,35.44,MODERATE,Acute Industrial Fire Hazard (49.7% ML conf)
+FIRMS_0027,Other Thermal Source,0.9302,43.97,2.86,26.43,20.83,23.25,25.92,MODERATE,Elevated Radiative Power (6.5 MW)
+FIRMS_0028,Other Thermal Source,0.9369,44.33,2.86,21.07,20.83,23.42,24.72,LOW,Elevated Radiative Power (6.9 MW)
+FIRMS_0029,Industrial Fire,0.9217,36.08,0.0,66.08,15.0,92.17,50.08,HIGH,Acute Industrial Fire Hazard (92.2% ML conf); Close Industrial Proximity (769m)
+FIRMS_0030,Other Thermal Source,0.6597,10.32,0.0,32.4,30.0,16.49,17.8,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0031,Other Thermal Source,0.4973,9.11,0.0,37.15,30.0,12.43,17.67,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0032,Industrial Fire,0.437,44.67,0.0,52.42,15.0,43.7,36.7,MODERATE,Acute Industrial Fire Hazard (43.7% ML conf); Close Industrial Proximity (1068m); Intense Sub-pixel Combustion Contrast (ΔT = 42.1K)
+FIRMS_0033,Other Thermal Source,0.9623,48.99,0.0,12.96,17.92,24.06,23.3,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 45.3K)
+FIRMS_0034,Other Thermal Source,0.9684,46.54,0.0,9.88,17.92,24.21,21.95,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 44.0K)
+FIRMS_0035,Other Thermal Source,0.9613,47.62,0.0,11.48,17.92,24.03,22.57,LOW,Elevated Radiative Power (5.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 38.3K)
+FIRMS_0036,Other Thermal Source,0.9656,34.74,0.0,10.88,17.92,24.14,19.23,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0037,Other Thermal Source,0.3062,43.76,0.0,48.19,15.0,7.66,26.4,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 38.0K)
+FIRMS_0038,Other Thermal Source,0.9655,34.34,0.0,19.83,15.0,24.14,21.08,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0039,Other Thermal Source,0.6315,40.71,0.0,36.4,17.92,15.79,25.02,MODERATE,Elevated Radiative Power (5.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 31.2K)
+FIRMS_0040,Other Thermal Source,0.4225,43.79,0.0,54.65,17.92,10.56,29.04,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 37.9K)
+FIRMS_0041,Other Thermal Source,0.9677,35.62,0.0,0.0,15.0,24.19,16.45,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 32.4K)
+FIRMS_0042,Other Thermal Source,0.9617,50.69,0.0,12.63,17.92,24.04,23.63,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 45.1K)
+FIRMS_0043,Other Thermal Source,0.9539,58.8,0.0,14.74,17.92,23.85,26.14,MODERATE,Elevated Radiative Power (5.2 MW); Intense Sub-pixel Combustion Contrast (ΔT = 50.9K)
+FIRMS_0044,Persistent Industrial Heat,0.9542,50.29,18.61,64.12,20.83,62.02,48.98,MODERATE,Chronic Operational Heat Source (22d persistence); Elevated Radiative Power (7.8 MW); Close Industrial Proximity (796m)
+FIRMS_0045,Other Thermal Source,0.9671,35.02,4.36,14.18,17.92,24.18,20.79,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0046,Other Thermal Source,0.9559,43.64,0.0,25.37,15.0,23.9,24.73,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 34.0K)
+FIRMS_0047,Industrial Fire,0.3143,40.77,0.0,53.54,15.0,31.43,32.94,MODERATE,Acute Industrial Fire Hazard (31.4% ML conf); Intense Sub-pixel Combustion Contrast (ΔT = 33.2K)
+FIRMS_0048,Other Thermal Source,0.5296,45.7,0.0,44.96,20.83,13.24,28.06,MODERATE,Elevated Radiative Power (7.9 MW); Intense Sub-pixel Combustion Contrast (ΔT = 30.2K)
+FIRMS_0049,Other Thermal Source,0.5108,55.69,0.0,46.24,20.83,12.77,30.76,MODERATE,Elevated Radiative Power (7.9 MW); Intense Sub-pixel Combustion Contrast (ΔT = 40.9K)
+FIRMS_0050,Other Thermal Source,0.5452,42.04,0.0,49.37,20.83,13.63,28.34,MODERATE,Elevated Radiative Power (7.9 MW)
+FIRMS_0051,Other Thermal Source,0.9658,37.44,0.0,26.4,15.0,24.14,23.5,LOW,Elevated Radiative Power (5.1 MW)
+FIRMS_0052,Persistent Industrial Heat,0.9688,20.64,100.0,69.49,100.0,62.97,63.28,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (313m)
+FIRMS_0053,Other Thermal Source,0.537,39.35,0.0,21.75,15.0,13.43,20.13,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0054,Other Thermal Source,0.5637,49.51,0.0,43.85,15.0,14.09,28.36,MODERATE,Elevated Radiative Power (5.7 MW); Intense Sub-pixel Combustion Contrast (ΔT = 38.3K)
+FIRMS_0055,Gas Flare,0.9338,14.63,0.0,80.38,30.0,79.37,46.59,MODERATE,High-Temp Flare Combustion Stack (93.4% ML conf); Immediate Industrial Co-location (434m); Dense Industrial Cluster (24 facilities within 2km)
+FIRMS_0056,Other Thermal Source,0.961,46.9,4.36,17.26,17.92,24.03,24.49,LOW,Elevated Radiative Power (6.6 MW); Intense Sub-pixel Combustion Contrast (ΔT = 33.9K)
+FIRMS_0057,Other Thermal Source,0.9608,51.12,0.0,12.38,17.92,24.02,23.67,LOW,Elevated Radiative Power (5.7 MW); Intense Sub-pixel Combustion Contrast (ΔT = 42.4K)
+FIRMS_0058,Other Thermal Source,0.9597,57.83,0.0,12.8,17.92,23.99,25.45,MODERATE,Elevated Radiative Power (7.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 47.5K)
+FIRMS_0059,Other Thermal Source,0.9578,36.1,0.0,16.93,15.0,23.95,20.74,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0060,Industrial Fire,0.5117,43.69,0.0,69.96,15.0,51.17,42.7,MODERATE,Acute Industrial Fire Hazard (51.2% ML conf); Close Industrial Proximity (923m); Dense Industrial Cluster (23 facilities within 2km)
+FIRMS_0061,Other Thermal Source,0.4852,46.1,0.0,33.88,15.0,12.13,24.53,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 39.0K)
+FIRMS_0062,Other Thermal Source,0.9676,36.03,0.0,15.51,15.0,24.19,20.43,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0063,Persistent Industrial Heat,0.961,12.78,100.0,69.75,100.0,62.46,61.25,HIGH,Chronic Operational Heat Source (81d persistence); Close Industrial Proximity (516m)
+FIRMS_0064,Other Thermal Source,0.9625,37.8,0.0,18.78,15.0,24.06,21.66,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 30.5K)
+FIRMS_0065,Other Thermal Source,0.5695,62.64,0.0,31.93,20.83,14.24,29.29,MODERATE,Elevated Radiative Power (12.6 MW); Intense Sub-pixel Combustion Contrast (ΔT = 44.2K)
+FIRMS_0066,Other Thermal Source,0.5549,59.18,0.0,39.95,20.83,13.87,30.34,MODERATE,Elevated Radiative Power (12.6 MW); Intense Sub-pixel Combustion Contrast (ΔT = 39.3K)
+FIRMS_0067,Other Thermal Source,0.5351,87.6,0.0,34.17,20.83,13.38,35.87,MODERATE,Severe FRP Power Spike (21.8 MW); Intense Sub-pixel Combustion Contrast (ΔT = 62.5K)
+FIRMS_0068,Other Thermal Source,0.9638,49.68,0.0,3.83,15.0,24.1,20.9,LOW,Elevated Radiative Power (5.1 MW); Intense Sub-pixel Combustion Contrast (ΔT = 41.3K)
+FIRMS_0069,Other Thermal Source,0.9655,47.58,0.0,14.95,17.92,24.14,23.46,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 39.6K)
+FIRMS_0070,Other Thermal Source,0.9594,41.31,0.0,12.7,17.92,23.99,21.29,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 34.9K)
+FIRMS_0071,Other Thermal Source,0.6597,11.55,0.0,42.72,30.0,16.49,20.69,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0072,Other Thermal Source,0.6351,43.99,0.0,46.56,15.0,15.88,28.11,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 33.3K)
+FIRMS_0073,Other Thermal Source,0.9646,39.74,0.0,10.96,15.0,24.11,20.2,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.1K)
+FIRMS_0074,Other Thermal Source,0.6503,39.94,0.0,27.9,17.92,16.26,22.82,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 32.7K)
+FIRMS_0075,Other Thermal Source,0.6437,42.0,0.0,28.48,17.92,16.09,23.43,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 32.4K)
+FIRMS_0076,Other Thermal Source,0.9612,42.76,0.0,11.23,15.0,24.03,21.01,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 37.2K)
+FIRMS_0077,Other Thermal Source,0.923,42.74,0.0,18.45,15.0,23.08,22.57,LOW,Elevated Radiative Power (5.5 MW)
+FIRMS_0078,Other Thermal Source,0.949,41.64,0.0,18.53,15.0,23.72,22.47,LOW,Elevated Radiative Power (5.4 MW)
+FIRMS_0079,Other Thermal Source,0.916,45.96,0.0,11.66,15.0,22.9,21.63,LOW,Elevated Radiative Power (5.1 MW); Intense Sub-pixel Combustion Contrast (ΔT = 31.8K)
+FIRMS_0080,Other Thermal Source,0.955,40.11,0.0,8.39,17.92,23.87,19.89,LOW,Elevated Radiative Power (5.1 MW)
+FIRMS_0081,Other Thermal Source,0.9545,47.61,0.0,16.81,17.92,23.86,23.86,LOW,Elevated Radiative Power (5.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 35.2K)
+FIRMS_0082,Other Thermal Source,0.6351,44.41,0.0,31.48,15.0,15.88,24.44,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 35.2K)
+FIRMS_0083,Other Thermal Source,0.6661,31.62,0.0,41.16,15.0,16.65,23.86,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0084,Other Thermal Source,0.4475,37.71,0.0,52.82,15.0,11.19,26.93,MODERATE,Nominal Rural / Non-Industrial Baseline
+FIRMS_0085,Other Thermal Source,0.9603,50.48,0.0,12.98,15.0,24.01,23.37,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 41.3K)
+FIRMS_0086,Other Thermal Source,0.9635,39.12,0.0,16.48,15.0,24.09,21.42,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 30.7K)
+FIRMS_0087,Persistent Industrial Heat,0.6975,41.04,30.61,30.14,17.92,45.33,35.51,MODERATE,Chronic Operational Heat Source (38d persistence); Intense Sub-pixel Combustion Contrast (ΔT = 32.7K)
+FIRMS_0088,Other Thermal Source,0.6182,48.13,0.0,35.54,15.0,15.45,26.28,MODERATE,Elevated Radiative Power (5.5 MW); Intense Sub-pixel Combustion Contrast (ΔT = 44.9K)
+FIRMS_0089,Other Thermal Source,0.6639,40.41,0.0,19.56,15.0,16.6,20.64,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.1K)
+FIRMS_0090,Other Thermal Source,0.8994,53.7,0.0,13.91,15.0,22.49,24.02,LOW,Elevated Radiative Power (12.4 MW)
+FIRMS_0091,Other Thermal Source,0.6705,40.52,0.0,40.3,17.92,16.76,26.19,MODERATE,Elevated Radiative Power (5.2 MW)
+FIRMS_0092,Other Thermal Source,0.6461,65.6,0.0,37.33,17.92,16.15,31.56,MODERATE,Elevated Radiative Power (5.2 MW); Intense Sub-pixel Combustion Contrast (ΔT = 61.6K)
+FIRMS_0093,Other Thermal Source,0.9638,50.71,0.0,14.79,15.0,24.09,23.9,LOW,Elevated Radiative Power (6.0 MW); Intense Sub-pixel Combustion Contrast (ΔT = 44.9K)
+FIRMS_0094,Persistent Industrial Heat,0.9647,12.52,100.0,59.16,100.0,62.7,58.6,HIGH,Chronic Operational Heat Source (81d persistence); Close Industrial Proximity (684m)
+FIRMS_0095,Other Thermal Source,0.6639,41.56,0.0,33.28,15.0,16.6,24.36,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 32.2K)
+FIRMS_0096,Other Thermal Source,0.9669,36.81,0.0,13.73,15.0,24.17,20.18,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0097,Other Thermal Source,0.6639,42.96,0.0,19.02,15.0,16.6,21.14,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 36.0K)
+FIRMS_0098,Persistent Industrial Heat,0.9707,17.42,100.0,65.74,100.0,63.09,61.56,HIGH,Chronic Operational Heat Source (81d persistence); Close Industrial Proximity (582m)
+FIRMS_0099,Other Thermal Source,0.9214,43.59,0.0,17.42,15.0,23.04,22.51,LOW,Elevated Radiative Power (5.9 MW)
+FIRMS_0100,Other Thermal Source,0.955,39.61,0.0,0.0,17.92,23.87,17.66,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0101,Other Thermal Source,0.9604,41.51,0.0,5.88,17.92,24.01,19.64,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.4K)
+FIRMS_0102,Industrial Fire,0.4823,43.82,0.0,35.68,15.0,48.23,33.43,MODERATE,Acute Industrial Fire Hazard (48.2% ML conf); Elevated Radiative Power (5.4 MW)
+FIRMS_0103,Other Thermal Source,0.3032,12.51,0.0,49.74,30.0,7.58,20.46,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0104,Industrial Fire,0.445,58.93,0.0,41.81,15.0,44.5,37.81,MODERATE,Acute Industrial Fire Hazard (44.5% ML conf); Elevated Radiative Power (10.3 MW); Intense Sub-pixel Combustion Contrast (ΔT = 35.3K)
+FIRMS_0105,Persistent Industrial Heat,0.9399,15.0,31.36,71.2,35.83,61.09,45.11,MODERATE,Chronic Operational Heat Source (39d persistence); Close Industrial Proximity (605m)
+FIRMS_0106,Industrial Fire,0.3619,13.08,0.0,48.31,30.0,36.19,27.4,MODERATE,Acute Industrial Fire Hazard (36.2% ML conf); Close Industrial Proximity (1112m)
+FIRMS_0107,Industrial Fire,0.9292,45.32,0.0,53.94,15.0,92.92,49.55,MODERATE,Acute Industrial Fire Hazard (92.9% ML conf); Elevated Radiative Power (5.7 MW); Close Industrial Proximity (845m)
+FIRMS_0108,Other Thermal Source,0.4788,54.01,0.0,37.88,17.92,11.97,27.76,MODERATE,Elevated Radiative Power (12.8 MW)
+FIRMS_0109,Other Thermal Source,0.5057,49.83,0.0,29.67,17.92,12.64,24.83,LOW,Elevated Radiative Power (10.5 MW)
+FIRMS_0110,Persistent Industrial Heat,0.9146,57.33,18.61,54.89,20.83,59.45,47.79,MODERATE,Chronic Operational Heat Source (22d persistence); Elevated Radiative Power (13.4 MW); Close Industrial Proximity (1179m)
+FIRMS_0111,Persistent Industrial Heat,0.8716,60.4,18.61,46.21,20.83,56.65,45.69,MODERATE,Chronic Operational Heat Source (22d persistence); Severe FRP Power Spike (17.0 MW)
+FIRMS_0112,Other Thermal Source,0.967,11.09,0.0,22.42,30.0,24.17,17.42,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0113,Other Thermal Source,0.911,47.8,0.0,24.0,15.0,22.77,25.15,MODERATE,Elevated Radiative Power (6.1 MW); Intense Sub-pixel Combustion Contrast (ΔT = 32.0K)
+FIRMS_0114,Other Thermal Source,0.6537,36.39,34.36,16.83,20.83,16.34,24.63,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0115,Other Thermal Source,0.622,36.14,34.36,9.93,20.83,15.55,22.64,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0116,Industrial Fire,0.9673,43.36,3.61,62.75,17.92,96.73,53.04,HIGH,Acute Industrial Fire Hazard (96.7% ML conf); Close Industrial Proximity (884m); Intense Sub-pixel Combustion Contrast (ΔT = 31.8K)
+FIRMS_0117,Other Thermal Source,0.9316,48.7,0.0,11.3,17.92,23.29,22.61,LOW,Elevated Radiative Power (7.5 MW)
+FIRMS_0118,Other Thermal Source,0.9001,51.14,0.0,15.1,17.92,22.5,23.98,LOW,Elevated Radiative Power (8.6 MW)
+FIRMS_0119,Persistent Industrial Heat,0.9695,11.92,100.0,66.85,100.0,63.02,60.45,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (398m)
+FIRMS_0120,Industrial Fire,0.9184,72.98,3.61,56.03,17.92,91.84,57.55,HIGH,Acute Industrial Fire Hazard (91.8% ML conf); Severe FRP Power Spike (27.5 MW); Close Industrial Proximity (1110m)
+FIRMS_0121,Persistent Industrial Heat,0.9695,17.11,100.0,69.18,100.0,63.02,62.33,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (150m)
+FIRMS_0122,Industrial Fire,0.9448,54.25,0.0,60.19,15.0,94.48,53.73,HIGH,Acute Industrial Fire Hazard (94.5% ML conf); Elevated Radiative Power (12.9 MW); Close Industrial Proximity (991m)
+FIRMS_0123,Industrial Fire,0.4721,17.52,0.0,65.21,30.0,47.21,35.49,MODERATE,Acute Industrial Fire Hazard (47.2% ML conf); Close Industrial Proximity (753m)
+FIRMS_0124,Other Thermal Source,0.3856,28.98,0.0,48.9,30.0,9.64,24.88,LOW,Close Industrial Proximity (1017m)
+FIRMS_0125,Other Thermal Source,0.9466,39.23,0.0,19.05,17.92,23.67,22.28,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0126,Other Thermal Source,0.9284,42.65,0.0,11.51,17.92,23.21,21.13,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 30.4K)
+FIRMS_0127,Other Thermal Source,0.9299,37.0,0.0,20.96,15.0,23.25,21.8,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0128,Industrial Fire,0.9407,42.28,0.0,69.09,15.0,94.07,52.86,HIGH,Acute Industrial Fire Hazard (94.1% ML conf); Elevated Radiative Power (5.4 MW); Immediate Industrial Co-location (78m)
+FIRMS_0129,Other Thermal Source,0.5667,43.68,0.0,34.48,17.92,14.17,24.87,LOW,Elevated Radiative Power (6.9 MW)
+FIRMS_0130,Other Thermal Source,0.4556,52.18,0.0,38.89,17.92,11.39,27.41,MODERATE,Elevated Radiative Power (6.5 MW); Intense Sub-pixel Combustion Contrast (ΔT = 36.8K)
+FIRMS_0131,Persistent Industrial Heat,0.9703,14.97,100.0,66.48,100.0,63.07,61.13,HIGH,Chronic Operational Heat Source (81d persistence); Close Industrial Proximity (525m)
+FIRMS_0132,Other Thermal Source,0.9303,47.07,0.0,15.75,17.92,23.26,23.31,LOW,Elevated Radiative Power (8.2 MW)
+FIRMS_0133,Other Thermal Source,0.9129,47.44,0.0,14.75,17.92,22.82,23.05,LOW,Elevated Radiative Power (8.2 MW)
+FIRMS_0134,Industrial Fire,0.9562,46.4,0.0,71.45,15.0,95.62,54.87,HIGH,Acute Industrial Fire Hazard (95.6% ML conf); Elevated Radiative Power (7.9 MW); Immediate Industrial Co-location (297m)
+FIRMS_0135,Other Thermal Source,0.4636,43.84,0.0,48.04,15.0,11.59,27.37,MODERATE,Elevated Radiative Power (6.3 MW)
+FIRMS_0136,Persistent Industrial Heat,0.9703,17.95,100.0,68.09,100.0,63.07,62.28,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (351m)
+FIRMS_0137,Persistent Industrial Heat,0.9705,23.39,100.0,70.87,100.0,63.08,64.34,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (362m)
+FIRMS_0138,Industrial Fire,0.4557,57.14,0.0,37.39,15.0,45.57,36.52,MODERATE,Acute Industrial Fire Hazard (45.6% ML conf); Elevated Radiative Power (13.7 MW)
+FIRMS_0139,Persistent Industrial Heat,0.8808,65.58,44.71,54.46,23.75,57.25,53.4,HIGH,Chronic Operational Heat Source (54d persistence); Severe FRP Power Spike (21.4 MW); Close Industrial Proximity (1059m)
+FIRMS_0140,Persistent Industrial Heat,0.869,18.43,21.61,50.66,32.92,56.48,37.93,MODERATE,Chronic Operational Heat Source (26d persistence); Immediate Industrial Co-location (494m)
+FIRMS_0141,Other Thermal Source,0.5126,40.0,0.0,26.81,15.0,12.82,21.41,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0142,Persistent Industrial Heat,0.8417,53.75,44.71,56.15,23.75,54.71,50.23,HIGH,Chronic Operational Heat Source (54d persistence); Elevated Radiative Power (11.9 MW); Close Industrial Proximity (1043m)
+FIRMS_0143,Persistent Industrial Heat,0.9301,50.69,44.71,57.86,23.75,60.46,51.33,HIGH,Chronic Operational Heat Source (54d persistence); Elevated Radiative Power (12.1 MW)
+FIRMS_0144,Other Thermal Source,0.6418,38.77,0.0,44.94,15.0,16.05,26.44,MODERATE,Nominal Rural / Non-Industrial Baseline
+FIRMS_0145,Persistent Industrial Heat,0.9697,14.74,100.0,71.0,100.0,63.03,62.19,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (443m)
+FIRMS_0146,Industrial Fire,0.9618,55.17,0.0,60.45,17.92,96.18,54.74,HIGH,Acute Industrial Fire Hazard (96.2% ML conf); Elevated Radiative Power (9.3 MW); Close Industrial Proximity (622m)
+FIRMS_0147,Industrial Fire,0.9617,46.34,0.0,58.33,17.92,96.17,52.0,HIGH,Acute Industrial Fire Hazard (96.2% ML conf); Elevated Radiative Power (5.5 MW); Close Industrial Proximity (803m)
+FIRMS_0148,Industrial Fire,0.9461,55.84,0.0,70.44,15.0,94.61,56.72,HIGH,Acute Industrial Fire Hazard (94.6% ML conf); Elevated Radiative Power (11.9 MW); Close Industrial Proximity (884m)
+FIRMS_0149,Industrial Fire,0.4483,41.44,0.0,35.6,15.0,44.83,31.97,MODERATE,Acute Industrial Fire Hazard (44.8% ML conf)
+FIRMS_0150,Persistent Industrial Heat,0.9703,17.69,100.0,68.02,100.0,63.07,62.2,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (447m)
+FIRMS_0151,Other Thermal Source,0.5605,54.44,0.0,26.38,15.0,14.01,25.21,MODERATE,Elevated Radiative Power (10.2 MW); Intense Sub-pixel Combustion Contrast (ΔT = 36.1K)
+FIRMS_0152,Gas Flare,0.6601,49.53,9.61,80.55,17.92,56.11,49.78,MODERATE,High-Temp Flare Combustion Stack (66.0% ML conf); Elevated Radiative Power (7.0 MW); Close Industrial Proximity (670m)
+FIRMS_0153,Other Thermal Source,0.9696,14.14,0.0,4.63,30.0,24.24,13.75,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0154,Other Thermal Source,0.4503,55.03,0.0,45.88,17.92,11.26,29.84,MODERATE,Elevated Radiative Power (5.3 MW); Intense Sub-pixel Combustion Contrast (ΔT = 43.3K)
+FIRMS_0155,Industrial Fire,0.718,54.58,0.0,51.87,17.92,71.8,46.35,MODERATE,Acute Industrial Fire Hazard (71.8% ML conf); Elevated Radiative Power (6.3 MW); Intense Sub-pixel Combustion Contrast (ΔT = 39.3K)
+FIRMS_0156,Industrial Fire,0.9543,39.05,0.0,60.18,15.0,95.43,50.17,HIGH,Acute Industrial Fire Hazard (95.4% ML conf); Close Industrial Proximity (846m)
+FIRMS_0157,Persistent Industrial Heat,0.9688,13.73,100.0,67.67,100.0,62.97,61.09,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (227m)
+FIRMS_0158,Industrial Fire,0.8859,56.85,0.0,55.74,15.0,88.59,51.8,HIGH,Acute Industrial Fire Hazard (88.6% ML conf); Elevated Radiative Power (14.0 MW); Close Industrial Proximity (895m)
+FIRMS_0159,Persistent Industrial Heat,0.5902,45.63,30.61,30.03,17.92,38.36,34.89,MODERATE,Chronic Operational Heat Source (38d persistence); Elevated Radiative Power (5.2 MW)
+FIRMS_0160,Persistent Industrial Heat,0.9687,15.01,100.0,73.84,100.0,62.97,62.96,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (177m)
+FIRMS_0161,Other Thermal Source,0.5587,45.1,0.0,48.34,15.0,13.97,28.35,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 33.5K)
+FIRMS_0162,Industrial Fire,0.5039,51.45,0.0,51.55,15.0,50.39,39.84,MODERATE,Acute Industrial Fire Hazard (50.4% ML conf); Elevated Radiative Power (7.5 MW); Close Industrial Proximity (845m)
+FIRMS_0163,Other Thermal Source,0.9679,34.67,0.0,11.59,15.0,24.2,19.11,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0164,Persistent Industrial Heat,0.9688,13.8,100.0,66.88,100.0,62.97,60.91,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (371m)
+FIRMS_0165,Gas Flare,0.4148,20.72,0.0,85.88,30.0,35.26,38.47,MODERATE,High-Temp Flare Combustion Stack (41.5% ML conf); Immediate Industrial Co-location (135m); Dense Industrial Cluster (22 facilities within 2km)
+FIRMS_0166,Gas Flare,0.4246,17.94,0.0,86.98,30.0,36.09,38.25,MODERATE,High-Temp Flare Combustion Stack (42.5% ML conf); Immediate Industrial Co-location (404m); Dense Industrial Cluster (21 facilities within 2km)
+FIRMS_0167,Industrial Fire,0.4507,47.61,0.0,30.99,15.0,45.07,32.42,MODERATE,Acute Industrial Fire Hazard (45.1% ML conf); Elevated Radiative Power (7.9 MW)
+FIRMS_0168,Other Thermal Source,0.4613,47.23,0.0,36.3,15.0,11.53,25.27,MODERATE,Elevated Radiative Power (9.2 MW)
+FIRMS_0169,Industrial Fire,0.446,15.5,0.0,64.07,30.0,44.6,34.04,MODERATE,Acute Industrial Fire Hazard (44.6% ML conf); Close Industrial Proximity (575m)
+FIRMS_0170,Gas Flare,0.9445,24.27,9.61,82.35,32.92,80.28,51.46,HIGH,High-Temp Flare Combustion Stack (94.5% ML conf); Immediate Industrial Co-location (427m); Dense Industrial Cluster (24 facilities within 2km)
+FIRMS_0171,Other Thermal Source,0.9646,48.94,0.0,23.36,15.0,24.11,25.6,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 56.5K)
+FIRMS_0172,Other Thermal Source,0.89,58.69,0.0,25.57,15.0,22.25,28.13,MODERATE,Elevated Radiative Power (13.2 MW); Intense Sub-pixel Combustion Contrast (ΔT = 32.0K)
+FIRMS_0173,Persistent Industrial Heat,0.7019,70.45,31.36,71.97,20.83,45.62,53.8,HIGH,Chronic Operational Heat Source (39d persistence); Elevated Radiative Power (8.9 MW); Close Industrial Proximity (521m)
+FIRMS_0174,Persistent Industrial Heat,0.7073,73.65,31.36,67.76,20.83,45.97,53.63,HIGH,Chronic Operational Heat Source (39d persistence); Elevated Radiative Power (11.3 MW); Immediate Industrial Co-location (488m)
+FIRMS_0175,Other Thermal Source,0.6768,37.05,0.0,23.11,15.0,16.92,20.77,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0176,Other Thermal Source,0.9644,12.04,0.0,21.93,30.0,24.11,17.52,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0177,Other Thermal Source,0.6444,34.54,0.0,25.16,15.0,16.11,20.45,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0178,Persistent Industrial Heat,0.9625,14.04,100.0,68.53,100.0,62.56,61.28,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (484m)
+FIRMS_0179,Industrial Fire,0.9436,34.65,0.0,62.74,15.0,94.36,49.44,MODERATE,Acute Industrial Fire Hazard (94.4% ML conf); Close Industrial Proximity (905m)
+FIRMS_0180,Other Thermal Source,0.4941,51.79,0.0,29.49,15.0,12.35,24.91,LOW,Elevated Radiative Power (11.7 MW)
+FIRMS_0181,Other Thermal Source,0.622,14.38,0.0,42.96,30.0,15.55,21.22,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0182,Gas Flare,0.438,14.53,0.0,77.55,30.0,37.23,35.33,MODERATE,High-Temp Flare Combustion Stack (43.8% ML conf); Immediate Industrial Co-location (310m)
+FIRMS_0183,Persistent Industrial Heat,0.8612,15.74,21.61,57.57,32.92,55.97,38.86,MODERATE,Chronic Operational Heat Source (26d persistence); Close Industrial Proximity (512m)
+FIRMS_0184,Other Thermal Source,0.9625,40.49,0.0,11.08,15.0,24.06,20.41,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0185,Industrial Fire,0.4225,39.1,0.0,67.98,15.0,42.25,38.83,MODERATE,Acute Industrial Fire Hazard (42.2% ML conf); Immediate Industrial Co-location (364m); Intense Sub-pixel Combustion Contrast (ΔT = 34.6K)
+FIRMS_0186,Other Thermal Source,0.9678,36.35,0.0,2.35,15.0,24.19,17.22,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 31.3K)
+FIRMS_0187,Other Thermal Source,0.9549,40.21,2.86,14.95,20.83,23.87,22.27,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0188,Other Thermal Source,0.9554,48.85,2.86,8.97,20.83,23.88,22.94,LOW,Elevated Radiative Power (5.5 MW); Intense Sub-pixel Combustion Contrast (ΔT = 36.6K)
+FIRMS_0189,Other Thermal Source,0.6003,61.55,0.0,38.48,15.0,15.01,30.26,MODERATE,Elevated Radiative Power (8.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 45.6K)
+FIRMS_0190,Persistent Industrial Heat,0.9626,20.33,100.0,69.45,100.0,62.57,63.09,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (442m)
+FIRMS_0191,Other Thermal Source,0.9328,36.85,2.86,6.51,20.83,23.32,19.18,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0192,Industrial Fire,0.5582,35.29,0.0,47.53,15.0,55.82,36.16,MODERATE,Acute Industrial Fire Hazard (55.8% ML conf)
+FIRMS_0193,Persistent Industrial Heat,0.9682,23.52,100.0,68.41,100.0,62.94,63.72,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (236m)
+FIRMS_0194,Other Thermal Source,0.9174,40.25,0.0,15.15,15.0,22.94,21.08,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0195,Other Thermal Source,0.9277,38.43,0.0,11.84,15.0,23.19,19.87,LOW,Nominal Rural / Non-Industrial Baseline
+FIRMS_0196,Other Thermal Source,0.4242,47.84,0.0,33.75,15.0,10.6,24.55,LOW,Elevated Radiative Power (9.0 MW)
+FIRMS_0197,Persistent Industrial Heat,0.9695,18.39,100.0,69.65,100.0,63.02,62.77,HIGH,Chronic Operational Heat Source (81d persistence); Immediate Industrial Co-location (147m)
+FIRMS_0198,Industrial Fire,0.4938,19.71,0.0,71.52,30.0,49.38,38.15,MODERATE,Acute Industrial Fire Hazard (49.4% ML conf); Immediate Industrial Co-location (80m)
+FIRMS_0199,Other Thermal Source,0.6107,49.53,0.0,42.28,15.0,15.27,28.27,MODERATE,Intense Sub-pixel Combustion Contrast (ΔT = 45.8K)
+FIRMS_0200,Other Thermal Source,0.9669,44.21,0.0,11.5,15.0,24.17,21.47,LOW,Intense Sub-pixel Combustion Contrast (ΔT = 41.6K)
+FIRMS_0201,Other Thermal Source,0.9632,46.54,0.0,13.79,15.0,24.08,22.6,LOW,Elevated Radiative Power (8.0 MW); Intense Sub-pixel Combustion Contrast (ΔT = 36.5K)
+FIRMS_0202,Other Thermal Source,0.5949,72.44,34.36,19.65,20.83,14.87,33.98,MODERATE,Elevated Radiative Power (10.4 MW); Intense Sub-pixel Combustion Contrast (ΔT = 70.9K)

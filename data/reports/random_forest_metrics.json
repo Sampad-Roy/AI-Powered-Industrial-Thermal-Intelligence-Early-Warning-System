@@ -1,0 +1,136 @@
+{
+  "model": "RandomForestClassifier",
+  "parameters": {
+    "n_estimators": 100,
+    "max_depth": 6,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "dataset": {
+    "total_samples": 58,
+    "train_samples": 46,
+    "test_samples": 12,
+    "features": [
+      "bright_ti4",
+      "bright_ti5",
+      "frp",
+      "delta_t",
+      "daynight",
+      "distance_to_industry",
+      "industries_within_500m",
+      "industries_within_1km",
+      "industries_within_2km",
+      "NDVI",
+      "NDBI",
+      "NDWI",
+      "cluster_event_count",
+      "cluster_unique_dates",
+      "cluster_span_days"
+    ],
+    "classes": [
+      "Gas Flare",
+      "Industrial Fire",
+      "Other Thermal Source",
+      "Persistent Industrial Heat"
+    ],
+    "class_counts": {
+      "Persistent Industrial Heat": 34,
+      "Other Thermal Source": 16,
+      "Industrial Fire": 6,
+      "Gas Flare": 2
+    }
+  },
+  "overall_metrics": {
+    "accuracy": 0.9166666666666666,
+    "precision_macro": 0.625,
+    "recall_macro": 0.75,
+    "f1_macro": 0.6666666666666666,
+    "precision_weighted": 0.875,
+    "recall_weighted": 0.9166666666666666,
+    "f1_weighted": 0.8888888888888888,
+    "cv_f1_weighted_mean": 0.9053263546798029,
+    "cv_f1_weighted_std": 0.01092980295566498
+  },
+  "per_class_metrics": {
+    "Gas Flare": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Industrial Fire": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1-score": 0.6666666666666666,
+      "support": 1.0
+    },
+    "Other Thermal Source": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 3.0
+    },
+    "Persistent Industrial Heat": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 7.0
+    },
+    "accuracy": 0.9166666666666666,
+    "macro avg": {
+      "precision": 0.625,
+      "recall": 0.75,
+      "f1-score": 0.6666666666666666,
+      "support": 12.0
+    },
+    "weighted avg": {
+      "precision": 0.875,
+      "recall": 0.9166666666666666,
+      "f1-score": 0.8888888888888888,
+      "support": 12.0
+    }
+  },
+  "feature_importances": {
+    "industries_within_2km": 0.16913246486147265,
+    "cluster_span_days": 0.12243742486437716,
+    "distance_to_industry": 0.12039419485214921,
+    "cluster_event_count": 0.08916245377672098,
+    "industries_within_1km": 0.06672959270608772,
+    "cluster_unique_dates": 0.06132428425013479,
+    "bright_ti5": 0.05642610360161804,
+    "daynight": 0.0517391908837075,
+    "NDVI": 0.049300056677403246,
+    "delta_t": 0.04593902894235469,
+    "bright_ti4": 0.04413399042944661,
+    "frp": 0.03926825521674123,
+    "NDWI": 0.033349138094076566,
+    "NDBI": 0.03143272215512288,
+    "industries_within_500m": 0.019231098688586794
+  },
+  "confusion_matrix": [
+    [
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      3,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      7
+    ]
+  ]
+}

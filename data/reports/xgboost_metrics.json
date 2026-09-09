@@ -1,0 +1,183 @@
+{
+  "model": "XGBClassifier",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 3,
+    "learning_rate": 0.08,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "sample_weight": "balanced",
+    "random_state": 42
+  },
+  "dataset": {
+    "total_samples": 58,
+    "train_samples": 46,
+    "test_samples": 12,
+    "classes": [
+      "Gas Flare",
+      "Industrial Fire",
+      "Other Thermal Source",
+      "Persistent Industrial Heat"
+    ],
+    "class_counts": {
+      "Persistent Industrial Heat": 34,
+      "Other Thermal Source": 16,
+      "Industrial Fire": 6,
+      "Gas Flare": 2
+    }
+  },
+  "test_set_metrics": {
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
+    "precision_weighted": 1.0,
+    "recall_weighted": 1.0,
+    "f1_weighted": 1.0,
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        7
+      ]
+    ]
+  },
+  "cv_metrics": {
+    "repeated_stratified_2fold_mean_f1_weighted": 0.9648186296462159,
+    "repeated_stratified_2fold_std_f1_weighted": 0.031747408362334556,
+    "repeated_stratified_2fold_mean_accuracy": 0.9724137931034482
+  },
+  "loocv_metrics": {
+    "accuracy": 0.9827586206896551,
+    "macro_f1": 0.9130434782608695,
+    "weighted_f1": 0.9800099950024986,
+    "per_class_metrics": {
+      "Gas Flare": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 2.0
+      },
+      "Industrial Fire": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 6.0
+      },
+      "Other Thermal Source": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 16.0
+      },
+      "Persistent Industrial Heat": {
+        "precision": 0.9714285714285714,
+        "recall": 1.0,
+        "f1-score": 0.9855072463768116,
+        "support": 34.0
+      },
+      "accuracy": 0.9827586206896551,
+      "macro avg": {
+        "precision": 0.9928571428571429,
+        "recall": 0.875,
+        "f1-score": 0.9130434782608695,
+        "support": 58.0
+      },
+      "weighted avg": {
+        "precision": 0.9832512315270935,
+        "recall": 0.9827586206896551,
+        "f1-score": 0.9800099950024986,
+        "support": 58.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        16,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        34
+      ]
+    ]
+  },
+  "comparison_vs_random_forest": {
+    "rf_test_accuracy": 0.9166666666666666,
+    "rf_test_f1_weighted": 0.8888888888888888,
+    "rf_cv_f1_weighted": 0.9053263546798029,
+    "xgb_test_accuracy": 1.0,
+    "xgb_test_f1_weighted": 1.0,
+    "xgb_cv_f1_weighted": 0.9648186296462159,
+    "xgb_loocv_f1_weighted": 0.9800099950024986
+  },
+  "feature_importances_gain": {
+    "industries_within_2km": 2.8647420406341553,
+    "cluster_span_days": 2.6170308589935303,
+    "distance_to_industry": 2.505619764328003,
+    "industries_within_1km": 2.2582805156707764,
+    "bright_ti5": 2.1164257526397705,
+    "cluster_event_count": 2.072676420211792,
+    "cluster_unique_dates": 1.1803863048553467,
+    "NDVI": 0.814185619354248,
+    "delta_t": 0.48894527554512024,
+    "frp": 0.33317136764526367,
+    "NDBI": 0.16870525479316711,
+    "bright_ti4": 0.13595882058143616,
+    "NDWI": 0.10647357255220413,
+    "industries_within_500m": 0.0,
+    "daynight": 0.0
+  },
+  "feature_importances_weight": {
+    "distance_to_industry": 80.0,
+    "industries_within_2km": 65.0,
+    "cluster_span_days": 54.0,
+    "bright_ti5": 42.0,
+    "cluster_event_count": 28.0,
+    "delta_t": 13.0,
+    "bright_ti4": 10.0,
+    "industries_within_1km": 10.0,
+    "NDVI": 9.0,
+    "NDWI": 8.0,
+    "frp": 7.0,
+    "NDBI": 5.0,
+    "cluster_unique_dates": 2.0,
+    "industries_within_500m": 0.0,
+    "daynight": 0.0
+  },
+  "statistical_warning": "CRITICAL LIMITATION: Gas Flare contains only N=2 samples in ground truth. While overall accuracy is >91%, minority class precision/recall carries high variance until additional flare events are verified."
+}

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>SIH26162 - Batch 3 Priority Validation Events (8 Events)</name>
+    <description>Batch 3 priority events (Gas Flare and Industrial Fire candidates) for optical verification in Google Earth Pro.</description>
+
+    <!-- Styles -->
+    <Style id="gasFlareStyle">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/flame.png</href></Icon>
+        <color>ff00ffff</color>
+      </IconStyle>
+    </Style>
+    <Style id="industrialFireStyle">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/firedept.png</href></Icon>
+        <color>ff0000ff</color>
+      </IconStyle>
+    </Style>
+
+    <Placemark>
+      <name>FIRMS_0152 [Cluster 101 - Gas Flare]</name>
+      <styleUrl>#gasFlareStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0152 (Cluster 101)</h3>
+        <p><b>Candidate Class:</b> Gas Flare</p>
+        <p><b>Acquisition:</b> 2026-05-07 08:03 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>23.024140</td></tr>
+          <tr><td>Longitude</td><td>72.267650</td></tr>
+          <tr><td>FRP</td><td><b>7.03 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>345.41 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>33.27 K</td></tr>
+          <tr><td>Distance to Industry</td><td>670.0 m</td></tr>
+          <tr><td>NDVI</td><td>0.232</td></tr>
+          <tr><td>NDBI</td><td>0.006</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Check for visible elevated vertical flare stack or combustion derrick.</li><li>Confirm active chemical synthesis or gas-handling processing works.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.267650,23.024140,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0170 [Cluster 101 - Gas Flare]</name>
+      <styleUrl>#gasFlareStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0170 (Cluster 101)</h3>
+        <p><b>Candidate Class:</b> Gas Flare</p>
+        <p><b>Acquisition:</b> 2026-05-17 20:43 UTC (Night)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>23.028040</td></tr>
+          <tr><td>Longitude</td><td>72.265690</td></tr>
+          <tr><td>FRP</td><td><b>1.51 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>319.84 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>21.32 K</td></tr>
+          <tr><td>Distance to Industry</td><td>426.6 m</td></tr>
+          <tr><td>NDVI</td><td>0.180</td></tr>
+          <tr><td>NDBI</td><td>0.135</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Check for visible elevated vertical flare stack or combustion derrick.</li><li>Confirm active chemical synthesis or gas-handling processing works.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.265690,23.028040,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0116 [Cluster 81 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0116 (Cluster 81)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-04-18 08:59 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>22.780160</td></tr>
+          <tr><td>Longitude</td><td>72.346390</td></tr>
+          <tr><td>FRP</td><td><b>3.28 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>344.44 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>31.83 K</td></tr>
+          <tr><td>Distance to Industry</td><td>883.7 m</td></tr>
+          <tr><td>NDVI</td><td>0.171</td></tr>
+          <tr><td>NDBI</td><td>0.195</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Inspect warehouse/factory compound at this site.</li><li>Look for severe scorch marks, roof destruction, or fire incident evidence on April 18-20, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.346390,22.780160,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0120 [Cluster 81 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0120 (Cluster 81)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-04-20 08:21 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>22.782300</td></tr>
+          <tr><td>Longitude</td><td>72.346600</td></tr>
+          <tr><td>FRP</td><td><b>27.49 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>342.18 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>28.61 K</td></tr>
+          <tr><td>Distance to Industry</td><td>1110.4 m</td></tr>
+          <tr><td>NDVI</td><td>0.414</td></tr>
+          <tr><td>NDBI</td><td>0.128</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Inspect warehouse/factory compound at this site.</li><li>Look for severe scorch marks, roof destruction, or fire incident evidence on April 18-20, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.346600,22.782300,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0146 [Cluster 97 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0146 (Cluster 97)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-04-29 08:53 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>23.018060</td></tr>
+          <tr><td>Longitude</td><td>72.674790</td></tr>
+          <tr><td>FRP</td><td><b>9.26 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>348.11 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>36.07 K</td></tr>
+          <tr><td>Distance to Industry</td><td>622.5 m</td></tr>
+          <tr><td>NDVI</td><td>0.053</td></tr>
+          <tr><td>NDBI</td><td>0.072</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Confirm hotspot is on industrial factory/warehouse roofs in Odhav/Kathwada GIDC.</li><li>Inspect for acute fire damage or smoke plume on April 29, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.674790,23.018060,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0147 [Cluster 97 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0147 (Cluster 97)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-04-29 08:53 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>23.019300</td></tr>
+          <tr><td>Longitude</td><td>72.672000</td></tr>
+          <tr><td>FRP</td><td><b>5.51 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>343.64 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>32.58 K</td></tr>
+          <tr><td>Distance to Industry</td><td>802.5 m</td></tr>
+          <tr><td>NDVI</td><td>0.032</td></tr>
+          <tr><td>NDBI</td><td>0.044</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Confirm hotspot is on industrial factory/warehouse roofs in Odhav/Kathwada GIDC.</li><li>Inspect for acute fire damage or smoke plume on April 29, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.672000,23.019300,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0029 [Cluster 17 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0029 (Cluster 17)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-03-18 08:40 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>23.024530</td></tr>
+          <tr><td>Longitude</td><td>72.598130</td></tr>
+          <tr><td>FRP</td><td><b>3.01 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>335.73 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>26.12 K</td></tr>
+          <tr><td>Distance to Industry</td><td>769.1 m</td></tr>
+          <tr><td>NDVI</td><td>0.076</td></tr>
+          <tr><td>NDBI</td><td>0.084</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Verify if hotspot is located inside an enclosed manufacturing yard vs open roadside/transit lot.</li><li>Check for single-day acute structural fire damage on March 18, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.598130,23.024530,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>FIRMS_0156 [Cluster 104 - Industrial Fire]</name>
+      <styleUrl>#industrialFireStyle</styleUrl>
+      <description><![CDATA[
+        <h3><b>Event ID:</b> FIRMS_0156 (Cluster 104)</h3>
+        <p><b>Candidate Class:</b> Industrial Fire</p>
+        <p><b>Acquisition:</b> 2026-05-09 09:05 UTC (Day)</p>
+        <table border="1" cellpadding="4" style="border-collapse: collapse;">
+          <tr><th>Parameter</th><th>Measurement</th></tr>
+          <tr><td>Latitude</td><td>22.801090</td></tr>
+          <tr><td>Longitude</td><td>72.339340</td></tr>
+          <tr><td>FRP</td><td><b>2.34 MW</b></td></tr>
+          <tr><td>TI4 / Brightness</td><td>341.48 K</td></tr>
+          <tr><td>Delta T (TI4 - TI5)</td><td>28.48 K</td></tr>
+          <tr><td>Distance to Industry</td><td>846.1 m</td></tr>
+          <tr><td>NDVI</td><td>0.173</td></tr>
+          <tr><td>NDBI</td><td>0.201</td></tr>
+        </table>
+        <h4>Google Earth Inspection Checklist:</h4>
+        <ul><li>Check if hotspot falls directly over an industrial factory shed.</li><li>Inspect for acute structural damage on May 9, 2026.</li></ul>
+      ]]></description>
+      <Point>
+        <coordinates>72.339340,22.801090,0</coordinates>
+      </Point>
+    </Placemark>
+
+  </Document>
+</kml>

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>SIH26162 - Batch 2 Priority Human Review (15 Events)</name>
+    <description>Prioritized 15 multi-sensor thermal anomaly events across 7 clusters for Google Earth visual inspection.</description>
+    
+    <!-- Class Styles -->
+    <Style id="gasFlareStyle">
+      <IconStyle>
+        <color>ffff00ff</color>
+        <scale>1.2</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/flame.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+    <Style id="industrialFireStyle">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.2</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/firedept.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+    <Style id="otherThermalStyle">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+    <Style id="persistentHeatStyle">
+      <IconStyle>
+        <color>ffffaa00</color>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/cabs.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+    <Style id="clusterCentroidStyle">
+      <IconStyle>
+        <color>ff00ffff</color>
+        <scale>1.4</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
+      </IconStyle>
+    </Style>
+    
+    <Folder>
+      <name>Cluster 007 (Other Thermal Source - 2 Events)</name>
+      <Placemark>
+        <name>Cluster 007 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 007 Centroid</h3>
+          <p><b>Candidate:</b> Other Thermal Source<br/>
+          <b>Events:</b> 2<br/>
+          <b>Coordinates:</b> 22.91535°N, 72.32993°E<br/>
+          <b>Mean FRP:</b> 3.06 MW<br/>
+          <b>Mean Distance to Industry:</b> 4717.7 m</p>
+        ]]></description>
+        <Point><coordinates>72.329925,22.915345,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0009 (2026-03-09)</name>
+        <styleUrl>#otherThermalStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0009 (Cluster 7)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Other Thermal Source</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-09 08:08 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>2.35 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>333.4 K / 307.2 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>26.2 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>4575.0 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.691 / -0.364</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.91476°N, 72.33144°E (4.5 km from industry, NDVI=0.69), is the hotspot situated inside an open cultivated agricultural field?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.331440,22.914760,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0010 (2026-03-09)</name>
+        <styleUrl>#otherThermalStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0010 (Cluster 7)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Other Thermal Source</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-09 08:09 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>3.78 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>336.6 K / 308.6 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>28.1 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>4860.4 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.546 / -0.116</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.91593°N, 72.32841°E (~300m from FIRMS_0009), does this simultaneous overpass confirm an agricultural field fire front moving across crop plots?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.328410,22.915930,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 017 (Industrial Fire - 1 Events)</name>
+      <Placemark>
+        <name>Cluster 017 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 017 Centroid</h3>
+          <p><b>Candidate:</b> Industrial Fire<br/>
+          <b>Events:</b> 1<br/>
+          <b>Coordinates:</b> 23.02453°N, 72.59813°E<br/>
+          <b>Mean FRP:</b> 3.01 MW<br/>
+          <b>Mean Distance to Industry:</b> 769.1 m</p>
+        ]]></description>
+        <Point><coordinates>72.598130,23.024530,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0029 (2026-03-18)</name>
+        <styleUrl>#industrialFireStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0029 (Cluster 17)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Industrial Fire</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-18 08:40 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>3.01 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>335.7 K / 309.6 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>26.1 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>769.1 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.076 / 0.084</td></tr>
+              <tr><td><b>Confidence:</b></td><td>l</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 23.02453°N, 72.59813°E (769m to industry), is the anomaly located on an open storage yard, recycling lot, or factory building?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.598130,23.024530,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 021 (Other Thermal Source - 2 Events)</name>
+      <Placemark>
+        <name>Cluster 021 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 021 Centroid</h3>
+          <p><b>Candidate:</b> Other Thermal Source<br/>
+          <b>Events:</b> 2<br/>
+          <b>Coordinates:</b> 22.97689°N, 72.43785°E<br/>
+          <b>Mean FRP:</b> 2.79 MW<br/>
+          <b>Mean Distance to Industry:</b> 3966.4 m</p>
+        ]]></description>
+        <Point><coordinates>72.437845,22.976890,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0033 (2026-03-21)</name>
+        <styleUrl>#otherThermalStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0033 (Cluster 21)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Other Thermal Source</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-21 07:44 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>3.07 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>342.6 K / 297.3 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>45.3 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>3921.3 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.503 / -0.146</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.97641°N, 72.43799°E (3.9 km from industry, NDVI=0.50), is the location active farmland or rural scrubland?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.437990,22.976410,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0034 (2026-03-21)</name>
+        <styleUrl>#otherThermalStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0034 (Cluster 21)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Other Thermal Source</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-21 07:44 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>2.50 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>340.4 K / 296.4 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>44.0 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>4011.5 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.874 / -0.392</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.97737°N, 72.43770°E (NDVI=0.874, highest in dataset), is the anomaly situated in dense irrigated vegetation/crop land?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.437700,22.977370,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 028 (Persistent Industrial Heat - 3 Events)</name>
+      <Placemark>
+        <name>Cluster 028 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 028 Centroid</h3>
+          <p><b>Candidate:</b> Persistent Industrial Heat<br/>
+          <b>Events:</b> 3<br/>
+          <b>Coordinates:</b> 22.81783°N, 72.38701°E<br/>
+          <b>Mean FRP:</b> 12.75 MW<br/>
+          <b>Mean Distance to Industry:</b> 1159.1 m</p>
+        ]]></description>
+        <Point><coordinates>72.387007,22.817830,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0044 (2026-03-23)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0044 (Cluster 28)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-03-23 08:46 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>7.84 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>342.7 K / 307.5 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>35.2 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>795.6 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.146 / 0.217</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.81513°N, 72.38505°E (795m to industry, NDBI=+0.22), is there a foundry, brick kiln, or steel re-rolling facility?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.385050,22.815130,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0110 (2026-04-14)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0110 (Cluster 28)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-14 08:34 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>13.40 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>350.8 K / 324.0 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>26.8 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>1179.3 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.243 / 0.157</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.81889°N, 72.38586°E (1.1 km to industry), does this 13.4 MW thermal source originate from the same industrial complex as FIRMS_0044?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.385860,22.818890,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0111 (2026-04-14)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0111 (Cluster 28)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Ambiguous (Review Required)</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-14 08:34 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>17.01 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>347.2 K / 320.5 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>26.7 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>1502.4 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.368 / 0.021</td></tr>
+              <tr><td><b>Confidence:</b></td><td>l</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.81947°N, 72.39011°E (1.5 km to industry), does this 17.0 MW spike on April 14 represent an adjoining kiln/furnace unit or open lot?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.390110,22.819470,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 056 (Ambiguous (Review Required) - 1 Events)</name>
+      <Placemark>
+        <name>Cluster 056 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 056 Centroid</h3>
+          <p><b>Candidate:</b> Ambiguous (Review Required)<br/>
+          <b>Events:</b> 1<br/>
+          <b>Coordinates:</b> 23.00040°N, 72.32112°E<br/>
+          <b>Mean FRP:</b> 1.22 MW<br/>
+          <b>Mean Distance to Industry:</b> 2317.7 m</p>
+        ]]></description>
+        <Point><coordinates>72.321120,23.000400,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0083 (2026-04-01)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0083 (Cluster 56)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Ambiguous (Review Required)</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-01 07:37 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>1.22 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>330.9 K / 304.5 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>26.4 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>2317.7 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.222 / 0.158</td></tr>
+              <tr><td><b>Confidence:</b></td><td>l</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>Inspect ground.</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.321120,23.000400,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 081 (Persistent Industrial Heat - 2 Events)</name>
+      <Placemark>
+        <name>Cluster 081 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 081 Centroid</h3>
+          <p><b>Candidate:</b> Persistent Industrial Heat<br/>
+          <b>Events:</b> 2<br/>
+          <b>Coordinates:</b> 22.78123°N, 72.34650°E<br/>
+          <b>Mean FRP:</b> 15.38 MW<br/>
+          <b>Mean Distance to Industry:</b> 997.0 m</p>
+        ]]></description>
+        <Point><coordinates>72.346495,22.781230,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0116 (2026-04-18)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0116 (Cluster 81)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-18 08:59 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>3.28 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>344.4 K / 312.6 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>31.8 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>883.7 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.171 / 0.195</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.78016°N, 72.34639°E, is the hotspot on an industrial warehouse, factory yard, or adjacent open plot?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.346390,22.780160,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0120 (2026-04-20)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0120 (Cluster 81)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-20 08:21 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>27.49 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>342.2 K / 313.6 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>28.6 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>1110.4 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.414 / 0.128</td></tr>
+              <tr><td><b>Confidence:</b></td><td>l</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 22.78230°N, 72.34660°E, does April/May 2026 imagery show post-burn blackened scars, damaged roof panels, or an open storage yard fire?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.346600,22.782300,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 094 (Ambiguous (Review Required) - 2 Events)</name>
+      <Placemark>
+        <name>Cluster 094 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 094 Centroid</h3>
+          <p><b>Candidate:</b> Ambiguous (Review Required)<br/>
+          <b>Events:</b> 2<br/>
+          <b>Coordinates:</b> 23.01429°N, 72.33606°E<br/>
+          <b>Mean FRP:</b> 1.40 MW<br/>
+          <b>Mean Distance to Industry:</b> 503.2 m</p>
+        ]]></description>
+        <Point><coordinates>72.336060,23.014295,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0140 (2026-04-26)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0140 (Cluster 94)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Ambiguous (Review Required)</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-04-26 20:37 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>2.05 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>313.3 K / 299.1 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>14.3 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>494.1 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.577 / -0.125</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 23.01382°N, 72.33582°E (494m to industry), is this nocturnal detection (20:37 UTC) centered over an industrial processing plant?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.335820,23.013820,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0183 (2026-05-22)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0183 (Cluster 94)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-05-22 20:50 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>0.76 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>312.2 K / 298.8 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>13.4 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>512.4 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.138 / 0.052</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 23.01477°N, 72.33630°E (512m to industry, 26 days after FIRMS_0140), does this second nocturnal detection confirm recurring operational process heat?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.336300,23.014770,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cluster 101 (Gas Flare - 2 Events)</name>
+      <Placemark>
+        <name>Cluster 101 Centroid</name>
+        <styleUrl>#clusterCentroidStyle</styleUrl>
+        <description><![CDATA[
+          <h3>Cluster 101 Centroid</h3>
+          <p><b>Candidate:</b> Gas Flare<br/>
+          <b>Events:</b> 2<br/>
+          <b>Coordinates:</b> 23.02609°N, 72.26667°E<br/>
+          <b>Mean FRP:</b> 4.27 MW<br/>
+          <b>Mean Distance to Industry:</b> 548.3 m</p>
+        ]]></description>
+        <Point><coordinates>72.266670,23.026090,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0152 (2026-05-07)</name>
+        <styleUrl>#gasFlareStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0152 (Cluster 101)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Gas Flare</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-05-07 08:03 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>7.03 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>345.4 K / 312.1 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>33.3 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>670.0 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.232 / 0.006</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>Is there an elevated flare derrick/stack or active chemical/petroleum processing plant with burner piping at 23.02414°N, 72.26765°E?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.267650,23.024140,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0170 (2026-05-17)</name>
+        <styleUrl>#persistentHeatStyle</styleUrl>
+        <description><![CDATA[
+          <div style="font-family: Arial, sans-serif; font-size: 13px; max-width: 320px;">
+            <h3 style="margin: 0 0 6px 0; color: #003366;">FIRMS_0170 (Cluster 101)</h3>
+            <p style="margin: 0 0 8px 0;"><b>Candidate Class:</b> <span style="color: #b30000; font-weight: bold;">Persistent Industrial Heat</span></p>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr><td><b>Date/Time:</b></td><td>2026-05-17 20:43 UTC</td></tr>
+              <tr><td><b>FRP:</b></td><td>1.51 MW</td></tr>
+              <tr><td><b>TI4 / TI5:</b></td><td>319.8 K / 298.5 K</td></tr>
+              <tr><td><b>Delta T:</b></td><td>21.3 K</td></tr>
+              <tr><td><b>Dist to Industry:</b></td><td>426.6 m</td></tr>
+              <tr><td><b>NDVI / NDBI:</b></td><td>0.180 / 0.135</td></tr>
+              <tr><td><b>Confidence:</b></td><td>n</td></tr>
+            </table>
+            <hr style="margin: 8px 0;"/>
+            <p style="margin: 0; font-size: 12px; color: #222;"><b>Visual Question:</b><br/>At 23.02804°N, 72.26569°E (~450m north of FIRMS_0152), does the nocturnal hotspot align with the same chemical works or an adjoining industrial facility?</p>
+          </div>
+        ]]></description>
+        <Point><coordinates>72.265690,23.028040,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

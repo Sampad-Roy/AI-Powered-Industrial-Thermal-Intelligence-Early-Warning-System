@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Cluster 4 Thermal Anomaly Events (SIH26162)</name>
+    <description>All 25 persistent nocturnal thermal anomaly events in Cluster 4 (March 7 - May 27, 2026) for GIS/Google Earth human validation.</description>
+    
+    <!-- Styles -->
+    <Style id="thermalPoint">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/firedept.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.9</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="centroidPoint">
+      <IconStyle>
+        <color>ff00ffff</color>
+        <scale>1.4</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/target.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    
+    <!-- Cluster Centroid -->
+    <Placemark>
+      <name>Cluster 4 Centroid</name>
+      <styleUrl>#centroidPoint</styleUrl>
+      <description><![CDATA[
+        <h3>Cluster 4 Geometric Centroid</h3>
+        <p><b>Events in Cluster:</b> 25<br/>
+        <b>Unique Dates:</b> 21 (81 days span: 2026-03-07 to 2026-05-27)<br/>
+        <b>Mean Coordinates:</b> Lat 22.97941, Lon 72.56542<br/>
+        <b>Mean FRP:</b> 1.46 MW<br/>
+        <b>Mean Bright TI4:</b> 310.83 K<br/>
+        <b>Mean Distance to Industry:</b> 388.9 m</p>
+      ]]></description>
+      <Point><coordinates>72.565416,22.979414,0</coordinates></Point>
+    </Placemark>
+    
+    <!-- Folder for Individual Events -->
+    <Folder>
+      <name>Individual Events (25 Detections)</name>
+      <Placemark>
+        <name>FIRMS_0006 (2026-03-07)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0006 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-07</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:14 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97956</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56829</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.97 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>305.71 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>294.78 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>10.93 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>175.8 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.191</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.083</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.312</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.568290,22.979560,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0012 (2026-03-10)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0012 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-10</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>20:18 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98300</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56574</td></tr>
+          <tr><td><b>FRP:</b></td><td>3.52 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>318.57 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.05 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>21.52 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>497.3 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.125</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.147</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.278</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565740,22.983000,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0013 (2026-03-10)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0013 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-10</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>20:18 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98615</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56622</td></tr>
+          <tr><td><b>FRP:</b></td><td>3.20 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>315.64 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>296.68 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>18.96 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>239.2 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.235</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.062</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.334</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.566220,22.986150,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0014 (2026-03-11)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0014 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-11</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:39 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97836</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56200</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.63 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>308.10 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>294.60 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>13.50 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>645.0 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.666</td></tr>
+          <tr><td><b>NDBI:</b></td><td>-0.263</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.572</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.562000,22.978360,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0015 (2026-03-11)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0015 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-11</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:39 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97905</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56561</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.81 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>310.20 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>296.17 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>14.03 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>325.3 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.085</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.130</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.202</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565610,22.979050,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0021 (2026-03-16)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0021 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-16</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:46 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97734</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56386</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.79 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>305.80 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>290.98 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>14.82 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>488.4 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.157</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.195</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.251</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.563860,22.977340,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0022 (2026-03-16)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0022 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-16</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:46 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98167</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56580</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.23 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>307.30 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>291.41 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>15.89 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>496.5 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.137</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.138</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.281</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565800,22.981670,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0052 (2026-03-23)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0052 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-23</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:14 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97839</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56555</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.32 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>312.46 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>290.99 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>21.47 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>312.8 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.073</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.150</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.173</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565550,22.978390,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0063 (2026-03-27)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0063 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-03-27</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:39 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98062</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56441</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.50 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>305.97 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>294.65 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>11.32 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>516.3 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.127</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.143</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.268</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.564410,22.980620,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0094 (2026-04-07)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0094 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-07</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:33 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98144</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56304</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.88 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>304.68 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>291.02 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>13.66 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>683.6 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.505</td></tr>
+          <tr><td><b>NDBI:</b></td><td>-0.055</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.502</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.563040,22.981440,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0098 (2026-04-08)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0098 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-08</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:15 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97749</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56292</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.98 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>310.99 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>293.68 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>17.31 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>582.1 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.160</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.149</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.316</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.562920,22.977490,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0119 (2026-04-18)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0119 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-18</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:27 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97871</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56477</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.14 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>305.85 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>295.17 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>10.68 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>397.7 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.089</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.106</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.205</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.564770,22.978710,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0121 (2026-04-20)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0121 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-20</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>20:49 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97903</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56763</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.32 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>312.07 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.30 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>14.77 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>149.8 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.123</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.127</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.246</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.567630,22.979030,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0131 (2026-04-23)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0131 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-23</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:33 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97618</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56326</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.59 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>309.33 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.01 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>12.32 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>525.2 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.171</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.153</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.300</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.563260,22.976180,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0136 (2026-04-24)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0136 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-24</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:15 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97655</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56552</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.76 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>312.71 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>298.03 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>14.68 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>351.3 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.159</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.150</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.277</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565520,22.976550,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0137 (2026-04-24)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0137 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-24</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:15 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98060</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56644</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.76 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>318.14 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.65 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>20.49 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>362.0 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.157</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.177</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.301</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.566440,22.980600,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0145 (2026-04-28)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0145 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-04-28</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:40 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98177</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56716</td></tr>
+          <tr><td><b>FRP:</b></td><td>2.39 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>306.99 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>295.07 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>11.92 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>442.5 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.140</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.181</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.264</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.567160,22.981770,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0150 (2026-05-04)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0150 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-04</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:27 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97890</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56432</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.57 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>311.47 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>295.65 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>15.82 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>447.2 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.137</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.147</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.272</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.564320,22.978900,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0157 (2026-05-09)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0157 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-09</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:33 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97745</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56644</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.54 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>309.65 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.31 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>12.34 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>226.6 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.047</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.108</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.128</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.566440,22.977450,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0160 (2026-05-11)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0160 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-11</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>20:56 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97958</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56837</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.62 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>312.38 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>300.23 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>12.15 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>176.8 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.151</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.205</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.269</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.568370,22.979580,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0164 (2026-05-14)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0164 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-14</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:40 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97653</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56532</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.78 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>308.48 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>295.55 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>12.93 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>370.7 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.164</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.125</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.288</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.565320,22.976530,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0178 (2026-05-20)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0178 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-20</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:27 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.98005</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56440</td></tr>
+          <tr><td><b>FRP:</b></td><td>2.50 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>306.34 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>295.51 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>10.83 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>484.5 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.120</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.124</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.237</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.564400,22.980050,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0190 (2026-05-25)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0190 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-25</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:34 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97940</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56454</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.98 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>315.95 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>297.46 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>18.49 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>441.6 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.118</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.157</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.241</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.564540,22.979400,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0193 (2026-05-26)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0193 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-26</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>21:15 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97887</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56647</td></tr>
+          <tr><td><b>FRP:</b></td><td>1.20 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>319.96 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>299.42 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>20.54 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>236.2 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.045</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.104</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.114</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.566470,22.978870,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>FIRMS_0197 (2026-05-27)</name>
+        <styleUrl>#thermalPoint</styleUrl>
+        <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; font-size: 13px;">
+        <h3 style="margin: 0 0 8px 0; color: #b30000;">FIRMS_0197 (Cluster 4)</h3>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td><b>Acquisition Date:</b></td><td>2026-05-27</td></tr>
+          <tr><td><b>Acquisition Time:</b></td><td>20:56 UTC (Night)</td></tr>
+          <tr><td><b>Latitude:</b></td><td>22.97866</td></tr>
+          <tr><td><b>Longitude:</b></td><td>72.56733</td></tr>
+          <tr><td><b>FRP:</b></td><td>0.54 MW</td></tr>
+          <tr><td><b>Bright TI4:</b></td><td>315.96 K</td></tr>
+          <tr><td><b>Bright TI5:</b></td><td>300.19 K</td></tr>
+          <tr><td><b>Delta T (TI4 - TI5):</b></td><td>15.77 K</td></tr>
+          <tr><td><b>Distance to Industry:</b></td><td>146.9 m</td></tr>
+          <tr><td><b>NDVI:</b></td><td>0.077</td></tr>
+          <tr><td><b>NDBI:</b></td><td>0.138</td></tr>
+          <tr><td><b>NDWI:</b></td><td>-0.159</td></tr>
+          <tr><td><b>Quality Confidence:</b></td><td>n</td></tr>
+        </table>
+      </div>
+    ]]></description>
+        <Point><coordinates>72.567330,22.978660,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
