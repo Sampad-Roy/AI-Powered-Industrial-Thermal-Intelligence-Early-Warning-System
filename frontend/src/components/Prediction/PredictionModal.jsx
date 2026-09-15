@@ -22,6 +22,8 @@ import {
   Activity,
   Calendar,
   Compass,
+  Gauge,
+  Sliders,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 import { runPredict } from '../../api/client'
@@ -128,7 +130,6 @@ export default function PredictionModal() {
 
     try {
       const res = await runPredict(payload)
-      // Allow user to see stage 5 completion
       await new Promise((r) => setTimeout(r, 400))
       setResult(res)
     } catch (err) {
@@ -144,29 +145,29 @@ export default function PredictionModal() {
   const riskCfg = result ? RISK_LEVELS[result.risk_level] || RISK_LEVELS.LOW : null
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto select-none">
-      <div className="bg-[#070d1a] border border-[#1a2b48] w-full max-w-5xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 overflow-y-auto select-none animate-fadeIn">
+      <div className="bg-[#040816]/95 border border-cyan-500/40 w-full max-w-5xl rounded-2xl shadow-[0_0_60px_rgba(6,182,212,0.15)] overflow-hidden flex flex-col max-h-[92vh] hud-panel">
         {/* Header */}
-        <div className="px-5 py-3.5 bg-[#091222] border-b border-[#16233b] flex items-center justify-between shadow-md">
+        <div className="px-6 py-4 bg-gradient-to-r from-[#061026] to-[#0a1630] border-b border-cyan-500/20 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-cyan-950/90 border border-cyan-600/50 text-cyan-400 shadow-inner">
-              <Cpu className="w-5 h-5" />
+            <div className="p-2.5 rounded-xl bg-cyan-950/90 border border-cyan-500/40 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+              <Cpu className="w-5 h-5 animate-pulse" />
             </div>
             <div>
-              <h3 className="font-heading font-extrabold text-slate-100 text-base flex items-center gap-2">
+              <h3 className="font-heading font-extrabold text-slate-100 text-base flex items-center gap-2.5 tracking-wide">
                 LIVE AI INFERENCE &amp; SHAP EXPLAINABILITY WORKBENCH
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-semibold shadow-sm">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-950/90 text-cyan-300 border border-cyan-500/50 font-semibold shadow-sm">
                   POST /predict
                 </span>
               </h3>
               <p className="text-[11px] text-slate-400 font-mono">
-                Direct execution of trained XGBoost multi-class model + TreeSHAP feature attributions + 5-factor risk scoring
+                XGBoost multiclass inference • TreeSHAP marginal feature attributions • 5-factor risk engine
               </p>
             </div>
           </div>
           <button
             onClick={() => setIsPredictModalOpen(false)}
-            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-[#121f36] transition-colors"
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 border border-transparent hover:border-slate-700 transition-all cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -178,7 +179,8 @@ export default function PredictionModal() {
           <div className="lg:col-span-6 space-y-4">
             {/* Presets */}
             <div>
-              <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-1.5 font-bold">
+              <label className="text-[10px] font-mono uppercase tracking-widest text-cyan-400/90 block mb-2 font-bold flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5" />
                 1-CLICK TEST PRESET SCENARIOS
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -187,9 +189,11 @@ export default function PredictionModal() {
                     key={idx}
                     type="button"
                     onClick={() => handlePresetSelect(p)}
-                    className="p-2.5 text-left rounded-lg bg-[#0a1222] hover:bg-[#101d36] border border-[#1a2b48] text-xs transition-all flex flex-col justify-between shadow-sm hover:border-cyan-500/50"
+                    className="p-2.5 text-left rounded-xl bg-[#071126]/80 hover:bg-[#0b1b3d] border border-slate-800/80 hover:border-cyan-500/50 text-xs transition-all flex flex-col justify-between shadow-sm group cursor-pointer"
                   >
-                    <span className="font-semibold text-slate-200 truncate">{p.name}</span>
+                    <span className="font-bold text-slate-200 group-hover:text-cyan-300 transition-colors truncate">
+                      {p.name}
+                    </span>
                     <span className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
                       {p.description}
                     </span>
@@ -202,21 +206,22 @@ export default function PredictionModal() {
             <form onSubmit={handleSubmit} className="space-y-3">
               {/* Event ID */}
               <div>
-                <label className="text-[10px] font-mono text-slate-400 block mb-1 font-semibold">
+                <label className="text-[10px] font-mono text-slate-400 block mb-1 font-semibold tracking-wider uppercase">
                   EVENT IDENTIFIER (Optional)
                 </label>
                 <input
                   type="text"
                   value={formData.event_id}
                   onChange={(e) => handleInputChange('event_id', e.target.value)}
-                  className="input-tactical w-full px-2.5 py-1.5 text-xs text-slate-200 font-mono"
+                  className="input-tactical w-full px-3 py-1.5 text-xs text-slate-200 font-mono"
                   placeholder="e.g. INFERENCE_CANDIDATE_01"
                 />
               </div>
 
               {/* Thermal Sensors */}
-              <div className="p-3 rounded-lg bg-[#081020] border border-[#1a2b48] space-y-2">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold block">
+              <div className="p-3.5 rounded-xl bg-[#040916]/80 border border-slate-800/70 space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold block flex items-center gap-1.5">
+                  <Flame className="w-3.5 h-3.5" />
                   1. VIIRS THERMAL SENSOR TELEMETRY
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
@@ -264,8 +269,9 @@ export default function PredictionModal() {
               </div>
 
               {/* Spatial Proximity */}
-              <div className="p-3 rounded-lg bg-[#081020] border border-[#1a2b48] space-y-2">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold block">
+              <div className="p-3.5 rounded-xl bg-[#040916]/80 border border-slate-800/70 space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold block flex items-center gap-1.5">
+                  <Factory className="w-3.5 h-3.5" />
                   2. INDUSTRIAL PROXIMITY &amp; SATELLITE OVERPASS
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
@@ -314,8 +320,9 @@ export default function PredictionModal() {
               </div>
 
               {/* Spectral & Temporal */}
-              <div className="p-3 rounded-lg bg-[#081020] border border-[#1a2b48] space-y-2">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold block">
+              <div className="p-3.5 rounded-xl bg-[#040916]/80 border border-slate-800/70 space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold block flex items-center gap-1.5">
+                  <Trees className="w-3.5 h-3.5" />
                   3. SENTINEL-2 INDICES &amp; TEMPORAL PERSISTENCE
                 </span>
                 <div className="grid grid-cols-3 gap-2 text-xs font-mono">
@@ -387,7 +394,7 @@ export default function PredictionModal() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary-glow flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-white shadow-lg cursor-pointer"
+                  className="btn-primary-glow flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-white shadow-lg cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>{loading ? 'EXECUTING INFERENCE...' : 'RUN XGBOOST + SHAP INFERENCE'}</span>
@@ -396,7 +403,7 @@ export default function PredictionModal() {
                 <button
                   type="button"
                   onClick={() => setFormData(defaultForm)}
-                  className="btn-tactical px-3 py-2.5 text-slate-300 rounded-lg text-xs"
+                  className="btn-tactical px-3.5 py-2.5 text-slate-300 rounded-xl text-xs"
                   title="Reset to default values"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
@@ -408,7 +415,7 @@ export default function PredictionModal() {
           {/* Right Column: Model Output Console */}
           <div className="lg:col-span-6 flex flex-col justify-between">
             {error && (
-              <div className="p-4 rounded-lg bg-rose-950/50 border border-rose-700/80 text-rose-200 text-xs mb-4 flex items-start gap-3 shadow-lg">
+              <div className="p-4 rounded-xl bg-rose-950/60 border border-rose-500/60 text-rose-200 text-xs mb-4 flex items-start gap-3 shadow-lg">
                 <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <span className="font-heading font-bold text-rose-300 uppercase tracking-wider text-[11px] block">
@@ -424,9 +431,11 @@ export default function PredictionModal() {
             )}
 
             {!result && !error && !loading && (
-              <div className="h-full border border-dashed border-[#1a2b48] rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-400 bg-[#060b17]">
-                <Sparkles className="w-12 h-12 text-slate-400 mb-3" />
-                <h4 className="font-heading font-semibold text-slate-200 text-sm mb-1">
+              <div className="h-full border border-dashed border-slate-800/80 rounded-2xl p-8 flex flex-col items-center justify-center text-center text-slate-400 bg-[#030816]/70">
+                <div className="p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 mb-3">
+                  <Sparkles className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h4 className="font-heading font-bold text-slate-200 text-sm mb-1 tracking-wide">
                   Ready for Model Inference
                 </h4>
                 <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
@@ -437,13 +446,13 @@ export default function PredictionModal() {
 
             {/* Professional Step-by-Step Loading Sequence */}
             {loading && (
-              <div className="h-full border border-[#1a2b48] rounded-xl p-6 flex flex-col justify-center bg-[#081020] shadow-inner space-y-4 animate-fadeIn">
-                <div className="flex items-center gap-3 pb-3 border-b border-[#16233b]">
-                  <div className="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-500/50 flex items-center justify-center text-cyan-400 animate-spin">
+              <div className="h-full border border-cyan-500/40 rounded-2xl p-6 flex flex-col justify-center bg-[#050e24] shadow-[0_0_30px_rgba(6,182,212,0.15)] space-y-4 animate-fadeIn">
+                <div className="flex items-center gap-3 pb-3 border-b border-slate-800">
+                  <div className="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-400 flex items-center justify-center text-cyan-400 animate-spin">
                     <Activity className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-heading font-bold text-slate-100 text-sm">
+                    <h4 className="font-heading font-bold text-slate-100 text-sm tracking-wide">
                       EXECUTING REAL-TIME AI INFERENCE PIPELINE
                     </h4>
                     <span className="text-[10px] font-mono text-cyan-400">
@@ -460,12 +469,12 @@ export default function PredictionModal() {
                     return (
                       <div
                         key={st.id}
-                        className={`p-2.5 rounded-lg border transition-all duration-300 flex items-center justify-between ${
+                        className={`p-2.5 rounded-xl border transition-all duration-300 flex items-center justify-between ${
                           isDone
-                            ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-300'
+                            ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-300'
                             : isCurrent
-                            ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.2)]'
-                            : 'bg-[#050b17] border-[#16233b] text-slate-500'
+                            ? 'bg-cyan-950/60 border-cyan-400 text-cyan-100 shadow-[0_0_15px_rgba(6,182,212,0.25)]'
+                            : 'bg-[#030816]/70 border-slate-800 text-slate-500'
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -491,7 +500,7 @@ export default function PredictionModal() {
                         </div>
 
                         {isCurrent && (
-                          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 animate-pulse">
+                          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-500/50 animate-pulse">
                             ACTIVE
                           </span>
                         )}
@@ -511,23 +520,23 @@ export default function PredictionModal() {
             {result && !loading && (
               <div className="space-y-3 animate-fadeIn">
                 {/* 1. Classification & Probabilities */}
-                <div className="p-4 rounded-xl bg-[#09152b] border border-cyan-800/60 space-y-3 shadow-lg">
-                  <div className="flex items-center justify-between pb-2 border-b border-cyan-800/50">
+                <div className="p-4 rounded-xl bg-gradient-to-br from-[#07132c] to-[#040a18] border border-cyan-500/40 space-y-3 shadow-xl">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
                     <div>
                       <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">
                         AI CLASSIFICATION RESULT
                       </span>
                       <h3 className="font-heading font-extrabold text-lg text-slate-100 flex items-center gap-2 mt-0.5">
                         <span
-                          className="w-3.5 h-3.5 rounded-full"
-                          style={{ backgroundColor: classCfg?.bg }}
+                          className="w-3.5 h-3.5 rounded-full shadow-[0_0_8px_currentColor]"
+                          style={{ backgroundColor: classCfg?.bg, color: classCfg?.bg }}
                         />
                         {result.predicted_class}
                       </h3>
                     </div>
                     <div className="text-right">
                       <span
-                        className="px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase"
+                        className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold uppercase shadow-sm"
                         style={{
                           backgroundColor: riskCfg?.bg,
                           color: riskCfg?.color,
@@ -537,14 +546,14 @@ export default function PredictionModal() {
                         {result.risk_level} • {result.final_risk_score}/100
                       </span>
                       <div className="text-xs font-mono text-cyan-300 font-bold mt-1">
-                        {formatPercent(result.confidence)} Conf
+                        {formatPercent(result.confidence)} Confidence
                       </div>
                     </div>
                   </div>
 
                   {/* Class Probabilities */}
-                  <div className="space-y-1">
-                    <div className="text-[10px] font-mono uppercase text-slate-400 font-semibold">
+                  <div className="space-y-1.5">
+                    <div className="text-[10px] font-mono uppercase text-slate-400 font-semibold tracking-wider">
                       CLASS PROBABILITIES
                     </div>
                     {Object.entries(result.class_probabilities).map(([cls, p]) => (
@@ -557,7 +566,7 @@ export default function PredictionModal() {
                             {(p * 100).toFixed(1)}%
                           </span>
                         </div>
-                        <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                           <div
                             className="h-full rounded-full transition-all duration-700"
                             style={{
@@ -572,7 +581,7 @@ export default function PredictionModal() {
                 </div>
 
                 {/* 2. Top SHAP Explanations */}
-                <div className="p-3.5 rounded-xl bg-[#081020] border border-[#1a2b48] space-y-2 shadow-lg">
+                <div className="p-4 rounded-xl hud-panel space-y-2.5 shadow-lg">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300 flex items-center gap-1.5">
                       <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
@@ -588,7 +597,7 @@ export default function PredictionModal() {
                       const barWidth = Math.min(100, (Math.abs(shap.shap_value) / 2.0) * 100)
 
                       return (
-                        <div key={idx} className="p-2.5 rounded-md bg-[#050b17] border border-[#16233b] text-xs">
+                        <div key={idx} className="p-2.5 rounded-lg bg-[#040916]/90 border border-slate-800/80 text-xs">
                           <div className="flex justify-between items-center mb-1">
                             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
                               <span className="text-[10px] font-mono text-cyan-400 font-bold">#{idx + 1}</span>
@@ -603,7 +612,7 @@ export default function PredictionModal() {
                             </span>
                           </div>
 
-                          <div className="w-full bg-[#121e35] rounded-full h-1.5 mb-1.5 overflow-hidden">
+                          <div className="w-full bg-[#030712] rounded-full h-1.5 mb-1.5 overflow-hidden border border-slate-800/40">
                             <div
                               className={`h-full rounded-full transition-all duration-700 ease-out ${
                                 isPos
@@ -618,8 +627,8 @@ export default function PredictionModal() {
                             <span>Input: <b className="text-slate-200">{shap.feature_value}</b></span>
                             <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
                               isPos
-                                ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
-                                : 'bg-rose-950 text-rose-300 border border-rose-800'
+                                ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-800/50'
+                                : 'bg-rose-950/80 text-rose-300 border border-rose-800/50'
                             }`}>
                               {shap.direction}
                             </span>
@@ -630,11 +639,11 @@ export default function PredictionModal() {
                   </div>
 
                   {/* Expandable Technical Details */}
-                  <details className="mt-1 text-[10px] font-mono bg-[#050b17] border border-[#16233b] rounded-lg p-2 text-slate-400 cursor-pointer">
+                  <details className="mt-1 text-[10px] font-mono bg-[#040916]/80 border border-slate-800/60 rounded-lg p-2 text-slate-400 cursor-pointer">
                     <summary className="text-cyan-400 font-bold hover:text-cyan-300 select-none">
                       ▶ TECHNICAL SHAP METHODOLOGY (TreeSHAP)
                     </summary>
-                    <div className="mt-1.5 space-y-1 text-slate-300 leading-relaxed font-sans pt-1 border-t border-[#16233b]">
+                    <div className="mt-1.5 space-y-1 text-slate-300 leading-relaxed font-sans pt-1.5 border-t border-slate-800/60">
                       <p>
                         TreeSHAP evaluates exact game-theoretic Shapley values across 100+ XGBoost decision trees.
                       </p>
@@ -646,9 +655,9 @@ export default function PredictionModal() {
                 </div>
 
                 {/* 3. 5-Factor Risk Decomposition */}
-                <div className="p-3.5 rounded-xl bg-[#081020] border border-[#1a2b48] text-xs font-mono space-y-2 shadow-md">
+                <div className="p-4 rounded-xl hud-panel text-xs font-mono space-y-2.5 shadow-md">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 uppercase font-bold">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">
                       5-FACTOR RISK SCORING BREAKDOWN
                     </span>
                     <span className="text-[10px] font-bold text-cyan-300">
@@ -656,13 +665,13 @@ export default function PredictionModal() {
                     </span>
                   </div>
 
-                  <div className="space-y-1.5 text-[11px]">
+                  <div className="space-y-2 text-[11px]">
                     <div>
                       <div className="flex justify-between mb-0.5">
                         <span className="text-slate-400">Thermal Severity (25%):</span>
                         <span className="text-amber-400 font-bold">{result.thermal_score} / 100</span>
                       </div>
-                      <div className="w-full bg-[#121e35] rounded-full h-1 overflow-hidden">
+                      <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                         <div
                           className="bg-amber-400 h-full rounded-full"
                           style={{ width: `${result.thermal_score}%` }}
@@ -675,7 +684,7 @@ export default function PredictionModal() {
                         <span className="text-slate-400">Industrial Proximity (25%):</span>
                         <span className="text-cyan-300 font-bold">{result.industrial_proximity_score} / 100</span>
                       </div>
-                      <div className="w-full bg-[#121e35] rounded-full h-1 overflow-hidden">
+                      <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                         <div
                           className="bg-cyan-400 h-full rounded-full"
                           style={{ width: `${result.industrial_proximity_score}%` }}
@@ -688,7 +697,7 @@ export default function PredictionModal() {
                         <span className="text-slate-400">ML Hazard Multiplier (25%):</span>
                         <span className="text-rose-400 font-bold">{result.ml_confidence_score} / 100</span>
                       </div>
-                      <div className="w-full bg-[#121e35] rounded-full h-1 overflow-hidden">
+                      <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                         <div
                           className="bg-rose-400 h-full rounded-full"
                           style={{ width: `${result.ml_confidence_score}%` }}
@@ -701,7 +710,7 @@ export default function PredictionModal() {
                         <span className="text-slate-400">Temporal Persistence (15%):</span>
                         <span className="text-blue-300 font-bold">{result.persistence_score} / 100</span>
                       </div>
-                      <div className="w-full bg-[#121e35] rounded-full h-1 overflow-hidden">
+                      <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                         <div
                           className="bg-blue-400 h-full rounded-full"
                           style={{ width: `${result.persistence_score}%` }}
@@ -714,7 +723,7 @@ export default function PredictionModal() {
                         <span className="text-slate-400">Recurrence Pattern (10%):</span>
                         <span className="text-slate-300 font-bold">{result.recurrence_score} / 100</span>
                       </div>
-                      <div className="w-full bg-[#121e35] rounded-full h-1 overflow-hidden">
+                      <div className="w-full bg-[#030712] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
                         <div
                           className="bg-slate-400 h-full rounded-full"
                           style={{ width: `${result.recurrence_score}%` }}
@@ -724,7 +733,7 @@ export default function PredictionModal() {
                   </div>
 
                   {result.top_risk_factors && (
-                    <div className="p-2 rounded bg-rose-950/30 border border-rose-900/40 text-[11px] text-rose-200 font-mono mt-2">
+                    <div className="p-2.5 rounded-lg bg-rose-950/40 border border-rose-900/50 text-[11px] text-rose-200 font-mono mt-2">
                       <span className="font-bold text-rose-400">Top Risk Drivers: </span>
                       {result.top_risk_factors}
                     </div>
@@ -733,19 +742,19 @@ export default function PredictionModal() {
                   {/* Operational Directive */}
                   {riskCfg && (
                     <div
-                      className="p-2.5 rounded-lg border text-xs mt-2"
+                      className="p-3 rounded-xl border text-xs mt-2 shadow-lg"
                       style={{
                         backgroundColor: riskCfg.bg,
                         borderColor: riskCfg.border,
                       }}
                     >
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <ShieldAlert className="w-3.5 h-3.5 shrink-0" style={{ color: riskCfg.color }} />
-                        <span className="font-heading font-bold text-[11px] uppercase" style={{ color: riskCfg.color }}>
+                      <div className="flex items-center gap-2 mb-1">
+                        <ShieldAlert className="w-4 h-4 shrink-0" style={{ color: riskCfg.color }} />
+                        <span className="font-heading font-bold text-[11px] uppercase tracking-wide" style={{ color: riskCfg.color }}>
                           DIRECTIVE: {riskCfg.label} — {riskCfg.priority}
                         </span>
                       </div>
-                      <p className="text-[10px] text-slate-300 font-sans leading-relaxed">
+                      <p className="text-[11px] text-slate-300 font-sans leading-relaxed">
                         {riskCfg.actionDesc}
                       </p>
                     </div>
@@ -759,3 +768,4 @@ export default function PredictionModal() {
     </div>
   )
 }
+

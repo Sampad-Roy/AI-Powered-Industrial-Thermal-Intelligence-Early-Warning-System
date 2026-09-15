@@ -18,6 +18,7 @@ import {
   ChevronUp,
   ExternalLink,
   MapPin,
+  Activity,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 import {
@@ -56,12 +57,13 @@ export default function EventPanel() {
 
   if (!selectedEvent) {
     return (
-      <aside className="w-80 md:w-96 bg-[#060b17] border-l border-[#16233b] p-6 flex flex-col items-center justify-center text-center select-none text-slate-400 shadow-2xl">
-        <div className="p-4 rounded-full bg-[#0a1222] border border-[#1c2e4d] mb-4 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+      <aside className="w-80 md:w-96 bg-[#040916]/95 backdrop-blur-md border-l border-[#12203a] p-6 flex flex-col items-center justify-center text-center select-none text-slate-400 shadow-2xl">
+        <div className="p-4 rounded-2xl bg-[#071022] border border-[#172a4c] mb-4 shadow-[0_0_24px_rgba(6,182,212,0.15)] relative">
           <Compass className="w-10 h-10 text-cyan-400 animate-spin" style={{ animationDuration: '30s' }} />
+          <div className="absolute inset-0 border-2 border-cyan-500/20 border-dashed rounded-2xl animate-pulse" />
         </div>
-        <h4 className="font-heading font-bold text-slate-200 text-sm mb-1.5 uppercase tracking-wide">
-          No Event Selected
+        <h4 className="font-heading font-extrabold text-slate-100 text-sm mb-1.5 uppercase tracking-wider">
+          NO THERMAL TARGET SELECTED
         </h4>
         <p className="text-xs text-slate-400 max-w-xs leading-relaxed font-sans">
           Select any thermal anomaly marker on the GIS map or from the catalog table to inspect comprehensive AI telemetry, SHAP attributions, and risk drivers.
@@ -75,24 +77,25 @@ export default function EventPanel() {
   const riskCfg = RISK_LEVELS[ev.risk_level] || RISK_LEVELS.LOW
 
   return (
-    <aside className="w-80 md:w-96 bg-[#060b17] border-l border-[#16233b] flex flex-col h-full overflow-hidden select-none z-10 shrink-0 shadow-2xl">
+    <aside className="w-80 md:w-96 bg-[#040916]/95 backdrop-blur-md border-l border-[#12203a] flex flex-col h-full overflow-hidden select-none z-10 shrink-0 shadow-2xl">
       {/* Panel Top Header */}
-      <div className="p-3.5 bg-[#091222] border-b border-[#16233b] flex items-center justify-between shadow-md shrink-0">
+      <div className="p-3.5 bg-[#060c1c] border-b border-[#12203a] flex items-center justify-between shadow-md shrink-0">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono tracking-widest text-cyan-400 font-bold uppercase">
+            <span className="text-[10px] font-mono tracking-widest text-cyan-400 font-bold uppercase flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
               EVENT INTELLIGENCE
             </span>
-            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800/90 text-cyan-300 border border-slate-700 font-bold shadow-sm">
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#0b1730] text-cyan-300 border border-cyan-800/60 font-bold shadow-sm">
               Cluster #{ev.cluster_id}
             </span>
           </div>
-          <h3 className="font-heading font-extrabold text-lg text-slate-100 mt-0.5 tracking-tight">
+          <h3 className="font-heading font-extrabold text-lg text-slate-100 mt-0.5 tracking-tight flex items-center gap-2">
             {ev.event_id}
           </h3>
         </div>
 
-        {/* Severity Badge */}
+        {/* Severity Badge & High-Impact Score */}
         <div className="text-right">
           <span
             className="inline-block text-xs font-mono font-bold px-2.5 py-0.5 rounded uppercase tracking-wider shadow-sm"
@@ -104,17 +107,17 @@ export default function EventPanel() {
           >
             {ev.risk_level} • {ev.final_risk_score}
           </span>
-          <div className="text-[10px] font-mono text-slate-400 mt-0.5 font-semibold">
-            Risk Score / 100
+          <div className="text-[10px] font-mono text-slate-400 mt-0.5 font-bold">
+            Risk Index / 100
           </div>
         </div>
       </div>
 
       {/* Scrollable Content Body with Collapsible Cards */}
-      <div className="flex-1 overflow-y-auto p-3 space-y-3 text-xs">
+      <div className="flex-1 overflow-y-auto p-3 space-y-2.5 text-xs">
         {/* Real Geocoded Location Banner */}
-        <div className="p-3 rounded-lg bg-[#0a1428] border border-[#1b2f52] shadow-sm flex items-start gap-2.5 animate-fadeIn">
-          <div className="p-1.5 rounded bg-cyan-950/90 border border-cyan-700/60 text-cyan-400 shrink-0 mt-0.5 shadow-inner">
+        <div className="p-3 rounded-lg bg-[#071326] border border-[#172a4c] shadow-sm flex items-start gap-2.5 animate-fadeIn">
+          <div className="p-1.5 rounded-md bg-cyan-950/90 border border-cyan-600/60 text-cyan-400 shrink-0 mt-0.5 shadow-inner">
             <MapPin className="w-4 h-4" />
           </div>
           <div className="flex-1 min-w-0">
@@ -122,22 +125,22 @@ export default function EventPanel() {
               <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold">
                 REVERSE GEOCODED LOCATION
               </span>
-              <span className="text-[9px] font-mono text-slate-400 font-medium">OSM / Nominatim</span>
+              <span className="text-[9px] font-mono text-slate-400 font-semibold">OSM / Nominatim</span>
             </div>
             <p className="text-xs font-heading font-bold text-slate-100 mt-0.5 leading-snug break-words">
               {getLocation(ev)}
             </p>
             <span className="text-[10px] font-mono text-slate-400 block mt-1">
-              Coordinates: <b className="text-slate-300 font-semibold">{formatCoords(ev.latitude, ev.longitude)}</b>
+              Coordinates: <b className="text-slate-200 font-semibold">{formatCoords(ev.latitude, ev.longitude)}</b>
             </span>
           </div>
         </div>
 
         {/* 1. CLASSIFICATION & PROBABILITIES */}
-        <div className="rounded-lg bg-[#091222] border border-[#1a2b48] overflow-hidden shadow-sm">
+        <div className="rounded-lg bg-[#060c1c] border border-[#14223d] overflow-hidden shadow-sm">
           <button
             onClick={() => toggleSection('classification')}
-            className="w-full px-3 py-2 bg-[#0c162a] border-b border-[#16233b] flex items-center justify-between hover:bg-[#101d36] transition-colors"
+            className="w-full px-3 py-2 bg-[#081124] border-b border-[#12203a] flex items-center justify-between hover:bg-[#0c1a35] transition-colors cursor-pointer"
           >
             <div className="flex items-center gap-2">
               <span
@@ -157,7 +160,7 @@ export default function EventPanel() {
 
           {openSections.classification && (
             <div className="p-3 space-y-2.5 animate-fadeIn">
-              <div className="flex items-center justify-between pb-2 border-b border-[#142036]">
+              <div className="flex items-center justify-between pb-2 border-b border-[#12203a]">
                 <div>
                   <div className="text-sm font-bold text-slate-100 flex items-center gap-1.5 font-heading">
                     {ev.predicted_class}
@@ -195,7 +198,7 @@ export default function EventPanel() {
                             {pPercent}%
                           </span>
                         </div>
-                        <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                           <div
                             className="h-full rounded-full transition-all duration-500"
                             style={{
@@ -214,10 +217,10 @@ export default function EventPanel() {
         </div>
 
         {/* 2. THERMAL TELEMETRY */}
-        <div className="rounded-lg bg-[#091222] border border-[#1a2b48] overflow-hidden shadow-sm">
+        <div className="rounded-lg bg-[#060c1c] border border-[#14223d] overflow-hidden shadow-sm">
           <button
             onClick={() => toggleSection('thermal')}
-            className="w-full px-3 py-2 bg-[#0c162a] border-b border-[#16233b] flex items-center justify-between hover:bg-[#101d36] transition-colors"
+            className="w-full px-3 py-2 bg-[#081124] border-b border-[#12203a] flex items-center justify-between hover:bg-[#0c1a35] transition-colors cursor-pointer"
           >
             <span className="font-heading font-bold text-xs text-slate-200 flex items-center gap-1.5 uppercase tracking-wide">
               <Zap className="w-3.5 h-3.5 text-amber-400" />
@@ -233,19 +236,19 @@ export default function EventPanel() {
           {openSections.thermal && (
             <div className="p-3 space-y-2.5 animate-fadeIn">
               <div className="grid grid-cols-2 gap-2 font-mono">
-                <div className="p-2.5 rounded-md bg-[#050b17] border border-[#16233b] shadow-inner">
+                <div className="p-2.5 rounded-md bg-[#040916] border border-[#12203a] shadow-inner">
                   <span className="text-[10px] text-slate-400 block font-semibold">Fire Radiative Power</span>
                   <span className="text-base font-bold text-amber-400">{formatFRP(ev.frp)}</span>
                 </div>
 
-                <div className="p-2.5 rounded-md bg-[#050b17] border border-[#16233b] shadow-inner">
+                <div className="p-2.5 rounded-md bg-[#040916] border border-[#12203a] shadow-inner">
                   <span className="text-[10px] text-slate-400 block font-semibold">Combustion Contrast (ΔT)</span>
                   <span className="text-base font-bold text-rose-400">
                     {formatNumber(ev.delta_t, 1)} K
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-md bg-[#050b17] border border-[#16233b]">
+                <div className="p-2.5 rounded-md bg-[#040916] border border-[#12203a]">
                   <span className="text-[10px] text-slate-400 block font-semibold">TI4 (MWIR)</span>
                   <span className="text-xs font-bold text-slate-200">
                     {formatTempK(ev.bright_ti4)}
@@ -255,7 +258,7 @@ export default function EventPanel() {
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-md bg-[#050b17] border border-[#16233b]">
+                <div className="p-2.5 rounded-md bg-[#040916] border border-[#12203a]">
                   <span className="text-[10px] text-slate-400 block font-semibold">TI5 (LWIR)</span>
                   <span className="text-xs font-bold text-slate-200">
                     {formatTempK(ev.bright_ti5)}
@@ -266,7 +269,7 @@ export default function EventPanel() {
                 </div>
               </div>
 
-              <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-[#142036]">
+              <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-[#12203a]">
                 <span>Overpass Type:</span>
                 <span className="text-slate-200 font-semibold">
                   {ev.daynight === 1 ? '☀️ Daytime Pass' : '🌙 Night Pass (No solar glint)'}
@@ -277,10 +280,10 @@ export default function EventPanel() {
         </div>
 
         {/* 3. SPATIAL CONTEXT & SATELLITE INDICES */}
-        <div className="rounded-lg bg-[#091222] border border-[#1a2b48] overflow-hidden shadow-sm">
+        <div className="rounded-lg bg-[#060c1c] border border-[#14223d] overflow-hidden shadow-sm">
           <button
             onClick={() => toggleSection('spatial')}
-            className="w-full px-3 py-2 bg-[#0c162a] border-b border-[#16233b] flex items-center justify-between hover:bg-[#101d36] transition-colors"
+            className="w-full px-3 py-2 bg-[#081124] border-b border-[#12203a] flex items-center justify-between hover:bg-[#0c1a35] transition-colors cursor-pointer"
           >
             <span className="font-heading font-bold text-xs text-slate-200 flex items-center gap-1.5 uppercase tracking-wide">
               <Factory className="w-3.5 h-3.5 text-cyan-400" />
@@ -295,21 +298,21 @@ export default function EventPanel() {
 
           {openSections.spatial && (
             <div className="p-3 space-y-1.5 text-[11px] animate-fadeIn">
-              <div className="flex justify-between py-1 border-b border-[#142036]">
+              <div className="flex justify-between py-1 border-b border-[#12203a]">
                 <span className="text-slate-400">Nearest Industrial Boundary:</span>
                 <span className="font-mono font-bold text-slate-200">
                   {formatDistance(ev.distance_to_industry)}
                 </span>
               </div>
 
-              <div className="flex justify-between py-1 border-b border-[#142036]">
+              <div className="flex justify-between py-1 border-b border-[#12203a]">
                 <span className="text-slate-400">Facilities (500m / 1km / 2km):</span>
                 <span className="font-mono font-bold text-cyan-300">
                   {ev.industries_within_500m} / {ev.industries_within_1km} / {ev.industries_within_2km}
                 </span>
               </div>
 
-              <div className="flex justify-between py-1 border-b border-[#142036]">
+              <div className="flex justify-between py-1 border-b border-[#12203a]">
                 <span className="text-slate-400">Built-Up Index (NDBI):</span>
                 <span className="font-mono font-bold text-amber-300">
                   {formatNumber(ev.NDBI, 3)}
@@ -327,10 +330,10 @@ export default function EventPanel() {
         </div>
 
         {/* 4. TEMPORAL & PERSISTENCE */}
-        <div className="rounded-lg bg-[#091222] border border-[#1a2b48] overflow-hidden shadow-sm">
+        <div className="rounded-lg bg-[#060c1c] border border-[#14223d] overflow-hidden shadow-sm">
           <button
             onClick={() => toggleSection('temporal')}
-            className="w-full px-3 py-2 bg-[#0c162a] border-b border-[#16233b] flex items-center justify-between hover:bg-[#101d36] transition-colors"
+            className="w-full px-3 py-2 bg-[#081124] border-b border-[#12203a] flex items-center justify-between hover:bg-[#0c1a35] transition-colors cursor-pointer"
           >
             <span className="font-heading font-bold text-xs text-slate-200 flex items-center gap-1.5 uppercase tracking-wide">
               <Calendar className="w-3.5 h-3.5 text-indigo-400" />
@@ -346,30 +349,30 @@ export default function EventPanel() {
           {openSections.temporal && (
             <div className="p-3 space-y-2.5 animate-fadeIn">
               <div className="grid grid-cols-3 gap-1.5 text-center font-mono">
-                <div className="p-2 rounded bg-[#050b17] border border-[#16233b]">
+                <div className="p-2 rounded bg-[#040916] border border-[#12203a]">
                   <span className="text-[9px] text-slate-400 block font-semibold">TOTAL DETECTIONS</span>
                   <span className="text-xs font-bold text-slate-200">{ev.cluster_event_count}</span>
                 </div>
 
-                <div className="p-2 rounded bg-[#050b17] border border-[#16233b]">
+                <div className="p-2 rounded bg-[#040916] border border-[#12203a]">
                   <span className="text-[9px] text-slate-400 block font-semibold">UNIQUE DATES</span>
                   <span className="text-xs font-bold text-slate-200">{ev.cluster_unique_dates}</span>
                 </div>
 
-                <div className="p-2 rounded bg-[#050b17] border border-[#16233b]">
+                <div className="p-2 rounded bg-[#040916] border border-[#12203a]">
                   <span className="text-[9px] text-slate-400 block font-semibold">CLUSTER SPAN</span>
                   <span className="text-xs font-bold text-cyan-300">{ev.cluster_span_days} days</span>
                 </div>
               </div>
 
-              <div className="flex justify-between items-center text-[11px] font-mono text-slate-300 p-2 rounded bg-[#050b17] border border-[#16233b]">
+              <div className="flex justify-between items-center text-[11px] font-mono text-slate-300 p-2 rounded bg-[#040916] border border-[#12203a]">
                 <span className="text-slate-400">Recurrence Metric:</span>
                 <span className="font-bold text-indigo-300">
                   {ev.cluster_span_days > 30 ? 'Persistent Chronic Thermal Source' : ev.cluster_unique_dates > 1 ? 'Multi-Day Recurring Event' : 'Episodic Single-Pass Event'} ({ev.recurrence_score}/100)
                 </span>
               </div>
 
-              <div className="text-[10px] font-mono text-slate-400 flex justify-between pt-1 border-t border-[#142036]">
+              <div className="text-[10px] font-mono text-slate-400 flex justify-between pt-1 border-t border-[#12203a]">
                 <span>Acquisition:</span>
                 <span className="text-slate-200 font-medium">{formatTimestamp(ev.acq_datetime)}</span>
               </div>
@@ -378,10 +381,10 @@ export default function EventPanel() {
         </div>
 
         {/* 5. AI EXPLANATION (SHAP XAI) */}
-        <div className="rounded-lg bg-[#09152b] border border-cyan-800/60 overflow-hidden shadow-md">
+        <div className="rounded-lg bg-[#071328] border border-cyan-800/60 overflow-hidden shadow-md">
           <button
             onClick={() => toggleSection('shap')}
-            className="w-full px-3 py-2 bg-[#0c1a35] border-b border-cyan-800/50 flex items-center justify-between hover:bg-[#102246] transition-colors"
+            className="w-full px-3 py-2 bg-[#091a38] border-b border-cyan-800/50 flex items-center justify-between hover:bg-[#0d2248] transition-colors cursor-pointer"
           >
             <div className="flex items-center gap-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
@@ -399,7 +402,7 @@ export default function EventPanel() {
           {openSections.shap && (
             <div className="p-3 space-y-2.5 animate-fadeIn">
               <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
-                Top feature contribution vectors steering the XGBoost decision forest for <span className="font-semibold text-cyan-300">{ev.predicted_class}</span>:
+                Top feature contribution vectors steering the XGBoost decision forest for <span className="font-bold text-cyan-300">{ev.predicted_class}</span>:
               </p>
 
               <div className="space-y-2">
@@ -411,7 +414,7 @@ export default function EventPanel() {
                     const barWidth = Math.min(100, (absVal / 2.0) * 100)
 
                     return (
-                      <div key={idx} className="p-2.5 rounded-lg bg-[#050b17] border border-[#16233b] shadow-sm">
+                      <div key={idx} className="p-2.5 rounded-lg bg-[#040916] border border-[#14223d] shadow-sm">
                         <div className="flex items-center justify-between text-xs mb-1">
                           <span className="font-semibold text-slate-200 flex items-center gap-1.5">
                             <span className="text-[10px] font-mono text-cyan-400 font-bold">#{idx + 1}</span>
@@ -427,7 +430,7 @@ export default function EventPanel() {
                         </div>
 
                         {/* Animated Visual Contribution Bar */}
-                        <div className="w-full bg-[#121e35] rounded-full h-1.5 mb-1.5 overflow-hidden">
+                        <div className="w-full bg-[#0e1930] rounded-full h-1.5 mb-1.5 overflow-hidden">
                           <div
                             className={`h-full rounded-full transition-all duration-700 ease-out ${
                               isPositive ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-rose-500 shadow-[0_0_8px_#ef4444]'
@@ -448,7 +451,7 @@ export default function EventPanel() {
                         </div>
 
                         {desc && (
-                          <p className="text-[10px] text-slate-400 mt-1.5 leading-relaxed font-sans border-t border-[#142036] pt-1">
+                          <p className="text-[10px] text-slate-400 mt-1.5 leading-relaxed font-sans border-t border-[#101b30] pt-1">
                             {desc.judgeExplanation}
                           </p>
                         )}
@@ -458,11 +461,11 @@ export default function EventPanel() {
               </div>
 
               {/* Expandable Technical Details */}
-              <details className="mt-2 text-[10px] font-mono bg-[#050b17] border border-[#16233b] rounded-lg p-2.5 text-slate-400 cursor-pointer">
+              <details className="mt-2 text-[10px] font-mono bg-[#040916] border border-[#14223d] rounded-lg p-2.5 text-slate-400 cursor-pointer">
                 <summary className="text-cyan-400 font-bold hover:text-cyan-300 select-none">
                   ▶ TECHNICAL SHAP METHODOLOGY (TreeSHAP)
                 </summary>
-                <div className="mt-2 space-y-1.5 text-slate-300 leading-relaxed font-sans pt-1 border-t border-[#16233b]">
+                <div className="mt-2 space-y-1.5 text-slate-300 leading-relaxed font-sans pt-1 border-t border-[#14223d]">
                   <p>
                     <b>Algorithm:</b> Lundberg et al. (2020) TreeSHAP exact polynomial-time algorithm for tree ensembles.
                   </p>
@@ -479,10 +482,10 @@ export default function EventPanel() {
         </div>
 
         {/* 6. RISK FACTORS & 5-FACTOR DECOMPOSITION */}
-        <div className="rounded-lg bg-[#091222] border border-[#1a2b48] overflow-hidden shadow-sm">
+        <div className="rounded-lg bg-[#060c1c] border border-[#14223d] overflow-hidden shadow-sm">
           <button
             onClick={() => toggleSection('risk')}
-            className="w-full px-3 py-2 bg-[#0c162a] border-b border-[#16233b] flex items-center justify-between hover:bg-[#101d36] transition-colors"
+            className="w-full px-3 py-2 bg-[#081124] border-b border-[#12203a] flex items-center justify-between hover:bg-[#0c1a35] transition-colors cursor-pointer"
           >
             <span className="font-heading font-bold text-xs text-slate-200 flex items-center gap-1.5 uppercase tracking-wide">
               <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
@@ -515,7 +518,7 @@ export default function EventPanel() {
                     <span className="text-slate-400">Thermal Severity (25%):</span>
                     <span className="text-amber-400 font-bold">{ev.thermal_score} / 100</span>
                   </div>
-                  <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                     <div
                       className="bg-amber-400 h-full rounded-full shadow-[0_0_5px_#f59e0b]"
                       style={{ width: `${ev.thermal_score}%` }}
@@ -528,7 +531,7 @@ export default function EventPanel() {
                     <span className="text-slate-400">Industrial Proximity (25%):</span>
                     <span className="text-cyan-300 font-bold">{ev.industrial_proximity_score} / 100</span>
                   </div>
-                  <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                     <div
                       className="bg-cyan-400 h-full rounded-full shadow-[0_0_5px_#06b6d4]"
                       style={{ width: `${ev.industrial_proximity_score}%` }}
@@ -541,7 +544,7 @@ export default function EventPanel() {
                     <span className="text-slate-400">ML Hazard Multiplier (25%):</span>
                     <span className="text-rose-400 font-bold">{ev.ml_confidence_score} / 100</span>
                   </div>
-                  <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                     <div
                       className="bg-rose-400 h-full rounded-full shadow-[0_0_5px_#ef4444]"
                       style={{ width: `${ev.ml_confidence_score}%` }}
@@ -554,7 +557,7 @@ export default function EventPanel() {
                     <span className="text-slate-400">Temporal Persistence (15%):</span>
                     <span className="text-blue-300 font-bold">{ev.persistence_score} / 100</span>
                   </div>
-                  <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                     <div
                       className="bg-blue-400 h-full rounded-full shadow-[0_0_5px_#3b82f6]"
                       style={{ width: `${ev.persistence_score}%` }}
@@ -567,7 +570,7 @@ export default function EventPanel() {
                     <span className="text-slate-400">Recurrence Pattern (10%):</span>
                     <span className="text-slate-300 font-bold">{ev.recurrence_score} / 100</span>
                   </div>
-                  <div className="w-full bg-[#121e35] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#0e1930] rounded-full h-1.5 overflow-hidden">
                     <div
                       className="bg-slate-400 h-full rounded-full"
                       style={{ width: `${ev.recurrence_score}%` }}

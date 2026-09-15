@@ -11,6 +11,8 @@ import {
   Radio,
   Sliders,
   Server,
+  Activity,
+  AlertTriangle,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 
@@ -20,6 +22,8 @@ export default function Sidebar() {
 
   const criticalCount = events.filter((e) => e.risk_level === 'CRITICAL').length
   const highCount = events.filter((e) => e.risk_level === 'HIGH').length
+  const moderateCount = events.filter((e) => e.risk_level === 'MODERATE').length
+  const lowCount = events.filter((e) => e.risk_level === 'LOW').length
 
   const navItems = [
     {
@@ -28,6 +32,13 @@ export default function Sidebar() {
       icon: Map,
       badge: filteredEvents.length,
       desc: 'Live thermal overlay',
+    },
+    {
+      id: 'alerts',
+      label: '🚨 Alert & Response',
+      icon: ShieldAlert,
+      badge: criticalCount + highCount > 0 ? criticalCount + highCount : null,
+      desc: 'Disaster triage & SOPs',
     },
     {
       id: 'investigation',
@@ -56,21 +67,21 @@ export default function Sidebar() {
     <aside
       className={`${
         collapsed ? 'w-16' : 'w-60'
-      } bg-[#060b17] border-r border-[#16233b] flex flex-col justify-between select-none z-20 shrink-0 transition-all duration-300 shadow-2xl relative`}
+      } bg-[#040916]/95 backdrop-blur-md border-r border-[#12203a] flex flex-col justify-between select-none z-20 shrink-0 transition-all duration-300 shadow-2xl relative`}
     >
       {/* Top Nav Header & Items */}
-      <div className="py-3 px-2 flex flex-col gap-1.5">
+      <div className="py-3 px-2 flex flex-col gap-1">
         <div className="flex items-center justify-between px-2 pb-2">
           {!collapsed && (
             <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_6px_#06b6d4]"></span>
               SURVEILLANCE
             </span>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
             title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            className="p-1.5 rounded-md text-slate-400 hover:text-cyan-300 hover:bg-[#0e182c] border border-transparent hover:border-[#1e3252] transition-colors ml-auto"
+            className="p-1.5 rounded-md text-slate-400 hover:text-cyan-300 hover:bg-[#0c1830] border border-transparent hover:border-[#172a4c] transition-colors ml-auto cursor-pointer"
           >
             {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           </button>
@@ -85,10 +96,10 @@ export default function Sidebar() {
               key={item.id}
               onClick={() => setActiveView(item.id)}
               title={collapsed ? item.label : undefined}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all group relative ${
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all group relative cursor-pointer ${
                 isActive
-                  ? 'bg-cyan-950/80 text-cyan-200 border border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.18)]'
-                  : 'text-slate-400 hover:text-slate-100 hover:bg-[#0c1527] border border-transparent hover:border-[#182844]'
+                  ? 'bg-cyan-950/70 text-cyan-200 border border-cyan-500/50 shadow-[0_0_16px_rgba(6,182,212,0.18)]'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-[#091428] border border-transparent hover:border-[#152542]'
               }`}
             >
               {/* Active left indicator bar */}
@@ -107,12 +118,12 @@ export default function Sidebar() {
                   <div className={`font-semibold leading-tight ${isActive ? 'text-slate-100' : 'text-slate-300'}`}>
                     {item.label}
                   </div>
-                  <div className="text-[10px] text-slate-400">{item.desc}</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">{item.desc}</div>
                 </div>
               )}
 
               {!collapsed && item.badge !== null && (
-                <span className="ml-auto px-1.5 py-0.5 text-[10px] font-mono rounded bg-[#101e36] text-cyan-300 font-bold border border-cyan-800/60 shadow-sm">
+                <span className="ml-auto px-1.5 py-0.5 text-[10px] font-mono rounded bg-[#0b1730] text-cyan-300 font-bold border border-cyan-800/60 shadow-sm">
                   {item.badge}
                 </span>
               )}
@@ -120,7 +131,7 @@ export default function Sidebar() {
           )
         })}
 
-        <div className="my-2 border-t border-[#142036]" />
+        <div className="my-2 border-t border-[#12203a]" />
 
         {!collapsed && (
           <div className="px-2 pb-1 text-[10px] font-mono tracking-widest text-slate-400 uppercase font-bold">
@@ -131,7 +142,7 @@ export default function Sidebar() {
         <button
           onClick={() => setIsPredictModalOpen(true)}
           title={collapsed ? 'Live AI Inference Workbench' : undefined}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-amber-200 bg-gradient-to-r from-amber-950/50 via-[#18151f] to-[#0d1628] hover:from-amber-950/80 hover:to-[#121f36] border border-amber-600/40 hover:border-amber-500 transition-all shadow-[0_0_12px_rgba(245,158,11,0.1)] hover:shadow-[0_0_18px_rgba(245,158,11,0.25)] group"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-amber-200 bg-gradient-to-r from-amber-950/40 via-[#151320] to-[#0a1428] hover:from-amber-950/70 hover:to-[#0f1d38] border border-amber-500/40 hover:border-amber-400 transition-all shadow-[0_0_12px_rgba(245,158,11,0.1)] hover:shadow-[0_0_18px_rgba(245,158,11,0.25)] group cursor-pointer"
         >
           <Sparkles className="w-4 h-4 shrink-0 text-amber-400 group-hover:rotate-12 transition-transform" />
           {!collapsed && (
@@ -144,17 +155,39 @@ export default function Sidebar() {
       </div>
 
       {/* Bottom Emergency / Hazard Alert Callout */}
-      <div className="p-2.5 border-t border-[#142036]">
+      <div className="p-2.5 border-t border-[#12203a]">
         {!collapsed ? (
-          <div className="p-3 rounded-lg bg-[#140b18] border border-rose-900/50 shadow-inner">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-400 mb-1.5">
-              <ShieldAlert className="w-4 h-4 animate-pulse text-rose-500" />
-              <span className="font-heading tracking-wide uppercase font-bold text-rose-300">HAZARD MONITOR</span>
+          <div className="p-3 rounded-lg bg-gradient-to-b from-[#180913] to-[#0a040b] border border-rose-900/60 shadow-inner">
+            <div className="flex items-center justify-between text-xs font-semibold text-rose-400 mb-1.5">
+              <div className="flex items-center gap-1.5">
+                <ShieldAlert className="w-4 h-4 animate-pulse text-rose-500 shadow-[0_0_8px_#ef4444]" />
+                <span className="font-heading tracking-wide uppercase font-bold text-rose-300">HAZARD MONITOR</span>
+              </div>
+              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold">
+                LIVE
+              </span>
             </div>
-            <p className="text-[11px] text-slate-300 font-mono leading-relaxed">
+            
+            <p className="text-[11px] text-slate-300 font-mono leading-relaxed mb-2">
               <span className="text-rose-400 font-extrabold">{criticalCount} Critical</span> &amp;{' '}
-              <span className="text-orange-400 font-extrabold">{highCount} High</span> active thermal alerts in sector.
+              <span className="text-orange-400 font-extrabold">{highCount} High</span> active thermal alerts.
             </p>
+
+            {/* Severity Mini Badges */}
+            <div className="grid grid-cols-4 gap-1 text-center font-mono text-[9px]">
+              <div className="p-1 rounded bg-rose-950/80 border border-rose-800/60 text-rose-300 font-bold">
+                CRIT: {criticalCount}
+              </div>
+              <div className="p-1 rounded bg-orange-950/80 border border-orange-800/60 text-orange-300 font-bold">
+                HIGH: {highCount}
+              </div>
+              <div className="p-1 rounded bg-amber-950/80 border border-amber-800/60 text-amber-300 font-bold">
+                MOD: {moderateCount}
+              </div>
+              <div className="p-1 rounded bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-bold">
+                LOW: {lowCount}
+              </div>
+            </div>
           </div>
         ) : (
           <div className="flex justify-center p-2" title={`${criticalCount} Critical & ${highCount} High Alerts`}>

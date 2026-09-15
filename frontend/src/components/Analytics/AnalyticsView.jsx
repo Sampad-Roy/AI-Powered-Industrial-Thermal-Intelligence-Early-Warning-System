@@ -68,9 +68,9 @@ export default function AnalyticsView() {
           CLASS_COLORS[CLASSIFICATIONS.PERSISTENT_HEAT].bg,
           CLASS_COLORS[CLASSIFICATIONS.OTHER_THERMAL].bg,
         ],
-        borderColor: '#060b17',
+        borderColor: '#040916',
         borderWidth: 3,
-        hoverOffset: 6,
+        hoverOffset: 8,
       },
     ],
   }
@@ -256,9 +256,9 @@ export default function AnalyticsView() {
   }
 
   return (
-    <div className="flex-1 p-5 overflow-y-auto bg-[#040813] space-y-5 select-none">
+    <div className="flex-1 p-5 overflow-y-auto bg-[#020611] space-y-4 select-none">
       {/* Analytics Title Banner */}
-      <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-wrap items-center justify-between gap-3 shadow-xl">
+      <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-wrap items-center justify-between gap-3 shadow-xl">
         <div>
           <h2 className="font-heading font-extrabold text-lg text-slate-100 flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-cyan-400" />
@@ -272,7 +272,7 @@ export default function AnalyticsView() {
           <span className="px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold shadow-sm">
             {events.length} SAMPLES
           </span>
-          <span className="px-2.5 py-1 rounded bg-[#0f1c35] text-slate-300 border border-[#1e3152] font-semibold">
+          <span className="px-2.5 py-1 rounded bg-[#0b1730] text-slate-300 border border-[#172a4c] font-semibold">
             15 SENSOR FEATURES
           </span>
         </div>
@@ -281,7 +281,7 @@ export default function AnalyticsView() {
       {/* Grid of 5 Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* 1. Classification Doughnut */}
-        <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-col h-72 shadow-lg">
+        <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-col h-72 shadow-lg">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-mono font-bold uppercase text-slate-200 flex items-center gap-1.5">
               <PieChart className="w-4 h-4 text-cyan-400" />
@@ -294,7 +294,7 @@ export default function AnalyticsView() {
         </div>
 
         {/* 2. Risk Level Bar */}
-        <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-col h-72 shadow-lg">
+        <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-col h-72 shadow-lg">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-mono font-bold uppercase text-slate-200 flex items-center gap-1.5">
               <Activity className="w-4 h-4 text-rose-400" />
@@ -307,7 +307,7 @@ export default function AnalyticsView() {
         </div>
 
         {/* 3. Model Confidence Distribution */}
-        <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-col h-72 shadow-lg md:col-span-2 lg:col-span-1">
+        <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-col h-72 shadow-lg md:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-mono font-bold uppercase text-slate-200 flex items-center gap-1.5">
               <TrendingUp className="w-4 h-4 text-emerald-400" />
@@ -320,7 +320,7 @@ export default function AnalyticsView() {
         </div>
 
         {/* 4. FRP vs Distance Scatter */}
-        <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-col h-80 shadow-lg md:col-span-1 lg:col-span-2">
+        <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-col h-80 shadow-lg md:col-span-1 lg:col-span-2">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-mono font-bold uppercase text-slate-200 flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-amber-400" />
@@ -336,12 +336,12 @@ export default function AnalyticsView() {
                   x: {
                     title: { display: true, text: 'Distance to Industry (m)', color: '#94a3b8' },
                     ticks: { color: '#64748b' },
-                    grid: { color: 'rgba(30, 41, 59, 0.4)' },
+                    grid: { color: 'rgba(23, 42, 76, 0.4)' },
                   },
                   y: {
                     title: { display: true, text: 'FRP (MW)', color: '#94a3b8' },
                     ticks: { color: '#64748b' },
-                    grid: { color: 'rgba(30, 41, 59, 0.4)' },
+                    grid: { color: 'rgba(23, 42, 76, 0.4)' },
                   },
                 },
               }}
@@ -350,7 +350,7 @@ export default function AnalyticsView() {
         </div>
 
         {/* 5. Cluster Span Days */}
-        <div className="p-4 rounded-xl bg-[#081020] border border-[#1a2b48] flex flex-col h-80 shadow-lg md:col-span-1 lg:col-span-1">
+        <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-col h-80 shadow-lg md:col-span-1 lg:col-span-1">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-mono font-bold uppercase text-slate-200 flex items-center gap-1.5">
               <Factory className="w-4 h-4 text-blue-400" />

@@ -11,6 +11,7 @@ import PredictionModal from './components/Prediction/PredictionModal'
 import AnalyticsView from './components/Analytics/AnalyticsView'
 import InvestigationView from './components/Investigation/InvestigationView'
 import SystemHealthView from './components/Health/SystemHealthView'
+import AlertResponseView from './components/Alerts/AlertResponseView'
 import { AlertTriangle, RefreshCw, Satellite } from 'lucide-react'
 
 function MainContent() {
@@ -19,9 +20,12 @@ function MainContent() {
   if (loading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center bg-[#070b14] text-cyan-400 select-none p-6">
-        <div className="relative flex items-center justify-center w-16 h-16 mb-4">
-          <Satellite className="w-10 h-10 text-cyan-400 animate-pulse" />
-          <div className="absolute inset-0 border-2 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin" />
+        <div className="relative flex items-center justify-center w-20 h-20 mb-4">
+          <img
+            src="/Logo png.png"
+            alt="SUDARSHAN Logo"
+            className="w-16 h-16 object-contain animate-pulse drop-shadow-[0_0_20px_rgba(6,182,212,0.6)]"
+          />
         </div>
         <h3 className="font-heading font-bold text-lg text-slate-100 tracking-wider">
           INITIALIZING SUDARSHAN SATELLITE COMMAND CENTER
@@ -78,6 +82,8 @@ function MainContent() {
           </div>
         </>
       )}
+
+      {activeView === 'alerts' && <AlertResponseView />}
 
       {activeView === 'analytics' && <AnalyticsView />}
 
