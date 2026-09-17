@@ -1,5 +1,7 @@
 import React from 'react'
 import { AppProvider, useApp } from './context/AppContext'
+import LandingPage from './components/Landing/LandingPage'
+import AuthPage from './components/Auth/AuthPage'
 import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import KPIBar from './components/KPI/KPIBar'
@@ -19,7 +21,7 @@ function MainContent() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center bg-[#070b14] text-cyan-400 select-none p-6">
+      <div className="flex-1 min-h-[60vh] flex flex-col items-center justify-center bg-[#070b14] text-cyan-400 select-none p-6">
         <div className="relative flex items-center justify-center w-20 h-20 mb-4">
           <img
             src="/Logo png.png"
@@ -39,7 +41,7 @@ function MainContent() {
 
   if (error) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center bg-[#070b14] text-slate-200 select-none p-6">
+      <div className="flex-1 min-h-[60vh] flex flex-col items-center justify-center bg-[#070b14] text-slate-200 select-none p-6">
         <div className="p-4 rounded-full bg-rose-950/60 border border-rose-800 text-rose-400 mb-4">
           <AlertTriangle className="w-8 h-8" />
         </div>
@@ -54,7 +56,7 @@ function MainContent() {
         </p>
         <button
           onClick={refreshEvents}
-          className="flex items-center gap-2 px-4 py-2 bg-cyan-900 hover:bg-cyan-800 text-cyan-200 font-semibold rounded text-xs border border-cyan-700 transition-all font-mono"
+          className="flex items-center gap-2 px-4 py-2 bg-cyan-900 hover:bg-cyan-800 text-cyan-200 font-semibold rounded text-xs border border-cyan-700 transition-all font-mono cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>RETRY CONNECTION</span>
@@ -98,18 +100,88 @@ function MainContent() {
   )
 }
 
+function AppRoot() {
+  const { activeView, setActiveView, isAuthenticated, login } = useApp()
+
+  // ── Unauthenticated user trying to access a protected view ──
+  // Push /auth into URL and show AuthPage
+  if (!isAuthenticated && activeView !== 'landing' && activeView !== 'auth') {
+    if (typeof window !== 'undefined' && window.location.pathname !== '/auth') {
+      window.history.replaceState({}, '', '/auth')
+    }
+    return (
+      <AuthPage
+        onAuthSuccess={(userData) => login(userData)}
+        onBackToHome={() => {
+          if (window.location.pathname !== '/') {
+            window.history.pushState({}, '', '/')
+          }
+          setActiveView('landing')
+        }}
+      />
+    )
+  }
+
+  // ── Explicit auth view ──
+  if (activeView === 'auth') {
+    return (
+      <AuthPage
+        onAuthSuccess={(userData) => login(userData)}
+        onBackToHome={() => {
+          if (window.location.pathname !== '/') {
+            window.history.pushState({}, '', '/')
+          }
+          setActiveView('landing')
+        }}
+      />
+    )
+  }
+
+  // ── Landing page ──
+  if (activeView === 'landing') {
+    return (
+      <LandingPage
+        onLaunchDashboard={() => {
+          if (isAuthenticated) {
+            if (window.location.pathname !== '/dashboard') {
+              window.history.pushState({}, '', '/dashboard')
+            }
+            setActiveView('dashboard')
+          } else {
+            if (window.location.pathname !== '/auth') {
+              window.history.pushState({}, '', '/auth')
+            }
+            setActiveView('auth')
+          }
+        }}
+        onNavigateAuth={() => {
+          if (window.location.pathname !== '/auth') {
+            window.history.pushState({}, '', '/auth')
+          }
+          setActiveView('auth')
+        }}
+      />
+    )
+  }
+
+  // ── Dashboard (and all sub-views: alerts / analytics / investigation / health) ──
+  return (
+    <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-[#070b14] text-slate-100">
+      <Header />
+      <KPIBar />
+      <div className="flex-1 flex flex-col md:flex-row w-full min-w-0">
+        <Sidebar />
+        <MainContent />
+      </div>
+      <PredictionModal />
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <AppProvider>
-      <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-[#070b14] text-slate-100">
-        <Header />
-        <KPIBar />
-        <div className="flex-1 flex flex-col md:flex-row w-full min-w-0">
-          <Sidebar />
-          <MainContent />
-        </div>
-        <PredictionModal />
-      </div>
+      <AppRoot />
     </AppProvider>
   )
 }

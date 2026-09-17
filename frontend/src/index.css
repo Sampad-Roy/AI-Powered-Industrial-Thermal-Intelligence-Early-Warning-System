@@ -4,6 +4,20 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
   --font-heading: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* SUDARSHAN Editorial & Institutional Landing Page Palette */
+  --sudarshan-navy: #173042;
+  --sudarshan-navy-sec: #294554;
+  --sudarshan-offwhite: #F5F3ED;
+  --sudarshan-cream: #EDEBE3;
+  --sudarshan-sage: #315E4A;
+  --sudarshan-green: #3F7358;
+  --sudarshan-gray: #D9D8D2;
+  --sudarshan-body: #34434A;
+  --sudarshan-muted: #667277;
+  --sudarshan-gold: #C99A55;
+  --sudarshan-white: #FFFFFF;
 
   /* Theme Deep Space Tactical Palettes */
   --bg-void: #020611;
@@ -98,8 +112,21 @@ html, body, #root {
   letter-spacing: -0.015em;
 }
 
+.font-serif {
+  font-family: var(--font-serif);
+}
+
 .font-mono {
   font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Landing page smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Tactical Panel & Glassmorphism System */

@@ -20,10 +20,73 @@ export function AppProvider({ children }) {
   const [apiHealth, setApiHealth] = useState(null)
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [filters, setFilters] = useState(INITIAL_FILTERS)
-  const [activeView, setActiveView] = useState('dashboard') // 'dashboard' | 'analytics' | 'investigation' | 'health'
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('sudarshan_auth') === 'true'
+    }
+    return false
+  })
+  const [currentUser, setCurrentUser] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('sudarshan_user_name') || sessionStorage.getItem('sudarshan_user_email') || ''
+    }
+    return ''
+  })
+  const [activeView, setActiveView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const isAuth = sessionStorage.getItem('sudarshan_auth') === 'true'
+      const path = window.location.pathname
+      if (path === '/auth') return 'auth'
+      if (path === '/' || path === '') return 'landing'
+      // Protected dashboard sub-routes
+      const dashViews = ['/dashboard', '/alerts', '/investigation', '/analytics', '/health']
+      if (dashViews.includes(path)) {
+        if (isAuth) {
+          return path.replace('/', '') // 'dashboard', 'alerts', etc.
+        } else {
+          // Unauthenticated — redirect URL immediately
+          window.history.replaceState({}, '', '/auth')
+          return 'auth'
+        }
+      }
+    }
+    return 'landing'
+  }) // 'landing' | 'auth' | 'dashboard' | 'alerts' | 'investigation' | 'analytics' | 'health'
   const [isPredictModalOpen, setIsPredictModalOpen] = useState(false)
   const [mapRef, setMapRef] = useState(null)
   const [lastUpdated, setLastUpdated] = useState(null)
+
+  const login = useCallback((userData) => {
+    setIsAuthenticated(true)
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('sudarshan_auth', 'true')
+      if (userData?.fullName) {
+        sessionStorage.setItem('sudarshan_user_name', userData.fullName)
+        setCurrentUser(userData.fullName)
+      } else if (userData?.email) {
+        sessionStorage.setItem('sudarshan_user_email', userData.email)
+        setCurrentUser(userData.email)
+      }
+      if (window.location.pathname !== '/dashboard') {
+        window.history.pushState({}, '', '/dashboard')
+      }
+    }
+    setActiveView('dashboard')
+  }, [])
+
+  const logout = useCallback(() => {
+    setIsAuthenticated(false)
+    setCurrentUser('')
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('sudarshan_auth')
+      sessionStorage.removeItem('sudarshan_user_name')
+      sessionStorage.removeItem('sudarshan_user_email')
+      if (window.location.pathname !== '/auth') {
+        window.history.pushState({}, '', '/auth')
+      }
+    }
+    setActiveView('auth')
+  }, [])
 
   // Asynchronous background reverse geocode enrichment
   const enrichLocations = useCallback(async (eventList) => {
@@ -88,7 +151,29 @@ export function AppProvider({ children }) {
       const health = await fetchHealth()
       setApiHealth(health)
     }, 10000)
-    return () => clearInterval(interval)
+
+    const handlePopState = () => {
+      const isAuth = sessionStorage.getItem('sudarshan_auth') === 'true'
+      const path = window.location.pathname
+      if (path === '/auth') {
+        setActiveView('auth')
+      } else if (path === '/dashboard' || path === '/alerts' || path === '/investigation' || path === '/analytics' || path === '/health') {
+        if (isAuth) {
+          setActiveView(path.replace('/', '') || 'dashboard')
+        } else {
+          setActiveView('auth')
+          window.history.replaceState({}, '', '/auth')
+        }
+      } else if (path === '/' || path === '') {
+        setActiveView('landing')
+      }
+    }
+    window.addEventListener('popstate', handlePopState)
+
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('popstate', handlePopState)
+    }
   }, [])
 
   const resetFilters = () => {
@@ -164,6 +249,10 @@ export function AppProvider({ children }) {
     filters,
     setFilters,
     resetFilters,
+    isAuthenticated,
+    currentUser,
+    login,
+    logout,
     activeView,
     setActiveView,
     isPredictModalOpen,

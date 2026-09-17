@@ -13,6 +13,7 @@ import {
   Server,
   Activity,
   AlertTriangle,
+  Home,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 
@@ -26,6 +27,13 @@ export default function Sidebar() {
   const lowCount = events.filter((e) => e.risk_level === 'LOW').length
 
   const navItems = [
+    {
+      id: 'landing',
+      label: 'Public Portal',
+      icon: Home,
+      badge: null,
+      desc: 'Institutional overview',
+    },
     {
       id: 'dashboard',
       label: 'GIS Tactical Map',

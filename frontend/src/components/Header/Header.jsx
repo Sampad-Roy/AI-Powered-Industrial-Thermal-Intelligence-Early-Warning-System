@@ -13,11 +13,12 @@ import {
   Layers,
   Radio,
   Activity,
+  LogOut,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 
 export default function Header() {
-  const { apiHealth, refreshEvents, setIsPredictModalOpen, loading } = useApp()
+  const { apiHealth, refreshEvents, setIsPredictModalOpen, loading, setActiveView, logout, currentUser } = useApp()
   const [utcTime, setUtcTime] = useState('')
 
   useEffect(() => {
@@ -37,16 +38,20 @@ export default function Header() {
 
   return (
     <header className="bg-[#040916]/95 backdrop-blur-md border-b border-[#12203a] px-4 py-2 flex items-center justify-between gap-3 select-none shrink-0 z-30 shadow-[0_4px_24px_rgba(0,0,0,0.7)] relative">
-      {/* Brand & Mission Identifier */}
-      <div className="flex items-center space-x-3">
+      {/* Brand & Mission Identifier (Clickable to Landing Page) */}
+      <div
+        onClick={() => setActiveView('landing')}
+        title="Return to Public Landing Page"
+        className="flex items-center space-x-3 cursor-pointer group"
+      >
         <img
           src="/Logo png.png"
           alt="SUDARSHAN Official Logo"
-          className="h-10 w-auto object-contain shrink-0 drop-shadow-[0_0_14px_rgba(6,182,212,0.45)]"
+          className="h-10 w-auto object-contain shrink-0 drop-shadow-[0_0_14px_rgba(6,182,212,0.45)] group-hover:scale-105 transition-transform"
         />
         <div>
           <div className="flex items-center space-x-2">
-            <h1 className="font-heading font-extrabold text-base tracking-wider text-slate-100 flex items-center gap-1.5">
+            <h1 className="font-heading font-extrabold text-base tracking-wider text-slate-100 flex items-center gap-1.5 group-hover:text-cyan-300 transition-colors">
               SUDARSHAN
             </h1>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/90 text-cyan-300 border border-cyan-500/60 uppercase tracking-widest font-bold shadow-[0_0_10px_rgba(6,182,212,0.25)]">
@@ -133,6 +138,15 @@ export default function Header() {
         >
           <Sparkles className="w-3.5 h-3.5 text-cyan-100 group-hover:rotate-12 transition-transform" />
           <span className="font-heading font-bold tracking-wider uppercase text-[11px]">RUN AI ANALYSIS</span>
+        </button>
+
+        <button
+          onClick={logout}
+          title={currentUser ? `Sign Out (${currentUser})` : 'Sign Out / Logout'}
+          className="p-2 text-slate-400 hover:text-rose-300 bg-[#071022] hover:bg-rose-950/40 border border-[#172a4c] hover:border-rose-500/50 rounded-md transition-all active:scale-95 shadow-sm cursor-pointer flex items-center gap-1.5"
+        >
+          <LogOut className="w-4 h-4 text-rose-400" />
+          <span className="hidden sm:inline text-rose-300 font-mono font-semibold text-[11px]">LOGOUT</span>
         </button>
       </div>
     </header>
