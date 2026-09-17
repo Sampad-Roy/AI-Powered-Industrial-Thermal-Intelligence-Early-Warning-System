@@ -30,6 +30,10 @@ function MapController({ events, selectedEvent, setMapInstance }) {
   useEffect(() => {
     if (map) {
       setMapInstance(map)
+      const t = setTimeout(() => {
+        map.invalidateSize()
+      }, 150)
+      return () => clearTimeout(t)
     }
   }, [map, setMapInstance])
 
@@ -153,7 +157,7 @@ export default function GisMap() {
   }
 
   return (
-    <div className="relative w-full h-full flex flex-col bg-[#020611] overflow-hidden">
+    <div className="relative w-full h-[520px] md:h-[580px] lg:h-[620px] flex flex-col bg-[#020611] overflow-hidden rounded-xl border border-[#172a4c] shadow-2xl">
       {/* Tactical Map Header Controls Overlay */}
       <div className="absolute top-3 left-3 z-[1000] flex flex-wrap items-center gap-2 bg-[#060c1c]/95 backdrop-blur-md p-1.5 rounded-lg border border-[#172a4c] shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
         {/* Basemap Switcher */}

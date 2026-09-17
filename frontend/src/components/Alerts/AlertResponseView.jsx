@@ -189,7 +189,7 @@ export default function AlertResponseView() {
     : null
 
   return (
-    <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 space-y-6 select-none bg-[#030713] text-slate-100">
+    <div className="flex-1 p-4 md:p-6 space-y-6 select-none bg-[#030713] text-slate-100 w-full min-w-0">
       {/* ========================================================================= */}
       {/* 1. PAGE HEADER & PIPELINE TRACKER */}
       {/* ========================================================================= */}

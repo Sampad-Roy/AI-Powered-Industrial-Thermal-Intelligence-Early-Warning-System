@@ -256,7 +256,7 @@ export default function AnalyticsView() {
   }
 
   return (
-    <div className="flex-1 p-5 overflow-y-auto bg-[#020611] space-y-4 select-none">
+    <div className="flex-1 p-4 md:p-6 space-y-6 select-none bg-[#020611] w-full min-w-0">
       {/* Analytics Title Banner */}
       <div className="p-4 rounded-xl bg-[#060c1c] border border-[#172a4c] flex flex-wrap items-center justify-between gap-3 shadow-xl">
         <div>

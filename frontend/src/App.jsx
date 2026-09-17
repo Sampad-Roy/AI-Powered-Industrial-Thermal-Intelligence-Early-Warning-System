@@ -64,23 +64,27 @@ function MainContent() {
   }
 
   return (
-    <main className="flex-1 flex flex-col overflow-hidden bg-[#070c18] relative">
+    <main className="flex-1 flex flex-col min-w-0 w-full bg-[#070c18] relative">
       {activeView === 'dashboard' && (
-        <>
+        <div className="flex-1 flex flex-col w-full min-w-0">
           <FilterToolbar />
-          <div className="flex-1 flex overflow-hidden relative">
+          <div className="p-4 md:p-6 space-y-6 w-full max-w-full">
             {/* GIS Centerpiece Map */}
-            <div className="flex-1 flex flex-col overflow-hidden relative">
-              <div className="flex-1 relative">
-                <GisMap />
-              </div>
-              <EventTable />
-            </div>
+            <section className="w-full">
+              <GisMap />
+            </section>
 
-            {/* Right Event Intelligence Panel */}
-            <EventPanel />
+            {/* Event Catalog & Intelligence Section */}
+            <section className="grid grid-cols-1 xl:grid-cols-12 gap-6 w-full items-start">
+              <div className="xl:col-span-7 w-full min-w-0">
+                <EventTable />
+              </div>
+              <div className="xl:col-span-5 w-full min-w-0">
+                <EventPanel />
+              </div>
+            </section>
           </div>
-        </>
+        </div>
       )}
 
       {activeView === 'alerts' && <AlertResponseView />}
@@ -97,10 +101,10 @@ function MainContent() {
 export default function App() {
   return (
     <AppProvider>
-      <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#070b14] text-slate-100">
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-[#070b14] text-slate-100">
         <Header />
         <KPIBar />
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex flex-col md:flex-row w-full min-w-0">
           <Sidebar />
           <MainContent />
         </div>

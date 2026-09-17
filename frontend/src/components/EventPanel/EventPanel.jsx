@@ -57,7 +57,7 @@ export default function EventPanel() {
 
   if (!selectedEvent) {
     return (
-      <aside className="w-80 md:w-96 bg-[#040916]/95 backdrop-blur-md border-l border-[#12203a] p-6 flex flex-col items-center justify-center text-center select-none text-slate-400 shadow-2xl">
+      <div className="w-full bg-[#040916]/95 backdrop-blur-md border border-[#172a4c] rounded-xl p-8 flex flex-col items-center justify-center text-center select-none text-slate-400 shadow-2xl min-h-[300px]">
         <div className="p-4 rounded-2xl bg-[#071022] border border-[#172a4c] mb-4 shadow-[0_0_24px_rgba(6,182,212,0.15)] relative">
           <Compass className="w-10 h-10 text-cyan-400 animate-spin" style={{ animationDuration: '30s' }} />
           <div className="absolute inset-0 border-2 border-cyan-500/20 border-dashed rounded-2xl animate-pulse" />
@@ -68,7 +68,7 @@ export default function EventPanel() {
         <p className="text-xs text-slate-400 max-w-xs leading-relaxed font-sans">
           Select any thermal anomaly marker on the GIS map or from the catalog table to inspect comprehensive AI telemetry, SHAP attributions, and risk drivers.
         </p>
-      </aside>
+      </div>
     )
   }
 
@@ -77,7 +77,7 @@ export default function EventPanel() {
   const riskCfg = RISK_LEVELS[ev.risk_level] || RISK_LEVELS.LOW
 
   return (
-    <aside className="w-80 md:w-96 bg-[#040916]/95 backdrop-blur-md border-l border-[#12203a] flex flex-col h-full overflow-hidden select-none z-10 shrink-0 shadow-2xl">
+    <div className="w-full bg-[#040916]/95 backdrop-blur-md border border-[#172a4c] rounded-xl flex flex-col overflow-hidden select-none z-10 shadow-2xl">
       {/* Panel Top Header */}
       <div className="p-3.5 bg-[#060c1c] border-b border-[#12203a] flex items-center justify-between shadow-md shrink-0">
         <div>
@@ -113,8 +113,8 @@ export default function EventPanel() {
         </div>
       </div>
 
-      {/* Scrollable Content Body with Collapsible Cards */}
-      <div className="flex-1 overflow-y-auto p-3 space-y-2.5 text-xs">
+      {/* Content Body with Collapsible Cards */}
+      <div className="p-3.5 space-y-3 text-xs">
         {/* Real Geocoded Location Banner */}
         <div className="p-3 rounded-lg bg-[#071326] border border-[#172a4c] shadow-sm flex items-start gap-2.5 animate-fadeIn">
           <div className="p-1.5 rounded-md bg-cyan-950/90 border border-cyan-600/60 text-cyan-400 shrink-0 mt-0.5 shadow-inner">
@@ -604,6 +604,6 @@ export default function EventPanel() {
           </p>
         </div>
       </div>
-    </aside>
+    </div>
   )
 }

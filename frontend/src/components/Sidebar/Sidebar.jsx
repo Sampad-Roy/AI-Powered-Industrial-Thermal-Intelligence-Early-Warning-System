@@ -67,7 +67,7 @@ export default function Sidebar() {
     <aside
       className={`${
         collapsed ? 'w-16' : 'w-60'
-      } bg-[#040916]/95 backdrop-blur-md border-r border-[#12203a] flex flex-col justify-between select-none z-20 shrink-0 transition-all duration-300 shadow-2xl relative`}
+      } bg-[#040916]/95 backdrop-blur-md border-r border-[#12203a] flex flex-col justify-between select-none z-20 shrink-0 transition-all duration-300 shadow-2xl relative md:sticky md:top-0 md:self-start md:max-h-screen md:overflow-y-auto`}
     >
       {/* Top Nav Header & Items */}
       <div className="py-3 px-2 flex flex-col gap-1">

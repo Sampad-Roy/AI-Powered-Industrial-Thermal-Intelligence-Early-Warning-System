@@ -53,11 +53,11 @@ export default function EventTable() {
   }, [filteredEvents, sortField, sortAsc])
 
   return (
-    <div className="bg-[#030712] border-t border-[#12203a] flex flex-col transition-all duration-300 z-10 shrink-0 shadow-2xl">
+    <div className="bg-[#030712] border border-[#172a4c] rounded-xl flex flex-col transition-all duration-300 z-10 shadow-2xl overflow-hidden w-full">
       {/* Header bar with collapse toggle */}
       <div
         onClick={() => setCollapsed(!collapsed)}
-        className="px-4 py-2 bg-[#060c1c] border-b border-[#12203a] flex items-center justify-between cursor-pointer hover:bg-[#091428] transition-colors select-none"
+        className="px-4 py-2.5 bg-[#060c1c] border-b border-[#12203a] flex items-center justify-between cursor-pointer hover:bg-[#091428] transition-colors select-none"
       >
         <div className="flex items-center gap-2.5">
           <Layers className="w-4 h-4 text-cyan-400" />
@@ -82,7 +82,7 @@ export default function EventTable() {
       </div>
 
       {!collapsed && (
-        <div className="max-h-56 overflow-y-auto overflow-x-auto bg-[#030712]">
+        <div className="max-h-[580px] overflow-y-auto overflow-x-auto bg-[#030712]">
           <table className="w-full text-left border-collapse text-xs select-none">
             <thead>
               <tr className="bg-[#060c1c] border-b border-[#12203a] text-[10px] font-mono uppercase tracking-wider text-slate-400 sticky top-0 z-10 shadow-sm">

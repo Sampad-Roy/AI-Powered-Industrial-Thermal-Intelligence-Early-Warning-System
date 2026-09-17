@@ -57,7 +57,7 @@ export default function SystemHealthView() {
   const isHealthy = apiHealth && apiHealth.status === 'ok' && apiHealth.model_loaded
 
   return (
-    <div className="flex-1 p-5 overflow-y-auto space-y-4 select-none">
+    <div className="flex-1 p-4 md:p-6 space-y-6 select-none bg-[#020611] w-full min-w-0">
       {/* Title Banner */}
       <div className="p-4 rounded-xl hud-panel flex flex-wrap items-center justify-between gap-4 shadow-xl">
         <div>
