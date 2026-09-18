@@ -205,7 +205,7 @@ export default function Sidebar() {
 
         {!collapsed && (
           <div className="mt-2.5 text-[10px] text-slate-400 text-center font-mono font-medium">
-            SUDARSHAN v1.0.0 • ISRO/NASA FIRMS
+            SUDARSHAN
           </div>
         )}
       </div>

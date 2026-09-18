@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#040916]/95 backdrop-blur-md border-b border-[#12203a] px-4 py-2 flex items-center justify-between gap-3 select-none shrink-0 z-30 shadow-[0_4px_24px_rgba(0,0,0,0.7)] relative">
-      {/* Brand & Mission Identifier (Clickable to Landing Page) */}
+      {/* Brand (Clickable to Landing Page) */}
       <div
         onClick={() => setActiveView('landing')}
         title="Return to Public Landing Page"
@@ -46,22 +46,12 @@ export default function Header() {
       >
         <img
           src="/Logo png.png"
-          alt="SUDARSHAN Official Logo"
-          className="h-10 w-auto object-contain shrink-0 drop-shadow-[0_0_14px_rgba(6,182,212,0.45)] group-hover:scale-105 transition-transform"
+          alt="SUDARSHAN"
+          className="h-9 w-auto object-contain shrink-0 drop-shadow-[0_0_14px_rgba(6,182,212,0.45)] group-hover:scale-105 transition-transform"
         />
-        <div>
-          <div className="flex items-center space-x-2">
-            <h1 className="font-heading font-extrabold text-base tracking-wider text-slate-100 flex items-center gap-1.5 group-hover:text-cyan-300 transition-colors">
-              SUDARSHAN
-            </h1>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/90 text-cyan-300 border border-cyan-500/60 uppercase tracking-widest font-bold shadow-[0_0_10px_rgba(6,182,212,0.25)]">
-              SIH26162
-            </span>
-          </div>
-          <p className="text-[11px] text-slate-400 font-medium tracking-wide">
-            AI-Powered Industrial Thermal Intelligence &amp; Early Warning System
-          </p>
-        </div>
+        <span className="font-heading font-extrabold text-base sm:text-lg tracking-wider text-slate-100 group-hover:text-cyan-300 transition-colors">
+          SUDARSHAN
+        </span>
       </div>
 
       {/* Subsystem Telemetry Badges */}

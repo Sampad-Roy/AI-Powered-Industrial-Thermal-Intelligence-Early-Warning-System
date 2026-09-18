@@ -29,6 +29,7 @@ import {
   Search,
   Sparkles,
   Info,
+  ShieldCheck,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 import { CLASS_COLORS } from '../../utils/constants'
@@ -144,6 +145,191 @@ export function getSafetyGuidance(alert) {
   return [
     'No emergency action required for baseline thermal observation.',
     'Continuous satellite monitoring remains active over the corridor.',
+  ]
+}
+
+// Simulated Stakeholder prototype status based on current event risk
+export function getResponseStakeholders(alert) {
+  if (!alert) return []
+  const sev = alert.severity?.level || 'LOW'
+
+  if (sev === 'CRITICAL') {
+    return [
+      {
+        name: 'Industry Management',
+        role: 'Facility Operations Head',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: Factory,
+        color: 'text-indigo-400',
+      },
+      {
+        name: 'Plant Safety Officer',
+        role: 'On-Site Incident Lead',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: ShieldCheck,
+        color: 'text-amber-400',
+      },
+      {
+        name: 'Fire & Emergency Services',
+        role: 'GIDC HAZMAT & Fire Unit',
+        status: 'Alert Prepared',
+        type: 'prepared',
+        icon: Siren,
+        color: 'text-rose-400',
+      },
+      {
+        name: 'Disaster Management',
+        role: 'District Emergency Command',
+        status: 'Alert Prepared',
+        type: 'prepared',
+        icon: ShieldAlert,
+        color: 'text-cyan-400',
+      },
+      {
+        name: 'Environmental / Compliance Team',
+        role: 'Regulatory Emission Cell',
+        status: 'Response Pending',
+        type: 'pending',
+        icon: FileText,
+        color: 'text-emerald-400',
+      },
+    ]
+  }
+
+  if (sev === 'HIGH') {
+    return [
+      {
+        name: 'Industry Management',
+        role: 'Facility Operations Head',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: Factory,
+        color: 'text-indigo-400',
+      },
+      {
+        name: 'Plant Safety Officer',
+        role: 'On-Site Safety Inspector',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: ShieldCheck,
+        color: 'text-amber-400',
+      },
+      {
+        name: 'Fire & Emergency Services',
+        role: 'Regional Fire Station',
+        status: 'Alert Prepared',
+        type: 'prepared',
+        icon: Siren,
+        color: 'text-rose-400',
+      },
+      {
+        name: 'Disaster Management',
+        role: 'District Surveillance Cell',
+        status: 'Response Pending',
+        type: 'pending',
+        icon: ShieldAlert,
+        color: 'text-cyan-400',
+      },
+      {
+        name: 'Environmental / Compliance Team',
+        role: 'Emission Inspection Bureau',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: FileText,
+        color: 'text-emerald-400',
+      },
+    ]
+  }
+
+  if (sev === 'MODERATE') {
+    return [
+      {
+        name: 'Industry Management',
+        role: 'Facility Operations Desk',
+        status: 'Alert Prepared',
+        type: 'prepared',
+        icon: Factory,
+        color: 'text-indigo-400',
+      },
+      {
+        name: 'Plant Safety Officer',
+        role: 'Plant Safety Desk',
+        status: 'Notification Queued',
+        type: 'queued',
+        icon: ShieldCheck,
+        color: 'text-amber-400',
+      },
+      {
+        name: 'Fire & Emergency Services',
+        role: 'Industrial Fire Unit',
+        status: 'Response Pending',
+        type: 'pending',
+        icon: Siren,
+        color: 'text-rose-400',
+      },
+      {
+        name: 'Disaster Management',
+        role: 'Regional Control Bureau',
+        status: 'Response Pending',
+        type: 'pending',
+        icon: ShieldAlert,
+        color: 'text-cyan-400',
+      },
+      {
+        name: 'Environmental / Compliance Team',
+        role: 'Thermal Monitoring Desk',
+        status: 'Alert Prepared',
+        type: 'prepared',
+        icon: FileText,
+        color: 'text-emerald-400',
+      },
+    ]
+  }
+
+  // LOW
+  return [
+    {
+      name: 'Industry Management',
+      role: 'Facility Telemetry Log',
+      status: 'Alert Prepared',
+      type: 'prepared',
+      icon: Factory,
+      color: 'text-indigo-400',
+    },
+    {
+      name: 'Plant Safety Officer',
+      role: 'Safety Inspection Archive',
+      status: 'Alert Prepared',
+      type: 'prepared',
+      icon: ShieldCheck,
+      color: 'text-amber-400',
+    },
+    {
+      name: 'Fire & Emergency Services',
+      role: 'Municipal Fire Watch',
+      status: 'Response Pending',
+      type: 'pending',
+      icon: Siren,
+      color: 'text-rose-400',
+    },
+    {
+      name: 'Disaster Management',
+      role: 'Civil Protection Registry',
+      status: 'Response Pending',
+      type: 'pending',
+      icon: ShieldAlert,
+      color: 'text-cyan-400',
+    },
+    {
+      name: 'Environmental / Compliance Team',
+      role: 'Routine Baseline Archive',
+      status: 'Response Pending',
+      type: 'pending',
+      icon: FileText,
+      color: 'text-emerald-400',
+    },
   ]
 }
 
@@ -740,6 +926,71 @@ export default function AlertResponseView() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* 6. "RESPONSE & NOTIFICATION" Section */}
+              <div className="p-4.5 rounded-xl bg-gradient-to-r from-[#07142d] via-[#050f22] to-[#030a17] border border-cyan-500/30 shadow-lg space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-cyan-300 font-heading font-extrabold text-xs md:text-sm uppercase tracking-wider">
+                    <Send className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <span>RESPONSE &amp; NOTIFICATION</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-cyan-950/90 text-cyan-300 border border-cyan-700/60 tracking-wider">
+                    DEMO / SIMULATED RESPONSE STATUS
+                  </span>
+                </div>
+
+                <p className="text-[11px] font-mono text-slate-400 leading-tight">
+                  Simulated prototype notification routing for #{activeAlert.event_id} ({activeAlert.severity.level} Risk). No live external SMS or email dispatched in demonstrator mode.
+                </p>
+
+                {/* Stakeholder Prototype List */}
+                <div className="space-y-2 pt-1">
+                  {getResponseStakeholders(activeAlert).map((item, idx) => {
+                    const Icon = item.icon
+                    return (
+                      <div
+                        key={idx}
+                        className="p-2.5 rounded-lg bg-[#030816]/80 border border-slate-800/80 flex items-center justify-between gap-2.5 transition-colors hover:border-slate-700/80"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="p-1.5 rounded-md bg-[#08152e] border border-slate-800 shrink-0">
+                            <Icon className={`w-3.5 h-3.5 ${item.color}`} />
+                          </div>
+                          <div className="min-w-0">
+                            <span className="font-heading font-semibold text-xs text-slate-100 block truncate">
+                              {item.name}
+                            </span>
+                            <span className="text-[10.5px] font-mono text-slate-400 block truncate">
+                              {item.role}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="shrink-0">
+                          {item.type === 'prepared' && (
+                            <span className="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 flex items-center gap-1 font-mono text-[10.5px] font-bold shadow-xs">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                              <span>✓ Alert Prepared</span>
+                            </span>
+                          )}
+                          {item.type === 'queued' && (
+                            <span className="px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 flex items-center gap-1 font-mono text-[10.5px] font-bold shadow-xs">
+                              <Send className="w-3 h-3 text-cyan-400" />
+                              <span>✓ Notification Queued</span>
+                            </span>
+                          )}
+                          {item.type === 'pending' && (
+                            <span className="px-2 py-0.5 rounded bg-slate-900/90 text-slate-400 border border-slate-700/70 flex items-center gap-1 font-mono text-[10.5px] font-medium">
+                              <span className="w-1.5 h-1.5 rounded-full border border-slate-500 inline-block" />
+                              <span>○ Response Pending</span>
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
 
               {/* 5. Primary Action: "Explore Technical Reason" & GIS Map */}
