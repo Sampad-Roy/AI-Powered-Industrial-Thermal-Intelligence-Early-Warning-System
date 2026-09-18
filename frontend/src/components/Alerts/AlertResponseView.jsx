@@ -28,6 +28,7 @@ import {
   RefreshCw,
   Search,
   Sparkles,
+  Info,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 import { CLASS_COLORS } from '../../utils/constants'
@@ -37,6 +38,7 @@ import {
   formatDistance,
   formatCoords,
   formatTempK,
+  formatTimestamp,
 } from '../../utils/formatters'
 
 // Severity mapping derived strictly for presentation from existing risk score (0-100)
@@ -98,23 +100,71 @@ export function getAlertSeverity(riskScore) {
   }
 }
 
+// Human-readable situational explanation for public view
+export function getWhatHappenedExplanation(alert) {
+  if (!alert) return ''
+  const cls = alert.predicted_class
+  if (cls === 'Industrial Fire') {
+    return 'Satellite Earth Observation sensors detected an acute, high-radiance thermal anomaly adjacent to an industrial installation, indicating an active combustion or structural fire event requiring urgent response.'
+  }
+  if (cls === 'Gas Flare') {
+    return 'Thermal infrared sensors recorded a localized high-temperature point source characteristic of industrial flare stack emissions and continuous or intermittent gas combustion.'
+  }
+  if (cls === 'Persistent Industrial Heat') {
+    return 'Recurrent satellite passes registered steady, elevated thermal signatures consistent with high-temperature industrial operations such as boilers, furnaces, or kilns within registered facility boundaries.'
+  }
+  return 'A baseline thermal reading was detected during the satellite overpass, corresponding to routine low-risk or non-industrial thermal activity.'
+}
+
+// Actionable safety guidance for public and on-ground awareness
+export function getSafetyGuidance(alert) {
+  if (!alert) return []
+  const cls = alert.predicted_class
+  if (cls === 'Industrial Fire') {
+    return [
+      'Maintain a safe buffer distance of at least 500 meters from the identified industrial sector.',
+      'Keep windows and ventilation systems closed if downwind to avoid inhaling smoke or particulate fumes.',
+      'Yield right of way on industrial access roads for fire rescue and emergency response vehicles.',
+    ]
+  }
+  if (cls === 'Gas Flare') {
+    return [
+      'Industrial flaring is generally controlled; no immediate evacuation is required.',
+      'Facility safety officers should verify combustion efficiency and steam-assist ratios.',
+      'Monitor local environmental air quality reports if residing or working in the immediate vicinity.',
+    ]
+  }
+  if (cls === 'Persistent Industrial Heat') {
+    return [
+      'Standard regulated thermal operations; no protective public evacuation needed.',
+      'Ensure registered plant thermal insulation and emission compliance standards are maintained.',
+      'Routine environmental monitoring remains active to detect uncharacteristic heat spikes.',
+    ]
+  }
+  return [
+    'No emergency action required for baseline thermal observation.',
+    'Continuous satellite monitoring remains active over the corridor.',
+  ]
+}
+
 export default function AlertResponseView() {
   const { events, locations, getLocation, selectedEvent, setSelectedEvent, focusEvent, setActiveView } = useApp()
   const [filterLevel, setFilterLevel] = useState('ALL') // 'ALL' | 'CRITICAL' | 'HIGH' | 'MODERATE' | 'LOW'
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedAlertId, setSelectedAlertId] = useState(null)
-  const [checklist, setChecklist] = useState({
-    verifySatellitePass: true,
-    notifyDisasterCell: false,
-    dispatchGroundRecon: false,
-    isolateHazardZone: false,
-    logInStateRegistry: false,
-  })
+
+  // Category hierarchy mapping for strict sorting requirement
+  const CATEGORY_ORDER = {
+    'Industrial Fire': 1,
+    'Gas Flare': 2,
+    'Persistent Industrial Heat': 3,
+    'Other Thermal Source': 4,
+  }
 
   // Enriched alert list with derived severity from existing real data
   const enrichedAlerts = useMemo(() => {
     if (!events || events.length === 0) return []
-    return events.map((ev) => {
+    const mapped = events.map((ev) => {
       const score = ev.final_risk_score !== undefined ? ev.final_risk_score : ev.risk_score || 0
       const severity = getAlertSeverity(score)
       const loc = getLocation(ev.event_id)
@@ -124,6 +174,17 @@ export default function AlertResponseView() {
         severity,
         displayLocation: loc,
       }
+    })
+
+    // 1. Industrial Fire -> 2. Gas Flare -> 3. Persistent Industrial Heat -> 4. Other Thermal Source
+    // Within each category, sort by Risk Score descending
+    return mapped.sort((a, b) => {
+      const catA = CATEGORY_ORDER[a.predicted_class] || 99
+      const catB = CATEGORY_ORDER[b.predicted_class] || 99
+      if (catA !== catB) {
+        return catA - catB
+      }
+      return (b.derivedScore || 0) - (a.derivedScore || 0)
     })
   }, [events, locations, getLocation])
 
@@ -170,9 +231,6 @@ export default function AlertResponseView() {
     }
   }, [enrichedAlerts])
 
-  const toggleChecklist = (key) => {
-    setChecklist((prev) => ({ ...prev, [key]: !prev[key] }))
-  }
 
   const handleSelectAlert = (alert) => {
     setSelectedAlertId(alert.event_id)
@@ -428,8 +486,9 @@ export default function AlertResponseView() {
                       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-cyan-400 shadow-[0_0_10px_#06b6d4]" />
                     )}
 
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                      <div className="flex items-center gap-2.5">
+                    {/* Top Row: Event Type, ID & Risk Level Badge with Risk Score /100 */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                      <div className="flex items-center gap-2.5 flex-wrap">
                         <span
                           className="w-3 h-3 rounded-full shadow-[0_0_6px_currentColor] shrink-0"
                           style={{ backgroundColor: colorObj.bg, color: colorObj.bg }}
@@ -442,20 +501,25 @@ export default function AlertResponseView() {
                         </span>
                       </div>
 
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-mono font-extrabold uppercase self-start sm:self-auto ${sev.badgeBg} ${sev.text} border ${sev.badgeBorder} shadow-sm`}
-                      >
-                        {sev.level} • {alert.derivedScore}/100
-                      </span>
+                      <div className="flex items-center gap-2 self-start sm:self-auto">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-mono font-extrabold uppercase ${sev.badgeBg} ${sev.text} border ${sev.badgeBorder} shadow-sm`}
+                        >
+                          {sev.level} • {alert.derivedScore}/100
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Location */}
-                    <div className="text-xs md:text-sm text-slate-300 font-sans flex items-center gap-2 mb-3">
-                      <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
-                      <span className="truncate">{alert.displayLocation}</span>
-                      <span className="text-slate-400 font-mono text-xs hidden sm:inline ml-auto">
-                        {formatCoords(alert.latitude, alert.longitude)}
-                      </span>
+                    {/* Location and Date/Time Row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300 mb-3">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
+                        <span className="truncate font-sans font-medium">{alert.displayLocation}</span>
+                      </div>
+                      <div className="flex items-center gap-2 sm:justify-end text-slate-300 font-mono text-xs">
+                        <Clock className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                        <span>{alert.acq_datetime ? formatTimestamp(alert.acq_datetime) : 'Recent Satellite Pass'}</span>
+                      </div>
                     </div>
 
                     {/* Metadata Grid */}
@@ -473,8 +537,8 @@ export default function AlertResponseView() {
                         <b className="text-slate-200 text-xs sm:text-sm font-bold">{formatDistance(alert.distance_to_industry)}</b>
                       </div>
                       <div className="p-2 rounded-lg bg-[#030816]/70 border border-slate-800/60">
-                        <span className="text-slate-400 text-[11px] block uppercase">Satellite Pass</span>
-                        <b className="text-slate-200 text-xs sm:text-sm font-bold">{alert.daynight === 1 ? 'Day (1)' : 'Night (0)'}</b>
+                        <span className="text-slate-400 text-[11px] block uppercase">Coordinates</span>
+                        <b className="text-slate-200 text-xs sm:text-sm font-bold truncate block">{formatCoords(alert.latitude, alert.longitude)}</b>
                       </div>
                     </div>
                   </div>
@@ -485,306 +549,229 @@ export default function AlertResponseView() {
         </div>
 
         {/* --------------------------------------------------------------------- */}
-        {/* RIGHT COLUMN: ALERT DETAILS & RESPONSE SOPs (~40% WIDTH) */}
+        {/* RIGHT COLUMN: SELECTED ALERT / PUBLIC INCIDENT DOSSIER (~40% WIDTH) */}
         {/* --------------------------------------------------------------------- */}
         <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-4">
           {activeAlert ? (
-            <>
-              {/* SECTION 4: ALERT DETAILS DOSSIER */}
-              <div className="p-5 rounded-2xl hud-panel space-y-4 shadow-2xl">
-                {/* Header with Title & Action */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-800/90">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-mono font-bold uppercase ${activeAlert.severity.badgeBg} ${activeAlert.severity.text} border ${activeAlert.severity.badgeBorder} ${activeAlert.severity.glow}`}
-                      >
-                        SEVERITY: {activeAlert.severity.level} ({activeAlert.derivedScore}/100)
-                      </span>
-                      <span className="text-xs font-mono text-cyan-400 font-bold">
-                        {activeAlert.event_id}
-                      </span>
-                    </div>
-                    <h3 className="font-heading font-extrabold text-lg md:text-xl text-slate-100 flex items-center gap-2.5 mt-1.5 tracking-wide">
-                      <span
-                        className="w-3.5 h-3.5 rounded-full shadow-[0_0_8px_currentColor]"
-                        style={{ backgroundColor: classCfg?.bg, color: classCfg?.bg }}
-                      />
-                      {activeAlert.predicted_class}
-                    </h3>
+            <div className="p-6 rounded-2xl hud-panel space-y-5 shadow-2xl border border-slate-800/90 bg-gradient-to-b from-[#08152e] via-[#050e21] to-[#030814]">
+              {/* 1. Header: Event Type, ID, Risk Level & Score */}
+              <div className="space-y-3 pb-4 border-b border-slate-800/80">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full shadow-[0_0_8px_currentColor] shrink-0"
+                      style={{ backgroundColor: classCfg?.bg, color: classCfg?.bg }}
+                    />
+                    <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
+                      INCIDENT REPORT #{activeAlert.event_id}
+                    </span>
                   </div>
 
-                  <button
-                    onClick={() => handleLocateOnMap(activeAlert)}
-                    className="btn-primary-glow px-4 py-2 rounded-xl text-xs font-mono font-bold flex items-center gap-2 shadow-lg cursor-pointer"
+                  <span
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold uppercase ${activeAlert.severity.badgeBg} ${activeAlert.severity.text} border ${activeAlert.severity.badgeBorder} ${activeAlert.severity.glow}`}
                   >
-                    <Compass className="w-4 h-4" />
-                    <span>LOCATE ON GIS MAP</span>
-                  </button>
-                </div>
-
-                {/* Location Banner */}
-                <div className="p-3 rounded-xl bg-[#040916] border border-slate-800/90 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono shadow-inner">
-                  <div className="flex items-center gap-2 text-slate-200">
-                    <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span className="font-sans font-medium">{activeAlert.displayLocation}</span>
-                  </div>
-                  <span className="text-cyan-400/90 text-xs font-semibold">
-                    {formatCoords(activeAlert.latitude, activeAlert.longitude)}
+                    {activeAlert.severity.level} RISK • {activeAlert.derivedScore}/100
                   </span>
                 </div>
 
-                {/* 6 Real Telemetry Cards */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-mono">
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">Fire Radiative Power</span>
-                    <b className="text-amber-400 text-sm md:text-base font-bold">{formatFRP(activeAlert.frp)}</b>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">AI Model Confidence</span>
-                    <b className="text-cyan-300 text-sm md:text-base font-bold">{formatPercent(activeAlert.confidence)}</b>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">Distance to Factory</span>
-                    <b className="text-slate-200 text-sm md:text-base font-bold">{formatDistance(activeAlert.distance_to_industry)}</b>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">TI4 MWIR Temperature</span>
-                    <b className="text-rose-400 text-sm md:text-base font-bold">{formatTempK(activeAlert.bright_ti4)}</b>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">Combustion ΔT</span>
-                    <b className="text-orange-400 text-sm md:text-base font-bold">{activeAlert.delta_t ? `${Number(activeAlert.delta_t).toFixed(1)} K` : '—'}</b>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="text-slate-400 text-[11px] block uppercase">Cluster Persistence</span>
-                    <b className="text-blue-300 text-sm md:text-base font-bold">{activeAlert.cluster_event_count || 1} hits ({activeAlert.cluster_span_days || 0}d)</b>
-                  </div>
-                </div>
-
-                {/* 5-Factor Risk Decomposition Progress Meters */}
-                <div className="p-3.5 rounded-xl bg-[#040916]/90 border border-slate-800/80 space-y-2 font-mono text-xs">
-                  <div className="flex justify-between items-center text-xs text-slate-400 uppercase font-bold tracking-wider">
-                    <span>5-FACTOR WEIGHTED RISK BREAKDOWN</span>
-                    <span className="text-cyan-300 font-bold">{activeAlert.derivedScore} / 100</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div>
-                      <div className="flex justify-between text-slate-300 mb-1">
-                        <span>Thermal Severity (25%):</span>
-                        <b className="text-amber-400">{activeAlert.thermal_score || 0}</b>
-                      </div>
-                      <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden">
-                        <div className="bg-amber-400 h-full rounded-full" style={{ width: `${activeAlert.thermal_score || 0}%` }} />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex justify-between text-slate-300 mb-1">
-                        <span>Industrial Proximity (25%):</span>
-                        <b className="text-cyan-300">{activeAlert.industrial_proximity_score || 0}</b>
-                      </div>
-                      <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden">
-                        <div className="bg-cyan-400 h-full rounded-full" style={{ width: `${activeAlert.industrial_proximity_score || 0}%` }} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* SECTION 5: RECOMMENDED RESPONSE (TACTICAL DISASTER MANAGEMENT SOPs) */}
-              <div className="p-5 rounded-2xl hud-panel space-y-3.5 shadow-2xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800/90">
-                  <div className="flex items-center gap-2.5">
-                    <Zap className="w-4 h-4 text-amber-400" />
-                    <h3 className="font-heading font-bold text-sm text-slate-100 uppercase tracking-wider">
-                      RECOMMENDED RESPONSE PROTOCOL &amp; ACTION DIRECTIVES
-                    </h3>
-                  </div>
-                  <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-amber-950/90 text-amber-300 border border-amber-800 font-bold">
-                    DISASTER SOP ENGINE
-                  </span>
-                </div>
-
-                {/* SOP Strategy Directive Card */}
-                <div
-                  className="p-4 rounded-xl border text-xs space-y-2 shadow-inner"
-                  style={{
-                    backgroundColor: activeAlert.severity.bg,
-                    borderColor: activeAlert.severity.border,
-                  }}
-                >
-                  <div className="flex items-center justify-between flex-wrap gap-1">
-                    <span className="font-heading font-extrabold text-xs md:text-sm uppercase" style={{ color: activeAlert.severity.color }}>
-                      {activeAlert.severity.sopTitle}
-                    </span>
-                    <span className="text-xs font-mono px-2 py-0.5 rounded bg-black/60 text-slate-200 border border-slate-700 font-bold">
-                      PRIORITY {activeAlert.severity.level}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                    {activeAlert.predicted_class === 'Industrial Fire' &&
-                      'Immediate Level-1 GIDC Industrial Fire & Hazmat dispatch recommended. Activate thermal isolation perimeter (300m radius), alert nearby chemical storage facilities, and establish real-time air-quality monitoring.'}
-                    {activeAlert.predicted_class === 'Gas Flare' &&
-                      'Continuous flaring signature verified. Trigger automatic Gujarat Pollution Control Board (GPCB) emission volumetric audit. Verify flare tip steam-assist ratio and hydrocarbon combustion efficiency.'}
-                    {activeAlert.predicted_class === 'Persistent Industrial Heat' &&
-                      'Chronic industrial thermal signature (boiler/smelter). Initiate energy efficiency compliance inspection and cross-reference registered plant thermal emission limits.'}
-                    {activeAlert.predicted_class === 'Other Thermal Source' &&
-                      'Non-industrial baseline thermal anomaly. Log satellite pass coordinates into rural monitoring registry; no emergency team deployment required.'}
+                <div>
+                  <h2 className="font-heading font-extrabold text-xl md:text-2xl text-slate-100 tracking-wide">
+                    {activeAlert.predicted_class}
+                  </h2>
+                  <p className="text-xs text-slate-400 font-mono mt-1">
+                    {activeAlert.severity.desc}
                   </p>
                 </div>
+              </div>
 
-                {/* Interactive Tactical Checklist */}
-                <div className="p-3.5 rounded-xl bg-[#040916]/95 border border-slate-800/90 space-y-2.5 text-xs font-mono">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-                    <span>DISASTER DISPATCH READINESS CHECKLIST</span>
-                    <span className="text-cyan-400 font-bold">[OPERATIONAL READY]</span>
+              {/* 2. Key Incident Details: Location & Detection Date/Time */}
+              <div className="space-y-3 p-4 rounded-xl bg-[#030713]/90 border border-slate-800/90 text-xs">
+                {/* Location */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-rose-950/60 border border-rose-800/40 text-rose-400 shrink-0 mt-0.5">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-0.5 min-w-0">
+                    <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+                      Incident Location
+                    </span>
+                    <span className="font-sans font-semibold text-slate-200 text-sm block truncate">
+                      {activeAlert.displayLocation}
+                    </span>
+                    <span className="text-slate-400 font-mono text-[11px] block">
+                      Coordinates: {formatCoords(activeAlert.latitude, activeAlert.longitude)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Detection Date & Time */}
+                <div className="border-t border-slate-800/60 pt-3 flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-cyan-950/60 border border-cyan-800/40 text-cyan-400 shrink-0 mt-0.5">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-0.5 min-w-0">
+                    <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+                      Detection Date &amp; Time
+                    </span>
+                    <span className="font-mono font-bold text-slate-200 text-xs block">
+                      {activeAlert.acq_datetime ? formatTimestamp(activeAlert.acq_datetime) : 'Recent Satellite Pass (VIIRS)'}
+                    </span>
+                    <span className="text-slate-400 font-mono text-[11px] block">
+                      Satellite Overpass: {activeAlert.daynight === 1 ? 'Daytime Overpass' : 'Nighttime Overpass'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Risk Assessment Section */}
+              <div className="space-y-3.5 p-4 rounded-xl bg-[#040c1e] border border-slate-800/80 shadow-inner">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-rose-300 font-heading font-bold text-xs uppercase tracking-wider">
+                    <AlertTriangle className="w-4 h-4 text-rose-400" />
+                    <span>Risk Assessment</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 font-mono text-xs">
+                    <span className="text-slate-400">Score:</span>
+                    <span className="font-extrabold text-slate-100">{activeAlert.derivedScore}/100</span>
+                    <span
+                      className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${activeAlert.severity.badgeBg} ${activeAlert.severity.text} border ${activeAlert.severity.badgeBorder}`}
+                    >
+                      {activeAlert.severity.level}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 5 Compact Progress Bars */}
+                <div className="space-y-2.5 font-mono text-xs pt-1">
+                  {/* 1. Thermal Severity */}
+                  <div>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="text-slate-300">Thermal Severity</span>
+                      <span className="text-amber-400 font-bold">{activeAlert.thermal_score ?? 0} / 100</span>
+                    </div>
+                    <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
+                      <div
+                        className="bg-amber-400 h-full rounded-full transition-all duration-300 shadow-[0_0_4px_rgba(251,191,36,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, activeAlert.thermal_score ?? 0))}%` }}
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2 text-xs">
-                    <div
-                      onClick={() => toggleChecklist('verifySatellitePass')}
-                      className="flex items-center gap-2.5 p-2 rounded-lg bg-[#071126] hover:bg-[#0b1b3d] cursor-pointer transition-colors"
-                    >
-                      {checklist.verifySatellitePass ? (
-                        <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                      ) : (
-                        <Square className="w-4 h-4 text-slate-500 shrink-0" />
-                      )}
-                      <span className={checklist.verifySatellitePass ? 'text-slate-200 line-through opacity-75' : 'text-slate-200'}>
-                        1. Verify VIIRS Night/Day Satellite Overpass Telemetry (ΔT confirmed)
-                      </span>
+                  {/* 2. Industrial Proximity */}
+                  <div>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="text-slate-300">Industrial Proximity</span>
+                      <span className="text-cyan-300 font-bold">{activeAlert.industrial_proximity_score ?? 0} / 100</span>
                     </div>
-
-                    <div
-                      onClick={() => toggleChecklist('notifyDisasterCell')}
-                      className="flex items-center gap-2.5 p-2 rounded-lg bg-[#071126] hover:bg-[#0b1b3d] cursor-pointer transition-colors"
-                    >
-                      {checklist.notifyDisasterCell ? (
-                        <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                      ) : (
-                        <Square className="w-4 h-4 text-slate-500 shrink-0" />
-                      )}
-                      <span className={checklist.notifyDisasterCell ? 'text-slate-200 line-through opacity-75' : 'text-slate-200'}>
-                        2. Transmit Alert Dossier to GIDC Incident Management Cell
-                      </span>
+                    <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
+                      <div
+                        className="bg-cyan-400 h-full rounded-full transition-all duration-300 shadow-[0_0_4px_rgba(6,182,212,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, activeAlert.industrial_proximity_score ?? 0))}%` }}
+                      />
                     </div>
+                  </div>
 
-                    <div
-                      onClick={() => toggleChecklist('dispatchGroundRecon')}
-                      className="flex items-center gap-2.5 p-2 rounded-lg bg-[#071126] hover:bg-[#0b1b3d] cursor-pointer transition-colors"
-                    >
-                      {checklist.dispatchGroundRecon ? (
-                        <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                      ) : (
-                        <Square className="w-4 h-4 text-slate-500 shrink-0" />
-                      )}
-                      <span className={checklist.dispatchGroundRecon ? 'text-slate-200 line-through opacity-75' : 'text-slate-200'}>
-                        3. Issue Quick Response Vehicle (QRV) Reconnaissance Directive
-                      </span>
+                  {/* 3. ML Hazard */}
+                  <div>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="text-slate-300">ML Hazard</span>
+                      <span className="text-rose-400 font-bold">{activeAlert.ml_confidence_score ?? 0} / 100</span>
                     </div>
-
-                    <div
-                      onClick={() => toggleChecklist('isolateHazardZone')}
-                      className="flex items-center gap-2.5 p-2 rounded-lg bg-[#071126] hover:bg-[#0b1b3d] cursor-pointer transition-colors"
-                    >
-                      {checklist.isolateHazardZone ? (
-                        <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                      ) : (
-                        <Square className="w-4 h-4 text-slate-500 shrink-0" />
-                      )}
-                      <span className={checklist.isolateHazardZone ? 'text-slate-200 line-through opacity-75' : 'text-slate-200'}>
-                        4. Notify Industrial Safety Officer (ISO) of Registered Polygon Boundary
-                      </span>
+                    <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
+                      <div
+                        className="bg-rose-400 h-full rounded-full transition-all duration-300 shadow-[0_0_4px_rgba(244,63,94,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, activeAlert.ml_confidence_score ?? 0))}%` }}
+                      />
                     </div>
+                  </div>
 
-                    <div
-                      onClick={() => toggleChecklist('logInStateRegistry')}
-                      className="flex items-center gap-2.5 p-2 rounded-lg bg-[#071126] hover:bg-[#0b1b3d] cursor-pointer transition-colors"
-                    >
-                      {checklist.logInStateRegistry ? (
-                        <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                      ) : (
-                        <Square className="w-4 h-4 text-slate-500 shrink-0" />
-                      )}
-                      <span className={checklist.logInStateRegistry ? 'text-slate-200 line-through opacity-75' : 'text-slate-200'}>
-                        5. Complete Incident Audit Registry Entry
-                      </span>
+                  {/* 4. Temporal Persistence */}
+                  <div>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="text-slate-300">Temporal Persistence</span>
+                      <span className="text-blue-400 font-bold">{activeAlert.persistence_score ?? 0} / 100</span>
+                    </div>
+                    <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
+                      <div
+                        className="bg-blue-400 h-full rounded-full transition-all duration-300 shadow-[0_0_4px_rgba(96,165,250,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, activeAlert.persistence_score ?? 0))}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* 5. Recurrence Pattern */}
+                  <div>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="text-slate-300">Recurrence Pattern</span>
+                      <span className="text-indigo-300 font-bold">{activeAlert.recurrence_score ?? 0} / 100</span>
+                    </div>
+                    <div className="w-full bg-[#0a1428] rounded-full h-1.5 overflow-hidden border border-slate-800/40">
+                      <div
+                        className="bg-indigo-400 h-full rounded-full transition-all duration-300 shadow-[0_0_4px_rgba(129,140,248,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, activeAlert.recurrence_score ?? 0))}%` }}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* SECTION 6: ALERT HISTORY & AUDIT TRAIL */}
-              <div className="p-5 rounded-2xl hud-panel space-y-3.5 shadow-2xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800/90">
-                  <div className="flex items-center gap-2.5">
-                    <History className="w-4 h-4 text-cyan-400" />
-                    <h3 className="font-heading font-bold text-sm text-slate-100 uppercase tracking-wider">
-                      INCIDENT AUDIT LOG &amp; ALERT TIMELINE
-                    </h3>
-                  </div>
-                  <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">
-                    EVENT LIFECYCLE
-                  </span>
+              {/* 4. "What Happened?" Explanation */}
+              <div className="p-4.5 rounded-xl bg-gradient-to-r from-[#061530] via-[#041026] to-[#040c1e] border border-cyan-500/30 shadow-lg space-y-2.5">
+                <div className="flex items-center gap-2 text-cyan-300 font-heading font-extrabold text-xs md:text-sm uppercase tracking-wider">
+                  <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <span>WHAT HAPPENED?</span>
                 </div>
-
-                <div className="space-y-2.5 text-xs font-mono">
-                  <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-cyan-300 font-bold text-xs shrink-0">
-                      T-00:00
-                    </span>
-                    <div>
-                      <b className="text-slate-200 text-xs">VIIRS Thermal Anomaly Registered</b>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        Latitude {activeAlert.latitude?.toFixed(4)}, Longitude {activeAlert.longitude?.toFixed(4)} • FRP {formatFRP(activeAlert.frp)}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 font-bold text-xs border border-indigo-800 shrink-0">
-                      T+00:02
-                    </span>
-                    <div>
-                      <b className="text-slate-200 text-xs">XGBoost Multiclass ML &amp; TreeSHAP Analysis</b>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        Classified as <span className="text-cyan-300 font-bold">{activeAlert.predicted_class}</span> with {formatPercent(activeAlert.confidence)} confidence
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="px-2 py-0.5 rounded bg-rose-950 text-rose-300 font-bold text-xs border border-rose-800 shrink-0">
-                      T+00:05
-                    </span>
-                    <div>
-                      <b className="text-slate-200 text-xs">5-Factor Risk Engine Scored &amp; Severity Evaluated</b>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        Assigned risk score <span className="text-rose-400 font-bold">{activeAlert.derivedScore}/100</span> ({activeAlert.severity.level} Priority)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#040916]/90 border border-slate-800/80">
-                    <span className="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-xs border border-amber-800 shrink-0">
-                      T+00:08
-                    </span>
-                    <div>
-                      <b className="text-slate-200 text-xs">Disaster Management Action Plan Generated</b>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        SOP protocol <span className="text-amber-300 font-bold">{activeAlert.severity.sopTitle}</span> queued in Command Center
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-sm md:text-[14.5px] text-slate-200 font-sans leading-relaxed font-normal">
+                  {getWhatHappenedExplanation(activeAlert)}
+                </p>
               </div>
-            </>
+
+              {/* 5. "What You Should Do" Safety Guidance */}
+              <div className="p-4.5 rounded-xl bg-gradient-to-r from-[#190e06] via-[#120a05] to-[#040c1e] border border-amber-500/30 shadow-lg space-y-3">
+                <div className="flex items-center gap-2 text-amber-300 font-heading font-extrabold text-xs md:text-sm uppercase tracking-wider">
+                  <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>WHAT YOU SHOULD DO</span>
+                </div>
+                <ul className="space-y-2.5 text-sm md:text-[14px] text-slate-200 font-sans">
+                  {getSafetyGuidance(activeAlert).map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0 shadow-[0_0_6px_#f59e0b]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 5. Primary Action: "Explore Technical Reason" & GIS Map */}
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => {
+                    setSelectedEvent(activeAlert)
+                    setActiveView('investigation')
+                  }}
+                  className="flex-1 btn-primary-glow py-3 px-4 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg tracking-wide"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>Explore Technical Reason</span>
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </button>
+
+                <button
+                  onClick={() => handleLocateOnMap(activeAlert)}
+                  className="px-4 py-3 rounded-xl bg-[#071329] hover:bg-[#0c1f44] border border-slate-700 hover:border-cyan-500/50 text-slate-200 text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  title="View position on interactive GIS map"
+                >
+                  <Compass className="w-4 h-4 text-cyan-400" />
+                  <span>GIS Map</span>
+                </button>
+              </div>
+            </div>
           ) : (
             <div className="p-12 rounded-2xl hud-panel text-center text-slate-400 space-y-2">
               <ShieldAlert className="w-10 h-10 text-slate-500 mx-auto" />
               <h4 className="font-heading font-semibold text-slate-200 text-sm">Select an Alert</h4>
               <p className="text-xs font-mono text-slate-400">
-                Choose an incident from the Active Alerts list to inspect telemetry and recommended response SOPs.
+                Choose an incident from the Active Alerts list to view incident details, situational explanation, and safety guidance.
               </p>
             </div>
           )}
