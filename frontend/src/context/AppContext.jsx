@@ -221,11 +221,18 @@ export function AppProvider({ children }) {
 
   // Center map on event
   const focusEvent = (event) => {
+    if (!event) return
     setSelectedEvent(event)
-    if (mapRef && event && event.latitude && event.longitude) {
-      mapRef.flyTo([event.latitude, event.longitude], 14, {
-        duration: 1.2,
-      })
+    const lat = Number(event.latitude)
+    const lng = Number(event.longitude)
+    if (mapRef && !isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
+      try {
+        mapRef.flyTo([lat, lng], 14, {
+          duration: 1.2,
+        })
+      } catch (err) {
+        console.warn('Map flyTo warning:', err)
+      }
     }
   }
 

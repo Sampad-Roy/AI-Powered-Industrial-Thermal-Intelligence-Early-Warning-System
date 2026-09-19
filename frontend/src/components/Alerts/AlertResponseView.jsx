@@ -424,7 +424,13 @@ export default function AlertResponseView() {
   }
 
   const handleLocateOnMap = (alert) => {
+    if (!alert) return
+    setSelectedAlertId(alert.event_id)
+    setSelectedEvent(alert)
     focusEvent(alert)
+    if (typeof window !== 'undefined' && window.location.pathname !== '/dashboard') {
+      window.history.pushState({}, '', '/dashboard')
+    }
     setActiveView('dashboard')
   }
 
@@ -997,10 +1003,17 @@ export default function AlertResponseView() {
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => {
-                    setSelectedEvent(activeAlert)
+                    if (activeAlert) {
+                      setSelectedAlertId(activeAlert.event_id)
+                      setSelectedEvent(activeAlert)
+                    }
+                    if (typeof window !== 'undefined' && window.location.pathname !== '/investigation') {
+                      window.history.pushState({}, '', '/investigation')
+                    }
                     setActiveView('investigation')
                   }}
-                  className="flex-1 btn-primary-glow py-3 px-4 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg tracking-wide"
+                  className="flex-1 btn-primary-glow py-3 px-4 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg tracking-wide hover:brightness-110 transition-all"
+                  title="Deep-dive into TreeSHAP feature attributions and ML rationale"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Explore Technical Reason</span>
@@ -1009,7 +1022,7 @@ export default function AlertResponseView() {
 
                 <button
                   onClick={() => handleLocateOnMap(activeAlert)}
-                  className="px-4 py-3 rounded-xl bg-[#071329] hover:bg-[#0c1f44] border border-slate-700 hover:border-cyan-500/50 text-slate-200 text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="px-5 py-3 rounded-xl bg-[#071329] hover:bg-[#0c1f44] border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:shadow-cyan-950/40"
                   title="View position on interactive GIS map"
                 >
                   <Compass className="w-4 h-4 text-cyan-400" />

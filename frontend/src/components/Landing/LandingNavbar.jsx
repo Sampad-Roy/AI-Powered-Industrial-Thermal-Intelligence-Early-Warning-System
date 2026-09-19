@@ -38,12 +38,12 @@ export default function LandingNavbar({ onLaunchDashboard, onNavigateAuth }) {
   }
 
   const navLinks = [
-    { label: 'Home', target: 'hero' },
+    { label: 'Home',     target: 'hero' },
     { label: 'Services', target: 'services' },
-    { label: 'About', target: 'about' },
-    { label: 'Impact', target: 'impact' },
-    { label: 'Team', target: 'team' },
-    { label: 'Contact', target: 'contact' },
+    { label: 'About',    target: 'about' },
+    { label: 'Impact',   target: 'impact' },
+    { label: 'Team',     target: 'team' },
+    { label: 'Contact',  target: 'contact' },
   ]
 
   return (
@@ -52,10 +52,10 @@ export default function LandingNavbar({ onLaunchDashboard, onNavigateAuth }) {
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
             ? 'bg-white/98 shadow-sm border-b border-[#D9D8D2]'
-            : 'bg-[#F5F3ED]/95 border-b border-[#D9D8D2]'
+            : 'bg-[#F5F3ED]/96 border-b border-[#D9D8D2]'
         } backdrop-blur-md`}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="landing-container">
           <div className="flex items-center justify-between h-[68px]">
 
             {/* Brand */}
@@ -87,11 +87,11 @@ export default function LandingNavbar({ onLaunchDashboard, onNavigateAuth }) {
               ))}
             </nav>
 
-            {/* Right: Login */}
+            {/* Right: Premium Login CTA */}
             <div className="hidden sm:flex items-center gap-3">
               <button
                 onClick={handleLoginClick}
-                className="px-4 py-2 text-[12px] font-sans font-semibold text-[#173042] hover:text-[#315E4A] rounded-lg border border-[#D9D8D2] hover:border-[#173042] bg-white transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+                className="navbar-login-btn px-5 py-2.5 text-[13px] font-sans font-bold text-white bg-[#173042] hover:bg-[#315E4A] rounded-xl border border-[#173042] hover:border-[#315E4A] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.02] flex items-center gap-2 cursor-pointer"
               >
                 <LogIn className="w-3.5 h-3.5" />
                 <span>Login</span>
@@ -102,7 +102,7 @@ export default function LandingNavbar({ onLaunchDashboard, onNavigateAuth }) {
             <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={handleLoginClick}
-                className="px-3 py-1.5 text-[11px] font-sans font-bold text-[#173042] rounded-lg border border-[#D9D8D2] bg-white cursor-pointer"
+                className="px-3.5 py-2 text-[12px] font-sans font-bold text-white bg-[#173042] rounded-xl border border-[#173042] cursor-pointer shadow-sm"
               >
                 Login
               </button>
@@ -159,7 +159,7 @@ export default function LandingNavbar({ onLaunchDashboard, onNavigateAuth }) {
             </div>
 
             <p className="text-[12px] font-sans leading-relaxed text-[#34434A] mb-5 bg-[#F5F3ED] p-3.5 rounded-xl border border-[#D9D8D2]">
-              The public demonstrator operates in open surveillance mode for SIH evaluation. Enter the live intelligence system directly.
+              The public demonstrator operates in open surveillance mode for evaluation. Enter the live intelligence system directly.
             </p>
 
             <div className="space-y-3 mb-5">

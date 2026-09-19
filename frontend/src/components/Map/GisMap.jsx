@@ -24,7 +24,7 @@ import { formatFRP, formatTempK, formatDistance, formatPercent, formatCoords } f
 import MapLegend from './MapLegend'
 
 // Helper component to capture map instance & respond to external camera commands
-function MapController({ events, selectedEvent, setMapInstance }) {
+function MapController({ events, selectedEvent, setMapInstance, markerRefs }) {
   const map = useMap()
 
   useEffect(() => {
@@ -36,6 +36,28 @@ function MapController({ events, selectedEvent, setMapInstance }) {
       return () => clearTimeout(t)
     }
   }, [map, setMapInstance])
+
+  // Automatically fly to & focus selectedEvent when selectedEvent or map changes
+  useEffect(() => {
+    if (!map || !selectedEvent) return
+    const lat = Number(selectedEvent.latitude)
+    const lng = Number(selectedEvent.longitude)
+    if (!isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
+      try {
+        map.flyTo([lat, lng], 14, {
+          duration: 1.2,
+        })
+        const timer = setTimeout(() => {
+          if (markerRefs?.current && markerRefs.current[selectedEvent.event_id]) {
+            markerRefs.current[selectedEvent.event_id].openPopup()
+          }
+        }, 650)
+        return () => clearTimeout(timer)
+      } catch (err) {
+        console.warn('GisMap flyTo warning:', err)
+      }
+    }
+  }, [map, selectedEvent?.event_id, selectedEvent?.latitude, selectedEvent?.longitude, markerRefs])
 
   return null
 }
@@ -257,6 +279,7 @@ export default function GisMap() {
           events={filteredEvents}
           selectedEvent={selectedEvent}
           setMapInstance={setMapRef}
+          markerRefs={markerRefs}
         />
 
         {/* Selected Tile Layer Provider */}

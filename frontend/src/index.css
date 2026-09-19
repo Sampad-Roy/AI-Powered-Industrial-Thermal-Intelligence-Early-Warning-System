@@ -475,3 +475,141 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   LANDING PAGE — PREMIUM ANIMATION SYSTEM
+   All classes are namespaced to avoid collision with dashboard/map utilities.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Hero entrance: staggered fade-up for headline elements */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-up {
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-fade-up-1 { animation-delay: 0.05s; }
+.hero-fade-up-2 { animation-delay: 0.18s; }
+.hero-fade-up-3 { animation-delay: 0.32s; }
+.hero-fade-up-4 { animation-delay: 0.46s; }
+.hero-fade-up-5 { animation-delay: 0.58s; }
+
+/* Scroll-reveal: elements start hidden, become visible when .reveal-visible is added */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grouped items */
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }
+
+/* Scale-reveal for images */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.97) translateY(14px);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.reveal-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Pipeline SVG connector draw animation */
+@keyframes pipelineDraw {
+  from { stroke-dashoffset: var(--dash-len, 1000); }
+  to   { stroke-dashoffset: 0; }
+}
+
+.pipeline-line {
+  stroke-dasharray: var(--dash-len, 1000);
+  stroke-dashoffset: var(--dash-len, 1000);
+}
+
+.pipeline-line.reveal-visible {
+  animation: pipelineDraw 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+/* Premium landing card hover — applied via className alongside existing styles */
+.landing-card {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease;
+}
+
+.landing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(23, 48, 66, 0.14);
+}
+
+/* Hero background: very slow Ken Burns zoom (subtle, cinematic) */
+@keyframes heroBgZoom {
+  from { transform: scale(1);    }
+  to   { transform: scale(1.06); }
+}
+
+.hero-bg-zoom {
+  animation: heroBgZoom 18s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform;
+}
+
+/* Navbar Login CTA: one-shot gentle attention nudge on page load */
+@keyframes loginNudge {
+  0%   { transform: translateY(0)    scale(1);    }
+  35%  { transform: translateY(-2px) scale(1.03); }
+  60%  { transform: translateY(0)    scale(1);    }
+  80%  { transform: translateY(-1px) scale(1.015);}
+  100% { transform: translateY(0)    scale(1);    }
+}
+
+.navbar-login-btn {
+  animation: loginNudge 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both;
+}
+
+/* Global landing-page inner container system */
+.landing-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .landing-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .landing-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+

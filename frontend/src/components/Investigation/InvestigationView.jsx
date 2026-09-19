@@ -52,8 +52,13 @@ export default function InvestigationView() {
   const riskCfg = RISK_LEVELS[ev.risk_level] || RISK_LEVELS.LOW
 
   const handleLocateOnMap = () => {
-    setActiveView('dashboard')
+    if (!ev) return
+    setSelectedEvent(ev)
     focusEvent(ev)
+    if (typeof window !== 'undefined' && window.location.pathname !== '/dashboard') {
+      window.history.pushState({}, '', '/dashboard')
+    }
+    setActiveView('dashboard')
   }
 
   return (

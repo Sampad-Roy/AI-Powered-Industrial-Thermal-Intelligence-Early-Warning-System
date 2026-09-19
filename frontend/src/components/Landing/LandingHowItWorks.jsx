@@ -1,5 +1,6 @@
 import React from 'react'
 import { Satellite, Database, Cpu, TrendingUp, BellRing } from 'lucide-react'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 const steps = [
   {
@@ -39,114 +40,135 @@ const steps = [
   },
 ]
 
-/* Thin right-pointing arrow — sits in its own flex column, never overlaps steps */
-function PipelineArrow() {
+/** Animated horizontal connector line drawn between steps on desktop */
+function ConnectorLine({ className = '' }) {
   return (
     <div
-      className="hidden md:flex items-center justify-center shrink-0"
-      style={{ width: '36px' }}
+      className={`hidden md:block flex-1 self-start mt-[38px] mx-1 ${className}`}
       aria-hidden="true"
     >
-      <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
-        <line x1="0" y1="8" x2="20" y2="8" stroke="#3F7358" strokeWidth="1.5" strokeLinecap="round" />
-        <polyline points="14,3 20,8 14,13" stroke="#3F7358" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <svg
+        width="100%"
+        height="12"
+        viewBox="0 0 100 12"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Background track */}
+        <line
+          x1="0" y1="6" x2="100" y2="6"
+          stroke="rgba(63,115,88,0.18)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+        {/* Animated fill */}
+        <line
+          className="pipeline-line reveal"
+          x1="0" y1="6" x2="100" y2="6"
+          stroke="#3F7358"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+          style={{ '--dash-len': 200 }}
+        />
+        {/* Arrow tip */}
+        <polyline
+          points="94,3 100,6 94,9"
+          stroke="#3F7358"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          vectorEffect="non-scaling-stroke"
+        />
       </svg>
     </div>
   )
 }
 
-/* Mobile vertical connector */
+/** Vertical mobile connector */
 function MobileConnector() {
   return (
     <div className="md:hidden flex justify-center py-1" aria-hidden="true">
       <svg width="16" height="28" viewBox="0 0 16 28" fill="none">
-        <line x1="8" y1="0" x2="8" y2="20" stroke="#3F7358" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="8" y1="0" x2="8" y2="20" stroke="rgba(63,115,88,0.4)" strokeWidth="1.5" strokeLinecap="round" />
         <polyline points="3,14 8,20 13,14" stroke="#3F7358" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     </div>
   )
 }
 
+const stepDelayClass = ['', 'reveal-d1', 'reveal-d2', 'reveal-d3', 'reveal-d4']
+
 export default function LandingHowItWorks() {
+  const sectionRef = useScrollReveal({ threshold: 0.05 })
+
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden py-20 md:py-28"
+      ref={sectionRef}
+      className="relative overflow-hidden py-24 md:py-32"
       style={{ background: 'linear-gradient(135deg, #0B2633 0%, #102F3D 60%, #0D2530 100%)' }}
     >
-      {/* ── Earth/satellite image — strictly contained within this section ── */}
-      <div
-        className="absolute inset-0 pointer-events-none select-none"
-        aria-hidden="true"
-      >
+      {/* Earth/satellite image — strictly contained within this section */}
+      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
         <img
           src="/landing_about.jpg"
           alt=""
           className="w-full h-full object-cover object-center"
-          style={{ filter: 'brightness(0.28) saturate(0.7)' }}
+          style={{ filter: 'brightness(0.25) saturate(0.65)' }}
         />
-        {/* Left-to-right gradient: full navy left → semi-transparent right — keeps text readable */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to right, #0B2633 0%, #0B2633 30%, rgba(11,38,51,0.85) 55%, rgba(11,38,51,0.3) 80%, rgba(11,38,51,0.15) 100%)',
+              'linear-gradient(to right, #0B2633 0%, #0B2633 28%, rgba(11,38,51,0.88) 52%, rgba(11,38,51,0.35) 78%, rgba(11,38,51,0.18) 100%)',
           }}
         />
-        {/* Top + bottom edge fades — seal the image inside the section */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, #0B2633 0%, transparent 15%, transparent 85%, #0B2633 100%)',
+              'linear-gradient(to bottom, #0B2633 0%, transparent 14%, transparent 86%, #0B2633 100%)',
           }}
         />
       </div>
 
-      {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      {/* Content */}
+      <div className="relative z-10 landing-container">
 
-        {/* Header — left aligned */}
-        <div className="mb-14 max-w-xl">
-          <span className="block text-[10.5px] font-mono font-bold tracking-widest uppercase text-[#3F7358] mb-3">
-            Intelligence Pipeline
-          </span>
-          <h2 className="font-serif font-bold text-[2rem] sm:text-[2.4rem] text-white tracking-tight mb-3 leading-[1.2]">
+        {/* Header */}
+        <div className="reveal mb-14">
+          <h2 className="font-serif font-bold text-[2rem] sm:text-[2.5rem] text-white tracking-tight leading-[1.18]">
             How It Works
           </h2>
-          <p className="font-sans text-[1rem] text-slate-400 leading-relaxed">
-            From Satellite Data to Real-World Impact
-          </p>
         </div>
 
-        {/* ── 5-Stage Pipeline ── */}
-        {/*
-          Desktop layout uses a single flex row with dedicated flex items for
-          arrows and steps. Each arrow gets its own shrink-0 column so it can
-          never intrude into a step's bounding box.
-        */}
+        {/* 5-stage pipeline row */}
         <div className="flex flex-col md:flex-row md:items-start">
           {steps.map((step, idx) => {
             const Icon = step.icon
             const isLast = idx === steps.length - 1
             return (
               <React.Fragment key={step.step}>
-                {/* ── Step ── */}
-                <div className="flex-1 min-w-0 flex flex-col items-start">
-                  {/* Number badge */}
+                {/* Step card */}
+                <div className={`reveal ${stepDelayClass[idx]} flex-1 min-w-0 flex flex-col items-start group`}>
+
+                  {/* Step number — editorial */}
                   <span
-                    className="font-mono font-bold text-[10px] tracking-[0.2em] mb-3"
-                    style={{ color: '#3F7358' }}
+                    className="font-mono font-bold text-[11px] tracking-[0.22em] mb-3 block"
+                    style={{ color: 'rgba(63,115,88,0.75)' }}
                   >
                     {step.step}
                   </span>
 
-                  {/* Icon circle — sits directly on dark background */}
+                  {/* Icon circle */}
                   <div
-                    className="flex items-center justify-center w-12 h-12 rounded-full mb-4 shrink-0"
+                    className="flex items-center justify-center w-12 h-12 rounded-full mb-4 shrink-0 transition-all duration-300 group-hover:scale-105"
                     style={{
-                      background: 'rgba(63, 115, 88, 0.15)',
-                      border: '1px solid rgba(63, 115, 88, 0.35)',
+                      background: 'rgba(63, 115, 88, 0.14)',
+                      border: '1px solid rgba(63, 115, 88, 0.32)',
                     }}
                   >
                     <Icon className="w-5 h-5" style={{ color: '#3F7358' }} />
@@ -154,7 +176,7 @@ export default function LandingHowItWorks() {
 
                   {/* Title */}
                   <h3
-                    className="font-serif font-bold text-[14.5px] leading-snug mb-1"
+                    className="font-serif font-bold text-[15px] leading-snug mb-1"
                     style={{ color: '#F0EEE8' }}
                   >
                     {step.title}
@@ -170,17 +192,17 @@ export default function LandingHowItWorks() {
 
                   {/* Description */}
                   <p
-                    className="font-sans text-[11.5px] leading-relaxed"
+                    className="font-sans text-[11.5px] leading-relaxed pr-2"
                     style={{ color: 'rgba(148, 163, 184, 0.8)' }}
                   >
                     {step.desc}
                   </p>
                 </div>
 
-                {/* ── Arrow (own flex child, never touches step content) ── */}
+                {/* Connector — own flex child, never intrudes into step */}
                 {!isLast && (
                   <>
-                    <PipelineArrow />
+                    <ConnectorLine />
                     <MobileConnector />
                   </>
                 )}
@@ -189,10 +211,10 @@ export default function LandingHowItWorks() {
           })}
         </div>
 
-        {/* Subtle bottom rule */}
+        {/* Bottom divider */}
         <div
-          className="mt-14 h-px w-full"
-          style={{ background: 'linear-gradient(to right, transparent, rgba(63,115,88,0.3), transparent)' }}
+          className="mt-16 h-px w-full"
+          style={{ background: 'linear-gradient(to right, transparent, rgba(63,115,88,0.28), transparent)' }}
         />
       </div>
     </section>
