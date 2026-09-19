@@ -3,7 +3,7 @@
  * Connects directly to the SIH26162 FastAPI Backend (/health, /events, /predict).
  */
 
-const API_BASE = '' // Uses Vite proxy in development; relative in production
+const API_BASE = 'https://ai-powered-industrial-thermal.onrender.com' // Uses Vite proxy in development; relative in production
 
 export async function fetchHealth() {
   try {
